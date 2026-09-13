@@ -260,24 +260,43 @@ export default {
         };
     },
 
-        mounted() {
+    mounted() {
         this.getRecommendations();
+        if (this.$route && this.$route.query && this.$route.query.category) {
+            this.applyCategoryFromQuery(this.$route.query.category);
+        }
     },
 
     watch: {
         user() {
             this.getRecommendations();
+        },
+        '$route.query.category'(newCat) {
+            this.applyCategoryFromQuery(newCat);
         }
     },
 computed: {
         ...mapState(["allFoods", "user"]),
 
         filterFoods: function () {
-            return this.allFoods.filter((f) => f.food_name.toLowerCase().match(this.foodObj.name.toLowerCase()) &&
-                (f.food_category.match(this.foodObj.category) || this.foodObj.category == "all" || this.foodObj.category == "") &&
-                (this.evaluatePrice(f, this.foodObj.price)) &&
-                f.food_type.toLowerCase().match(this.foodObj.type.toLowerCase()) &&
-                (this.evaluateStatus(f, this.foodObj.status)));
+            const queryName = (this.foodObj.name || "").toLowerCase().trim();
+            const queryType = (this.foodObj.type || "").toLowerCase().trim();
+
+            return this.allFoods.filter((f) => {
+                const foodName = (f.food_name || "").toLowerCase();
+                const matchName = !queryName || foodName.includes(queryName);
+
+                const matchCategory = this.matchCategory(f, this.foodObj.category);
+
+                const matchPrice = this.evaluatePrice(f, this.foodObj.price);
+
+                const foodType = (f.food_type || "").toLowerCase();
+                const matchType = !queryType || foodType.includes(queryType);
+
+                const matchStatus = this.evaluateStatus(f, this.foodObj.status);
+
+                return matchName && matchCategory && matchPrice && matchType && matchStatus;
+            });
         },
         currentPageItems: function () {
             return this.filterFoods.slice(this.pageNum * this.perPage, this.pageNum * this.perPage + this.perPage);
@@ -292,6 +311,59 @@ computed: {
         }
     },
     methods: {
+        applyCategoryFromQuery(category) {
+            const queryCat = category ? String(category).toLowerCase().trim() : "all";
+            this.foodObj.category = queryCat;
+            this.pageNum = 0;
+            this.$nextTick(() => {
+                if (this.previousCategoryClicked && this.previousCategoryClicked.target) {
+                    this.previousCategoryClicked.target.style.background = "#27ae60";
+                }
+                const btn = document.querySelector(`.menu-tab-item[value="${queryCat}"]`);
+                if (btn) {
+                    btn.style.background = "#057835fa";
+                    this.previousCategoryClicked = { target: btn };
+                }
+            });
+        },
+        matchCategory(food, selectedCategory) {
+            if (!selectedCategory || selectedCategory === "all") {
+                return true;
+            }
+            const cat = selectedCategory.toLowerCase().trim();
+            const foodCat = String(food.food_category || "").toLowerCase().trim();
+            const generalCat = String(food.category || "").toLowerCase().trim();
+            const cuisine = String(food.cuisine_type || "").toLowerCase().trim();
+            const src = String(food.food_src || "").toLowerCase().trim();
+
+            if (cat === "african") {
+                return (
+                    cuisine === "ivorian" ||
+                    cuisine === "west_african" ||
+                    cuisine.includes("african") ||
+                    foodCat.includes("african") ||
+                    generalCat.includes("african") ||
+                    src.startsWith("african/")
+                );
+            }
+
+            if (cat === "fast food") {
+                return (
+                    cuisine === "american" ||
+                    foodCat.includes("fast food") ||
+                    generalCat.includes("fast food") ||
+                    ["burger", "sandwich", "quick_bite", "wrap", "chicken"].includes(foodCat) ||
+                    ["burger", "sandwich", "quick_bite", "wrap", "chicken"].includes(generalCat) ||
+                    src.startsWith("fastfood/")
+                );
+            }
+
+            if (cat === "drink") {
+                return foodCat.includes("drink") || generalCat.includes("drink");
+            }
+
+            return foodCat.includes(cat) || generalCat.includes(cat) || cuisine.includes(cat);
+        },
         buildFoodSubtitle(food) {
             const normalize = (value) => {
                 if (value === null || value === undefined) {

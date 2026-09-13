@@ -1,10 +1,7 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service');
 const path = require('path');
-// module.exports = defineConfig({
-//   transpileDependencies: true
-// });
 
-module.exports = {
+module.exports = defineConfig({
   outputDir: path.resolve(__dirname, '../backend/restaurant_management'),
   devServer: {
     proxy: {
@@ -13,4 +10,4 @@ module.exports = {
       }
     }
   }
-}
+});

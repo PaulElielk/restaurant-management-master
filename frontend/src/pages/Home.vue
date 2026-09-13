@@ -41,32 +41,37 @@
 
 
         <div class="home-category">
-            <router-link @click="scrollToTop()" to="/menu" class="box">
+            <router-link @click="scrollToTop()" to="/menu?category=taco" class="box">
                 <img src="../assets/images/taco-img.png" alt="">
                 <h3>taco</h3>
             </router-link>
 
-            <router-link @click="scrollToTop()" to="/menu" class="box">
+            <router-link @click="scrollToTop()" to="/menu?category=burrito" class="box">
                 <img src="../assets/images/burrito-img.png" alt="">
                 <h3>burrito</h3>
             </router-link>
 
-            <router-link @click="scrollToTop()" to="/menu" class="box">
+            <router-link @click="scrollToTop()" to="/menu?category=fast food" class="box">
                 <img src="../assets/images/fastfood.png" alt="">
                 <h3>Fast Food</h3>
             </router-link>
 
-            <router-link @click="scrollToTop()" to="/menu" class="box">
+            <router-link @click="scrollToTop()" to="/menu?category=african" class="box">
+                <img src="../assets/images/African/alloco.jpg" alt="">
+                <h3>African</h3>
+            </router-link>
+
+            <router-link @click="scrollToTop()" to="/menu?category=sides" class="box">
                 <img src="../assets/images/salad-img.png" alt="">
                 <h3>sides</h3>
             </router-link>
 
-            <router-link @click="scrollToTop()" to="/menu" class="box">
+            <router-link @click="scrollToTop()" to="/menu?category=dessert" class="box">
                 <img src="../assets/images/dessert-img.png" alt="">
                 <h3>dessert</h3>
             </router-link>
 
-            <router-link @click="scrollToTop()" to="/menu" class="box">
+            <router-link @click="scrollToTop()" to="/menu?category=drink" class="box">
                 <img src="../assets/images/coca-img.png" alt="">
                 <h3>drink</h3>
             </router-link>

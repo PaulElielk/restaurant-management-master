@@ -13,15 +13,15 @@
 
             <div class="box">
                 <h3>our menu</h3>
-                <router-link @click="scrollToTop()" to="/menu"><i class="fas fa-arrow-right"></i> taco</router-link>
-                <router-link @click="scrollToTop()" to="/menu"><i class="fas fa-arrow-right"></i> burrito</router-link>
-                <router-link @click="scrollToTop()" to="/menu"><i class="fas fa-arrow-right"></i> nachos</router-link>
-                <router-link @click="scrollToTop()" to="/menu"><i class="fas fa-arrow-right"></i> side food
+                <router-link @click="scrollToTop()" to="/menu?category=taco"><i class="fas fa-arrow-right"></i> taco</router-link>
+                <router-link @click="scrollToTop()" to="/menu?category=burrito"><i class="fas fa-arrow-right"></i> burrito</router-link>
+                <router-link @click="scrollToTop()" to="/menu?category=nachos"><i class="fas fa-arrow-right"></i> nachos</router-link>
+                <router-link @click="scrollToTop()" to="/menu?category=sides"><i class="fas fa-arrow-right"></i> side food
                 </router-link>
-                <router-link @click="scrollToTop()" to="/menu"><i class="fas fa-arrow-right"></i> dessert</router-link>
-                <router-link @click="scrollToTop()" to="/menu"><i class="fas fa-arrow-right"></i> African</router-link>
-                <router-link @click="scrollToTop()" to="/menu"><i class="fas fa-arrow-right"></i> Fast Food</router-link>
-                <router-link @click="scrollToTop()" to="/menu"><i class="fas fa-arrow-right"></i> drink</router-link>
+                <router-link @click="scrollToTop()" to="/menu?category=dessert"><i class="fas fa-arrow-right"></i> dessert</router-link>
+                <router-link @click="scrollToTop()" to="/menu?category=african"><i class="fas fa-arrow-right"></i> African</router-link>
+                <router-link @click="scrollToTop()" to="/menu?category=fast food"><i class="fas fa-arrow-right"></i> Fast Food</router-link>
+                <router-link @click="scrollToTop()" to="/menu?category=drink"><i class="fas fa-arrow-right"></i> drink</router-link>
             </div>
 
             <div class="box">
