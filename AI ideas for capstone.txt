@@ -1,0 +1,1 @@
+add description and ingredient to the db so that users can talk to chatbot and asked for recommendation based on their taste and things they like in a meal 

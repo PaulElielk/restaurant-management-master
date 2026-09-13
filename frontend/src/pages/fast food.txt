@@ -1,0 +1,10 @@
+Burger
+cheese Burger
+chicken Burger
+fried chicken 
+hot dog
+shawarma
+beef pizza
+pork pizza
+smoked pork ribs
+french tacos

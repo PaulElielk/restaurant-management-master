@@ -1,0 +1,4959 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "forceNER": true,
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "hello": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "hi": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "hey": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "good,morn": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "howdi": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "do,recommend,what,you": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "good,here,is,what": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "someth,suggest": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "do,eat,i,know,not,to,what": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "are,dish,popular,the,what": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "best,seller": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "i,order,should,what": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "custom,favorit": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "i,someth,spici,want": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "do,food,have,spici,you": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "and,anyth,hot,spici": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "dish,spici": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "hot,i,it,like": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "is,menu,on,spici,the,what": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "food,i,vegetarian,want": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "ani,are,option,there,vegan": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "do,eat,i,meat,not": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "dish,meatless,pleas": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "base,option,plant": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "menu,vegetarian": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "dish,me,show,vegan": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "dish,me,meat,show": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "non,option,vegan": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "food,i,non,vegan,want": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "dish,me,meati,show": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "burger,in,is,the,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "about,me,pizza,tell,the": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "describ,taco,the": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "contain,doe,nacho,the,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "are,ingredi,of,salad,the,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "about,me,shrimp,taco,tell": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "burrito,come,in,the,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "burger,goe,the,well,what,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "do,order,peopl,taco,the,what,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "els,i,like,pizza,should,the,tri,what": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "alongsid,is,nacho,order,the,usual,what": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "my,order,pair,someth,suggest,to,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "i,pair,should,shrimp,taco,what,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "me,menu,show,the": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "do,food,have,what,you": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "can,i,order,what": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "is,menu,on,the,what": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "food,me,option,show,your": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "hello,there": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "hi,there": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "afternoon,good": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "even,good": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "assist,hey": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "can,help,me,you": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "help,i,need,order": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "are,there,you": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "chat,start": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "assist,restaur": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "choos,food,help,me": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "help,i,need,some": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "assist,me,pleas": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "assist,can,order,with,you": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "assist,choos,food,i,need": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "a,for,me,meal,recommend": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "a,give,me,recommend": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "i,should,today,tri,what": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "for,me,pick,someth": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "are,pick,top,what,your": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "custom,favorit,show": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "everyon,is,order,what": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "a,meal,popular,suggest": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "best,food,i,want,your": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "decid,eat,help,me,to,what": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "recommend,someth,tasti": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "do,like,most,peopl,what": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "a,give,me,pick,strong": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "dish,me,recommend,show": {
+            "intent": "restaurant.recommendation",
+            "domain": "default"
+          },
+          "dish,hot,show": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "chili,recommend,someth,with": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "a,i,meal,spici,want": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "has,heat,menu,on,the,what": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "give,me,option,spici": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "ani,dish,jalapeno": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "chili,food,i,like": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "food,show,spice,with": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "are,hot,meal,which": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "bring,me,someth,spici": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "item,menu,spiciest": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "food,hot,recommend": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "recommend,spici,taco": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "dish,hottest,is,the,what": {
+            "intent": "restaurant.recommend_spicy",
+            "domain": "default"
+          },
+          "option,show,vegetarian": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "food,i,need,vegan": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "can,eat,i,meat,what,without": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "base,meal,plant,recommend": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "dish,give,me,vegetarian": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "meat,no,option,show": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "base,food,i,plant,prefer": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "do,meal,serv,vegan,you": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "free,item,meat,menu": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "choic,pleas,vegetarian": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "are,dish,friend,vegan,what": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "or,show,side,taco,vegan": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "i,meat,someth,want,without": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "base,plant,recommend": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "food,meat,no,pleas,with": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "choic,free,meat": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "anim,meat,pleas,without": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "meal,meat,no,pleas": {
+            "intent": "restaurant.recommend_vegan",
+            "domain": "default"
+          },
+          "meat,option,recommend": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "a,i,meal,meat,want": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "dish,meat,show,with": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "beef,chicken,give,me,option,or": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "dish,do,have,meat,what,you": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "am,i,not,vegetarian": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "food,non,show,vegetarian": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "beef,chicken,or,recommend": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "has,in,it,meat,what": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "base,meal,meat,pleas": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "beef,dish,me,or,pork,show": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "chicken,i,someth,want,with": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "meal,non,pleas,vegan": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "best,meal,meat": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "beef,dish,show": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "beef,dish,pleas": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "beef,food,pleas,with": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "dish,not,pleas,vegan": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "dish,not,vegetarian": {
+            "intent": "restaurant.recommend_meat",
+            "domain": "default"
+          },
+          "insid,is,shrimp,taco,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "are,burrito,in,ingredi,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "come,me,nacho,tell,what,with": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "asada,carn,describ,taco": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "burrito,doe,includ,the,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "about,churro,detail,give": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "in,includ,is,margarita,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "about,coca,cola,me,more,tell": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "descript,is,of,pizza,the,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "chicken,come,nacho,what,with": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "explain,taco,the,vegan": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "bean,burrito,chees,in,is,what": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "detail,for,nacho,shrimp": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "corn,in,ingredi,salad": {
+            "intent": "restaurant.dish_info",
+            "domain": "default"
+          },
+          "burrito,pair,what,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "i,nacho,order,should,what,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "drink,goe,taco,what,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "burrito,go,side,well,what,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "buy,do,els,peopl,pizza,what,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "a,for,side,suggest,taco": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "add,can,i,meal,this,to,what": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "for,pair,show,shrimp,taco": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "bought,common,is,togeth,what": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "alongsid,burrito,goe,what": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "custom,do,nacho,pair,what,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "food,go,my,recommend,someth,to,with": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "accompani,my,order,should,what": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "dish,pair,pleas,side": {
+            "intent": "restaurant.also_bought",
+            "domain": "default"
+          },
+          "menu,open,the": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "avail,dish,list": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "all,categori,show": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "are,avail,categori,what": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "brows,item,menu": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "menu,restaur,show": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "are,avail,meal,what": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "by,categori,dish,show": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "categori,do,food,have,what,you": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "display,menu,option": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "let,me,menu,see,the": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "buy,can,here,i,what": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "avail,food,show": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          },
+          "categori,menu,pleas": {
+            "intent": "restaurant.menu_overview",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "greetings.hello": "default",
+          "restaurant.recommendation": "default",
+          "restaurant.recommend_spicy": "default",
+          "restaurant.recommend_vegan": "default",
+          "restaurant.recommend_meat": "default",
+          "restaurant.dish_info": "default",
+          "restaurant.also_bought": "default",
+          "restaurant.menu_overview": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "hello",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "hi",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "hey",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "good morning",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "howdy",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "what do you recommend?",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is good here?",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "suggest something",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "i don't know what to eat",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "what are the popular dishes?",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "best sellers",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "what should i order",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "customer favorites",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "i want something spicy",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "do you have spicy food?",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "anything hot and spicy?",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "spicy dishes",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "i like it hot",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is spicy on the menu?",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "i want vegetarian food",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "are there any vegan options?",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "i don't eat meat",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "meatless dishes please",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "plant based options",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "vegetarian menu",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "show me vegan dishes",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "show me meat dishes",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "non vegan options",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "i want non vegan food",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "show me meaty dishes",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is in the burger?",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "tell me about the pizza",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "describe the tacos",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what does the nachos contain?",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what are the ingredients of the salad?",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "tell me about shrimp tacos",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what comes in the burrito",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what goes well with the burger?",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what do people order with the tacos?",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "i like the pizza, what else should i try?",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is usually ordered alongside the nachos?",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "suggest something to pair with my order",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what should i pair with shrimp tacos?",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "show me the menu",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "what foods do you have?",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "what can i order?",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is on the menu?",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "show me your food options",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "hello there",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "hi there",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "good afternoon",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "good evening",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "hey assistant",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "can you help me",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "i need help ordering",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "are you there",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "start chat",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "restaurant assistant",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "help me choose food",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "i need some help",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "please assist me",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "can you assist with ordering",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "i need assistance choosing food",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "recommend a meal for me",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "give me a recommendation",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "what should i try today",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "pick something for me",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "what are your top picks",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "show customer favorites",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is everyone ordering",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "suggest a popular meal",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "i want your best food",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "help me decide what to eat",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "recommend something tasty",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "what do people like most",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "give me a strong pick",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "show me recommended dishes",
+            "intent": "restaurant.recommendation"
+          },
+          {
+            "domain": "default",
+            "utterance": "show hot dishes",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "recommend something with chili",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "i want a spicy meal",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "what has heat on the menu",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "give me spicy options",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "any jalapeno dishes",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "i like chili food",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "show food with spice",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "which meals are hot",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "bring me something spicy",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "spiciest menu items",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "hot food recommendations",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "recommend spicy tacos",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is the hottest dish",
+            "intent": "restaurant.recommend_spicy"
+          },
+          {
+            "domain": "default",
+            "utterance": "show vegetarian options",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "i need vegan food",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "what can i eat without meat",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "recommend plant based meals",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "give me vegetarian dishes",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "show no meat options",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "i prefer plant based food",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "do you serve vegan meals",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "meat free menu items",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "vegetarian choices please",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "what dishes are vegan friendly",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "show vegan tacos or sides",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "i want something without meat",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "plant based recommendations",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "food with no meat please",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "meat free choices",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "without animal meat please",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "no meat meals please",
+            "intent": "restaurant.recommend_vegan"
+          },
+          {
+            "domain": "default",
+            "utterance": "recommend meat options",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "i want a meat meal",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "show dishes with meat",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "give me beef or chicken options",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "what meat dishes do you have",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "i am not vegetarian",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "show non vegetarian food",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "recommend chicken or beef",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "what has meat in it",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "meat based meals please",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "show me pork or beef dishes",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "i want something with chicken",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "non vegan meals please",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "best meat meals",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "show beef dishes",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "beef dishes please",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "food with beef please",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "not vegan dishes please",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "not vegetarian dishes",
+            "intent": "restaurant.recommend_meat"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is inside shrimp tacos",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what ingredients are in burrito",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "tell me what comes with nachos",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "describe carne asada tacos",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what does the burrito include",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "give details about churros",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is included in margarita",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "tell me more about coca cola",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is the description of pizza",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what comes with chicken nachos",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "explain the vegan tacos",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is in bean cheese burrito",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "details for shrimp nachos",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "ingredients in corn salad",
+            "intent": "restaurant.dish_info"
+          },
+          {
+            "domain": "default",
+            "utterance": "what pairs with burritos",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what should i order with nachos",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what drink goes with tacos",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what sides go well with burrito",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what else do people buy with pizza",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "suggest a side for tacos",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what can i add to this meal",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "show pairings for shrimp tacos",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is commonly bought together",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what goes alongside burritos",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what do customers pair with nachos",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "recommend something to go with my food",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "what should accompany my order",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "side dish pairing please",
+            "intent": "restaurant.also_bought"
+          },
+          {
+            "domain": "default",
+            "utterance": "open the menu",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "list available dishes",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "show all categories",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "what categories are available",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "browse menu items",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "show restaurant menu",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "what meals are available",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "show dishes by category",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "what food categories do you have",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "display menu options",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "let me see the menu",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "what can i buy here",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "show available food",
+            "intent": "restaurant.menu_overview"
+          },
+          {
+            "domain": "default",
+            "utterance": "menu categories please",
+            "intent": "restaurant.menu_overview"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "hello": 1,
+              "hi": 1,
+              "hey": 1,
+              "good": 1,
+              "morn": 1,
+              "howdi": 1,
+              "what": 1,
+              "do": 1,
+              "you": 1,
+              "recommend": 1,
+              "is": 1,
+              "here": 1,
+              "suggest": 1,
+              "someth": 1,
+              "i": 1,
+              "not": 1,
+              "know": 1,
+              "to": 1,
+              "eat": 1,
+              "are": 1,
+              "the": 1,
+              "popular": 1,
+              "dish": 1,
+              "best": 1,
+              "seller": 1,
+              "should": 1,
+              "order": 1,
+              "custom": 1,
+              "favorit": 1,
+              "want": 1,
+              "spici": 1,
+              "have": 1,
+              "food": 1,
+              "anyth": 1,
+              "hot": 1,
+              "and": 1,
+              "like": 1,
+              "it": 1,
+              "on": 1,
+              "menu": 1,
+              "vegetarian": 1,
+              "there": 1,
+              "ani": 1,
+              "vegan": 1,
+              "option": 1,
+              "meat": 1,
+              "meatless": 1,
+              "pleas": 1,
+              "plant": 1,
+              "base": 1,
+              "show": 1,
+              "me": 1,
+              "non": 1,
+              "meati": 1,
+              "in": 1,
+              "burger": 1,
+              "tell": 1,
+              "about": 1,
+              "pizza": 1,
+              "describ": 1,
+              "taco": 1,
+              "doe": 1,
+              "nacho": 1,
+              "contain": 1,
+              "ingredi": 1,
+              "of": 1,
+              "salad": 1,
+              "shrimp": 1,
+              "come": 1,
+              "burrito": 1,
+              "goe": 1,
+              "well": 1,
+              "with": 1,
+              "peopl": 1,
+              "els": 1,
+              "tri": 1,
+              "usual": 1,
+              "alongsid": 1,
+              "pair": 1,
+              "my": 1,
+              "can": 1,
+              "your": 1,
+              "afternoon": 1,
+              "even": 1,
+              "assist": 1,
+              "help": 1,
+              "need": 1,
+              "start": 1,
+              "chat": 1,
+              "restaur": 1,
+              "choos": 1,
+              "some": 1,
+              "a": 1,
+              "meal": 1,
+              "for": 1,
+              "give": 1,
+              "today": 1,
+              "pick": 1,
+              "top": 1,
+              "everyon": 1,
+              "decid": 1,
+              "tasti": 1,
+              "most": 1,
+              "strong": 1,
+              "chili": 1,
+              "has": 1,
+              "heat": 1,
+              "jalapeno": 1,
+              "spice": 1,
+              "which": 1,
+              "bring": 1,
+              "spiciest": 1,
+              "item": 1,
+              "hottest": 1,
+              "without": 1,
+              "no": 1,
+              "prefer": 1,
+              "serv": 1,
+              "free": 1,
+              "choic": 1,
+              "friend": 1,
+              "or": 1,
+              "side": 1,
+              "anim": 1,
+              "beef": 1,
+              "chicken": 1,
+              "am": 1,
+              "pork": 1,
+              "insid": 1,
+              "carn": 1,
+              "asada": 1,
+              "includ": 1,
+              "detail": 1,
+              "churro": 1,
+              "margarita": 1,
+              "more": 1,
+              "coca": 1,
+              "cola": 1,
+              "descript": 1,
+              "explain": 1,
+              "bean": 1,
+              "chees": 1,
+              "corn": 1,
+              "drink": 1,
+              "go": 1,
+              "buy": 1,
+              "add": 1,
+              "this": 1,
+              "common": 1,
+              "bought": 1,
+              "togeth": 1,
+              "accompani": 1,
+              "open": 1,
+              "list": 1,
+              "avail": 1,
+              "all": 1,
+              "categori": 1,
+              "brows": 1,
+              "by": 1,
+              "display": 1,
+              "let": 1,
+              "see": 1
+            },
+            "intents": {
+              "greetings.hello": 1,
+              "restaurant.recommendation": 1,
+              "restaurant.recommend_spicy": 1,
+              "restaurant.recommend_vegan": 1,
+              "restaurant.recommend_meat": 1,
+              "restaurant.dish_info": 1,
+              "restaurant.also_bought": 1,
+              "restaurant.menu_overview": 1
+            },
+            "intentFeatures": {
+              "greetings.hello": {
+                "hello": 1,
+                "hi": 1,
+                "hey": 1,
+                "good": 1,
+                "morn": 1,
+                "howdi": 1,
+                "there": 1,
+                "afternoon": 1,
+                "even": 1,
+                "assist": 1,
+                "can": 1,
+                "you": 1,
+                "help": 1,
+                "me": 1,
+                "i": 1,
+                "need": 1,
+                "order": 1,
+                "are": 1,
+                "start": 1,
+                "chat": 1,
+                "restaur": 1,
+                "choos": 1,
+                "food": 1,
+                "some": 1,
+                "pleas": 1,
+                "with": 1
+              },
+              "restaurant.recommendation": {
+                "what": 1,
+                "do": 1,
+                "you": 1,
+                "recommend": 1,
+                "is": 1,
+                "good": 1,
+                "here": 1,
+                "suggest": 1,
+                "someth": 1,
+                "i": 1,
+                "not": 1,
+                "know": 1,
+                "to": 1,
+                "eat": 1,
+                "are": 1,
+                "the": 1,
+                "popular": 1,
+                "dish": 1,
+                "best": 1,
+                "seller": 1,
+                "should": 1,
+                "order": 1,
+                "custom": 1,
+                "favorit": 1,
+                "a": 1,
+                "meal": 1,
+                "for": 1,
+                "me": 1,
+                "give": 1,
+                "tri": 1,
+                "today": 1,
+                "pick": 1,
+                "your": 1,
+                "top": 1,
+                "show": 1,
+                "everyon": 1,
+                "want": 1,
+                "food": 1,
+                "help": 1,
+                "decid": 1,
+                "tasti": 1,
+                "peopl": 1,
+                "like": 1,
+                "most": 1,
+                "strong": 1
+              },
+              "restaurant.recommend_spicy": {
+                "i": 1,
+                "want": 1,
+                "someth": 1,
+                "spici": 1,
+                "do": 1,
+                "you": 1,
+                "have": 1,
+                "food": 1,
+                "anyth": 1,
+                "hot": 1,
+                "and": 1,
+                "dish": 1,
+                "like": 1,
+                "it": 1,
+                "what": 1,
+                "is": 1,
+                "on": 1,
+                "the": 1,
+                "menu": 1,
+                "show": 1,
+                "recommend": 1,
+                "with": 1,
+                "chili": 1,
+                "a": 1,
+                "meal": 1,
+                "has": 1,
+                "heat": 1,
+                "give": 1,
+                "me": 1,
+                "option": 1,
+                "ani": 1,
+                "jalapeno": 1,
+                "spice": 1,
+                "which": 1,
+                "are": 1,
+                "bring": 1,
+                "spiciest": 1,
+                "item": 1,
+                "taco": 1,
+                "hottest": 1
+              },
+              "restaurant.recommend_vegan": {
+                "i": 1,
+                "want": 1,
+                "vegetarian": 1,
+                "food": 1,
+                "are": 1,
+                "there": 1,
+                "ani": 1,
+                "vegan": 1,
+                "option": 1,
+                "do": 1,
+                "not": 1,
+                "eat": 1,
+                "meat": 1,
+                "meatless": 1,
+                "dish": 1,
+                "pleas": 1,
+                "plant": 1,
+                "base": 1,
+                "menu": 1,
+                "show": 1,
+                "me": 1,
+                "need": 1,
+                "what": 1,
+                "can": 1,
+                "without": 1,
+                "recommend": 1,
+                "meal": 1,
+                "give": 1,
+                "no": 1,
+                "prefer": 1,
+                "you": 1,
+                "serv": 1,
+                "free": 1,
+                "item": 1,
+                "choic": 1,
+                "friend": 1,
+                "taco": 1,
+                "or": 1,
+                "side": 1,
+                "someth": 1,
+                "with": 1,
+                "anim": 1
+              },
+              "restaurant.recommend_meat": {
+                "show": 1,
+                "me": 1,
+                "meat": 1,
+                "dish": 1,
+                "non": 1,
+                "vegan": 1,
+                "option": 1,
+                "i": 1,
+                "want": 1,
+                "food": 1,
+                "meati": 1,
+                "recommend": 1,
+                "a": 1,
+                "meal": 1,
+                "with": 1,
+                "give": 1,
+                "beef": 1,
+                "or": 1,
+                "chicken": 1,
+                "what": 1,
+                "do": 1,
+                "you": 1,
+                "have": 1,
+                "am": 1,
+                "not": 1,
+                "vegetarian": 1,
+                "has": 1,
+                "in": 1,
+                "it": 1,
+                "base": 1,
+                "pleas": 1,
+                "pork": 1,
+                "someth": 1,
+                "best": 1
+              },
+              "restaurant.dish_info": {
+                "what": 1,
+                "is": 1,
+                "in": 1,
+                "the": 1,
+                "burger": 1,
+                "tell": 1,
+                "me": 1,
+                "about": 1,
+                "pizza": 1,
+                "describ": 1,
+                "taco": 1,
+                "doe": 1,
+                "nacho": 1,
+                "contain": 1,
+                "are": 1,
+                "ingredi": 1,
+                "of": 1,
+                "salad": 1,
+                "shrimp": 1,
+                "come": 1,
+                "burrito": 1,
+                "insid": 1,
+                "with": 1,
+                "carn": 1,
+                "asada": 1,
+                "includ": 1,
+                "give": 1,
+                "detail": 1,
+                "churro": 1,
+                "margarita": 1,
+                "more": 1,
+                "coca": 1,
+                "cola": 1,
+                "descript": 1,
+                "chicken": 1,
+                "explain": 1,
+                "vegan": 1,
+                "bean": 1,
+                "chees": 1,
+                "for": 1,
+                "corn": 1
+              },
+              "restaurant.also_bought": {
+                "what": 1,
+                "goe": 1,
+                "well": 1,
+                "with": 1,
+                "the": 1,
+                "burger": 1,
+                "do": 1,
+                "peopl": 1,
+                "order": 1,
+                "taco": 1,
+                "i": 1,
+                "like": 1,
+                "pizza": 1,
+                "els": 1,
+                "should": 1,
+                "tri": 1,
+                "is": 1,
+                "usual": 1,
+                "alongsid": 1,
+                "nacho": 1,
+                "suggest": 1,
+                "someth": 1,
+                "to": 1,
+                "pair": 1,
+                "my": 1,
+                "shrimp": 1,
+                "burrito": 1,
+                "drink": 1,
+                "side": 1,
+                "go": 1,
+                "buy": 1,
+                "a": 1,
+                "for": 1,
+                "can": 1,
+                "add": 1,
+                "this": 1,
+                "meal": 1,
+                "show": 1,
+                "common": 1,
+                "bought": 1,
+                "togeth": 1,
+                "custom": 1,
+                "recommend": 1,
+                "food": 1,
+                "accompani": 1,
+                "dish": 1,
+                "pleas": 1
+              },
+              "restaurant.menu_overview": {
+                "show": 1,
+                "me": 1,
+                "the": 1,
+                "menu": 1,
+                "what": 1,
+                "food": 1,
+                "do": 1,
+                "you": 1,
+                "have": 1,
+                "can": 1,
+                "i": 1,
+                "order": 1,
+                "is": 1,
+                "on": 1,
+                "your": 1,
+                "option": 1,
+                "open": 1,
+                "list": 1,
+                "avail": 1,
+                "dish": 1,
+                "all": 1,
+                "categori": 1,
+                "are": 1,
+                "brows": 1,
+                "item": 1,
+                "restaur": 1,
+                "meal": 1,
+                "by": 1,
+                "display": 1,
+                "let": 1,
+                "see": 1,
+                "buy": 1,
+                "here": 1,
+                "pleas": 1
+              }
+            },
+            "featuresToIntent": {
+              "hello": [
+                "greetings.hello"
+              ],
+              "hi": [
+                "greetings.hello"
+              ],
+              "hey": [
+                "greetings.hello"
+              ],
+              "good": [
+                "greetings.hello",
+                "restaurant.recommendation"
+              ],
+              "morn": [
+                "greetings.hello"
+              ],
+              "howdi": [
+                "greetings.hello"
+              ],
+              "there": [
+                "greetings.hello",
+                "restaurant.recommend_vegan"
+              ],
+              "afternoon": [
+                "greetings.hello"
+              ],
+              "even": [
+                "greetings.hello"
+              ],
+              "assist": [
+                "greetings.hello"
+              ],
+              "can": [
+                "greetings.hello",
+                "restaurant.recommend_vegan",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "you": [
+                "greetings.hello",
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.menu_overview"
+              ],
+              "help": [
+                "greetings.hello",
+                "restaurant.recommendation"
+              ],
+              "me": [
+                "greetings.hello",
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.dish_info",
+                "restaurant.menu_overview"
+              ],
+              "i": [
+                "greetings.hello",
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "need": [
+                "greetings.hello",
+                "restaurant.recommend_vegan"
+              ],
+              "order": [
+                "greetings.hello",
+                "restaurant.recommendation",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "are": [
+                "greetings.hello",
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.dish_info",
+                "restaurant.menu_overview"
+              ],
+              "start": [
+                "greetings.hello"
+              ],
+              "chat": [
+                "greetings.hello"
+              ],
+              "restaur": [
+                "greetings.hello",
+                "restaurant.menu_overview"
+              ],
+              "choos": [
+                "greetings.hello"
+              ],
+              "food": [
+                "greetings.hello",
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "some": [
+                "greetings.hello"
+              ],
+              "pleas": [
+                "greetings.hello",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "with": [
+                "greetings.hello",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.dish_info",
+                "restaurant.also_bought"
+              ],
+              "what": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.dish_info",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "do": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "recommend": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought"
+              ],
+              "is": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.dish_info",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "here": [
+                "restaurant.recommendation",
+                "restaurant.menu_overview"
+              ],
+              "suggest": [
+                "restaurant.recommendation",
+                "restaurant.also_bought"
+              ],
+              "someth": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought"
+              ],
+              "not": [
+                "restaurant.recommendation",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat"
+              ],
+              "know": [
+                "restaurant.recommendation"
+              ],
+              "to": [
+                "restaurant.recommendation",
+                "restaurant.also_bought"
+              ],
+              "eat": [
+                "restaurant.recommendation",
+                "restaurant.recommend_vegan"
+              ],
+              "the": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.dish_info",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "popular": [
+                "restaurant.recommendation"
+              ],
+              "dish": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "best": [
+                "restaurant.recommendation",
+                "restaurant.recommend_meat"
+              ],
+              "seller": [
+                "restaurant.recommendation"
+              ],
+              "should": [
+                "restaurant.recommendation",
+                "restaurant.also_bought"
+              ],
+              "custom": [
+                "restaurant.recommendation",
+                "restaurant.also_bought"
+              ],
+              "favorit": [
+                "restaurant.recommendation"
+              ],
+              "a": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought"
+              ],
+              "meal": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "for": [
+                "restaurant.recommendation",
+                "restaurant.dish_info",
+                "restaurant.also_bought"
+              ],
+              "give": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.dish_info"
+              ],
+              "tri": [
+                "restaurant.recommendation",
+                "restaurant.also_bought"
+              ],
+              "today": [
+                "restaurant.recommendation"
+              ],
+              "pick": [
+                "restaurant.recommendation"
+              ],
+              "your": [
+                "restaurant.recommendation",
+                "restaurant.menu_overview"
+              ],
+              "top": [
+                "restaurant.recommendation"
+              ],
+              "show": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "everyon": [
+                "restaurant.recommendation"
+              ],
+              "want": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat"
+              ],
+              "decid": [
+                "restaurant.recommendation"
+              ],
+              "tasti": [
+                "restaurant.recommendation"
+              ],
+              "peopl": [
+                "restaurant.recommendation",
+                "restaurant.also_bought"
+              ],
+              "like": [
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.also_bought"
+              ],
+              "most": [
+                "restaurant.recommendation"
+              ],
+              "strong": [
+                "restaurant.recommendation"
+              ],
+              "spici": [
+                "restaurant.recommend_spicy"
+              ],
+              "have": [
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_meat",
+                "restaurant.menu_overview"
+              ],
+              "anyth": [
+                "restaurant.recommend_spicy"
+              ],
+              "hot": [
+                "restaurant.recommend_spicy"
+              ],
+              "and": [
+                "restaurant.recommend_spicy"
+              ],
+              "it": [
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_meat"
+              ],
+              "on": [
+                "restaurant.recommend_spicy",
+                "restaurant.menu_overview"
+              ],
+              "menu": [
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.menu_overview"
+              ],
+              "chili": [
+                "restaurant.recommend_spicy"
+              ],
+              "has": [
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_meat"
+              ],
+              "heat": [
+                "restaurant.recommend_spicy"
+              ],
+              "option": [
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.menu_overview"
+              ],
+              "ani": [
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan"
+              ],
+              "jalapeno": [
+                "restaurant.recommend_spicy"
+              ],
+              "spice": [
+                "restaurant.recommend_spicy"
+              ],
+              "which": [
+                "restaurant.recommend_spicy"
+              ],
+              "bring": [
+                "restaurant.recommend_spicy"
+              ],
+              "spiciest": [
+                "restaurant.recommend_spicy"
+              ],
+              "item": [
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.menu_overview"
+              ],
+              "taco": [
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.dish_info",
+                "restaurant.also_bought"
+              ],
+              "hottest": [
+                "restaurant.recommend_spicy"
+              ],
+              "vegetarian": [
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat"
+              ],
+              "vegan": [
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.dish_info"
+              ],
+              "meat": [
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat"
+              ],
+              "meatless": [
+                "restaurant.recommend_vegan"
+              ],
+              "plant": [
+                "restaurant.recommend_vegan"
+              ],
+              "base": [
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat"
+              ],
+              "without": [
+                "restaurant.recommend_vegan"
+              ],
+              "no": [
+                "restaurant.recommend_vegan"
+              ],
+              "prefer": [
+                "restaurant.recommend_vegan"
+              ],
+              "serv": [
+                "restaurant.recommend_vegan"
+              ],
+              "free": [
+                "restaurant.recommend_vegan"
+              ],
+              "choic": [
+                "restaurant.recommend_vegan"
+              ],
+              "friend": [
+                "restaurant.recommend_vegan"
+              ],
+              "or": [
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat"
+              ],
+              "side": [
+                "restaurant.recommend_vegan",
+                "restaurant.also_bought"
+              ],
+              "anim": [
+                "restaurant.recommend_vegan"
+              ],
+              "non": [
+                "restaurant.recommend_meat"
+              ],
+              "meati": [
+                "restaurant.recommend_meat"
+              ],
+              "beef": [
+                "restaurant.recommend_meat"
+              ],
+              "chicken": [
+                "restaurant.recommend_meat",
+                "restaurant.dish_info"
+              ],
+              "am": [
+                "restaurant.recommend_meat"
+              ],
+              "in": [
+                "restaurant.recommend_meat",
+                "restaurant.dish_info"
+              ],
+              "pork": [
+                "restaurant.recommend_meat"
+              ],
+              "burger": [
+                "restaurant.dish_info",
+                "restaurant.also_bought"
+              ],
+              "tell": [
+                "restaurant.dish_info"
+              ],
+              "about": [
+                "restaurant.dish_info"
+              ],
+              "pizza": [
+                "restaurant.dish_info",
+                "restaurant.also_bought"
+              ],
+              "describ": [
+                "restaurant.dish_info"
+              ],
+              "doe": [
+                "restaurant.dish_info"
+              ],
+              "nacho": [
+                "restaurant.dish_info",
+                "restaurant.also_bought"
+              ],
+              "contain": [
+                "restaurant.dish_info"
+              ],
+              "ingredi": [
+                "restaurant.dish_info"
+              ],
+              "of": [
+                "restaurant.dish_info"
+              ],
+              "salad": [
+                "restaurant.dish_info"
+              ],
+              "shrimp": [
+                "restaurant.dish_info",
+                "restaurant.also_bought"
+              ],
+              "come": [
+                "restaurant.dish_info"
+              ],
+              "burrito": [
+                "restaurant.dish_info",
+                "restaurant.also_bought"
+              ],
+              "insid": [
+                "restaurant.dish_info"
+              ],
+              "carn": [
+                "restaurant.dish_info"
+              ],
+              "asada": [
+                "restaurant.dish_info"
+              ],
+              "includ": [
+                "restaurant.dish_info"
+              ],
+              "detail": [
+                "restaurant.dish_info"
+              ],
+              "churro": [
+                "restaurant.dish_info"
+              ],
+              "margarita": [
+                "restaurant.dish_info"
+              ],
+              "more": [
+                "restaurant.dish_info"
+              ],
+              "coca": [
+                "restaurant.dish_info"
+              ],
+              "cola": [
+                "restaurant.dish_info"
+              ],
+              "descript": [
+                "restaurant.dish_info"
+              ],
+              "explain": [
+                "restaurant.dish_info"
+              ],
+              "bean": [
+                "restaurant.dish_info"
+              ],
+              "chees": [
+                "restaurant.dish_info"
+              ],
+              "corn": [
+                "restaurant.dish_info"
+              ],
+              "goe": [
+                "restaurant.also_bought"
+              ],
+              "well": [
+                "restaurant.also_bought"
+              ],
+              "els": [
+                "restaurant.also_bought"
+              ],
+              "usual": [
+                "restaurant.also_bought"
+              ],
+              "alongsid": [
+                "restaurant.also_bought"
+              ],
+              "pair": [
+                "restaurant.also_bought"
+              ],
+              "my": [
+                "restaurant.also_bought"
+              ],
+              "drink": [
+                "restaurant.also_bought"
+              ],
+              "go": [
+                "restaurant.also_bought"
+              ],
+              "buy": [
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "add": [
+                "restaurant.also_bought"
+              ],
+              "this": [
+                "restaurant.also_bought"
+              ],
+              "common": [
+                "restaurant.also_bought"
+              ],
+              "bought": [
+                "restaurant.also_bought"
+              ],
+              "togeth": [
+                "restaurant.also_bought"
+              ],
+              "accompani": [
+                "restaurant.also_bought"
+              ],
+              "open": [
+                "restaurant.menu_overview"
+              ],
+              "list": [
+                "restaurant.menu_overview"
+              ],
+              "avail": [
+                "restaurant.menu_overview"
+              ],
+              "all": [
+                "restaurant.menu_overview"
+              ],
+              "categori": [
+                "restaurant.menu_overview"
+              ],
+              "brows": [
+                "restaurant.menu_overview"
+              ],
+              "by": [
+                "restaurant.menu_overview"
+              ],
+              "display": [
+                "restaurant.menu_overview"
+              ],
+              "let": [
+                "restaurant.menu_overview"
+              ],
+              "see": [
+                "restaurant.menu_overview"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "hello",
+                "hi",
+                "hey",
+                "good",
+                "morn",
+                "howdi",
+                "what",
+                "do",
+                "you",
+                "recommend",
+                "is",
+                "here",
+                "suggest",
+                "someth",
+                "i",
+                "not",
+                "know",
+                "to",
+                "eat",
+                "are",
+                "the",
+                "popular",
+                "dish",
+                "best",
+                "seller",
+                "should",
+                "order",
+                "custom",
+                "favorit",
+                "want",
+                "spici",
+                "have",
+                "food",
+                "anyth",
+                "hot",
+                "and",
+                "like",
+                "it",
+                "on",
+                "menu",
+                "vegetarian",
+                "there",
+                "ani",
+                "vegan",
+                "option",
+                "meat",
+                "meatless",
+                "pleas",
+                "plant",
+                "base",
+                "show",
+                "me",
+                "non",
+                "meati",
+                "in",
+                "burger",
+                "tell",
+                "about",
+                "pizza",
+                "describ",
+                "taco",
+                "doe",
+                "nacho",
+                "contain",
+                "ingredi",
+                "of",
+                "salad",
+                "shrimp",
+                "come",
+                "burrito",
+                "goe",
+                "well",
+                "with",
+                "peopl",
+                "els",
+                "tri",
+                "usual",
+                "alongsid",
+                "pair",
+                "my",
+                "can",
+                "your",
+                "afternoon",
+                "even",
+                "assist",
+                "help",
+                "need",
+                "start",
+                "chat",
+                "restaur",
+                "choos",
+                "some",
+                "a",
+                "meal",
+                "for",
+                "give",
+                "today",
+                "pick",
+                "top",
+                "everyon",
+                "decid",
+                "tasti",
+                "most",
+                "strong",
+                "chili",
+                "has",
+                "heat",
+                "jalapeno",
+                "spice",
+                "which",
+                "bring",
+                "spiciest",
+                "item",
+                "hottest",
+                "without",
+                "no",
+                "prefer",
+                "serv",
+                "free",
+                "choic",
+                "friend",
+                "or",
+                "side",
+                "anim",
+                "beef",
+                "chicken",
+                "am",
+                "pork",
+                "insid",
+                "carn",
+                "asada",
+                "includ",
+                "detail",
+                "churro",
+                "margarita",
+                "more",
+                "coca",
+                "cola",
+                "descript",
+                "explain",
+                "bean",
+                "chees",
+                "corn",
+                "drink",
+                "go",
+                "buy",
+                "add",
+                "this",
+                "common",
+                "bought",
+                "togeth",
+                "accompani",
+                "open",
+                "list",
+                "avail",
+                "all",
+                "categori",
+                "brows",
+                "by",
+                "display",
+                "let",
+                "see"
+              ],
+              "intents": [
+                "greetings.hello",
+                "restaurant.recommendation",
+                "restaurant.recommend_spicy",
+                "restaurant.recommend_vegan",
+                "restaurant.recommend_meat",
+                "restaurant.dish_info",
+                "restaurant.also_bought",
+                "restaurant.menu_overview"
+              ],
+              "perceptrons": [
+                [
+                  7.796204090118408,
+                  7.797011852264404,
+                  6.225897312164307,
+                  5.264922618865967,
+                  2.470210075378418,
+                  7.765168190002441,
+                  -7.340292453765869,
+                  -2.460407018661499,
+                  4.390923023223877,
+                  -3.4752144813537598,
+                  -2.840128183364868,
+                  -2.1619439125061035,
+                  -2.2162957191467285,
+                  -4.533053874969482,
+                  -1.0140936374664307,
+                  -0.7725009918212891,
+                  -0.06887232512235641,
+                  -2.1002256870269775,
+                  -2.0511815547943115,
+                  3.485931396484375,
+                  -2.7195467948913574,
+                  -0.4850257933139801,
+                  -5.809692859649658,
+                  -3.6371259689331055,
+                  -2.901698589324951,
+                  -1.1856746673583984,
+                  2.9724509716033936,
+                  -3.2690744400024414,
+                  -3.2690744400024414,
+                  -0.9299799203872681,
+                  -3.8196892738342285,
+                  -1.397131085395813,
+                  -3.530534505844116,
+                  -0.4325987994670868,
+                  -3.620866537094116,
+                  -0.4325987994670868,
+                  -1.4113683700561523,
+                  -0.48419561982154846,
+                  -0.05537758022546768,
+                  -5.960012912750244,
+                  -4.159463882446289,
+                  -0.05191026255488396,
+                  -2.5296549797058105,
+                  -5.371240139007568,
+                  -3.4154274463653564,
+                  -3.5989246368408203,
+                  -2.057626485824585,
+                  1.3730262517929077,
+                  -1.562423586845398,
+                  -1.562423586845398,
+                  -5.0286760330200195,
+                  3.037890672683716,
+                  -0.09591680765151978,
+                  -0.02022898755967617,
+                  -1.6253466606140137,
+                  -0.00002410741763014812,
+                  -2.6698126792907715,
+                  -3.145265817642212,
+                  -1.0323563814163208,
+                  -1.7952598333358765,
+                  -2.329777956008911,
+                  0,
+                  -1.0265190601348877,
+                  0,
+                  -1.6252983808517456,
+                  0,
+                  -1.6252983808517456,
+                  -1.4201551675796509,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -0.7721203565597534,
+                  -0.06978363543748856,
+                  0,
+                  -0.45331647992134094,
+                  0,
+                  0,
+                  -1.0703016519546509,
+                  -0.5216770768165588,
+                  -1.9481114149093628,
+                  -1.0582008361816406,
+                  2.481743574142456,
+                  2.4829323291778564,
+                  2.9444849491119385,
+                  2.5272347927093506,
+                  3.4534902572631836,
+                  3.913100481033325,
+                  3.913100481033325,
+                  4.5850067138671875,
+                  5.784753322601318,
+                  2.753453016281128,
+                  -3.196484327316284,
+                  -4.09588098526001,
+                  -2.5813276767730713,
+                  -2.84869122505188,
+                  -0.45331647992134094,
+                  -2.4229490756988525,
+                  -0.3128933310508728,
+                  -0.5203825831413269,
+                  -1.8490991592407227,
+                  -0.3126029670238495,
+                  -0.06978363543748856,
+                  -1.0942461490631104,
+                  -0.9110004305839539,
+                  -0.04165131226181984,
+                  -0.04165131226181984,
+                  -0.6640655398368835,
+                  -0.3506855368614197,
+                  -2.293335437774658,
+                  -1.1798352003097534,
+                  -0.8391630053520203,
+                  -1.520135521888733,
+                  0,
+                  -2.147292137145996,
+                  -0.27088463306427,
+                  -0.313681036233902,
+                  -0.4646875262260437,
+                  -1.0314826965332031,
+                  -3.67326021194458,
+                  0,
+                  -0.6103495359420776,
+                  -0.9829943776130676,
+                  -2.115753173828125,
+                  -3.4514565467834473,
+                  -0.5842759609222412,
+                  -0.570160448551178,
+                  0,
+                  0,
+                  -1.1903057098388672,
+                  -1.1903057098388672,
+                  0,
+                  -1.5019733905792236,
+                  -0.42871060967445374,
+                  0,
+                  -1.241025686264038,
+                  -1.241025686264038,
+                  -1.241025686264038,
+                  0,
+                  -0.04853927716612816,
+                  0,
+                  0,
+                  -1.6252983808517456,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -0.4082963168621063,
+                  -0.31087398529052734,
+                  -0.6902822256088257,
+                  -0.7791642546653748,
+                  -0.7260475754737854,
+                  -1.9012300968170166,
+                  -0.3109244704246521,
+                  0,
+                  -0.013563418760895729,
+                  -0.4315592348575592,
+                  -0.4315592348575592,
+                  6.500142684054521
+                ],
+                [
+                  -0.10208851099014282,
+                  -0.08698885887861252,
+                  -0.11911385506391525,
+                  2.8216724395751953,
+                  -1.8433527946472168,
+                  0,
+                  5.4940619468688965,
+                  2.0864169597625732,
+                  -1.4192620515823364,
+                  9.11639404296875,
+                  1.1264883279800415,
+                  5.798737525939941,
+                  8.679783821105957,
+                  6.243268013000488,
+                  1.2035133838653564,
+                  0.149084210395813,
+                  2.4306583404541016,
+                  2.46181058883667,
+                  1.4161514043807983,
+                  2.6275923252105713,
+                  -2.2473373413085938,
+                  7.408535003662109,
+                  1.813533902168274,
+                  10.774048805236816,
+                  4.457873344421387,
+                  5.507325649261475,
+                  3.010446071624756,
+                  7.079434394836426,
+                  8.117889404296875,
+                  1.9968384504318237,
+                  -8.503406524658203,
+                  -4.015507698059082,
+                  -3.2896735668182373,
+                  -0.11219412833452225,
+                  -4.860429763793945,
+                  -0.11219412833452225,
+                  -0.40229532122612,
+                  -0.4593037962913513,
+                  -1.5391603708267212,
+                  -2.0549423694610596,
+                  -4.6944756507873535,
+                  -0.8169636130332947,
+                  -0.826271653175354,
+                  -5.847947597503662,
+                  -5.056793212890625,
+                  -6.746971607208252,
+                  -0.288091778755188,
+                  -1.7617427110671997,
+                  -4.071953773498535,
+                  -4.071953773498535,
+                  0.0664849802851677,
+                  4.2613043785095215,
+                  -0.10835734754800797,
+                  -5.269238471984863,
+                  -3.866586923599243,
+                  -0.9468907117843628,
+                  -1.092968463897705,
+                  -1.0022995471954346,
+                  -4.183126449584961,
+                  -0.05072928965091705,
+                  -7.27854585647583,
+                  -0.5992574691772461,
+                  -4.480344772338867,
+                  -0.5992574691772461,
+                  -2.099670171737671,
+                  -1.4429086446762085,
+                  -1.3680388927459717,
+                  -1.4678468704223633,
+                  -0.6132197976112366,
+                  -2.3817331790924072,
+                  -1.0756638050079346,
+                  -0.1276007890701294,
+                  -9.775008201599121,
+                  3.689971685409546,
+                  -4.005340099334717,
+                  -0.41494083404541016,
+                  -0.7142447233200073,
+                  -1.627907395362854,
+                  -2.5155112743377686,
+                  -7.167110443115234,
+                  -8.75850772857666,
+                  4.5675578117370605,
+                  -1.8675764799118042,
+                  -1.8678653240203857,
+                  -1.5490574836730957,
+                  -0.587079644203186,
+                  -2.6733155250549316,
+                  -0.16043445467948914,
+                  -0.16043445467948914,
+                  -0.07950196415185928,
+                  -0.20898371934890747,
+                  -0.05043686553835869,
+                  2.4187636375427246,
+                  -3.061455488204956,
+                  2.1934051513671875,
+                  -0.41989073157310486,
+                  3.428896427154541,
+                  2.7441625595092773,
+                  -0.21864062547683716,
+                  5.585999488830566,
+                  2.1946752071380615,
+                  -0.08924084901809692,
+                  4.367898941040039,
+                  6.1236748695373535,
+                  -4.622166156768799,
+                  -0.7215438485145569,
+                  -0.576871395111084,
+                  -0.5240916013717651,
+                  -0.1936175525188446,
+                  -0.5054734945297241,
+                  -1.8811604976654053,
+                  -0.3213573396205902,
+                  -0.3213573396205902,
+                  -5.186862945556641,
+                  -1.7310971021652222,
+                  -0.02162008360028267,
+                  -0.043648574501276016,
+                  -0.34228193759918213,
+                  0,
+                  -0.06340985000133514,
+                  -3.101548910140991,
+                  -2.8115928173065186,
+                  -5.025442123413086,
+                  0,
+                  -2.7963006496429443,
+                  -2.5379531383514404,
+                  -0.23352928459644318,
+                  -0.23277054727077484,
+                  -1.036959171295166,
+                  0,
+                  0,
+                  -1.3933862447738647,
+                  -0.3277561664581299,
+                  -0.2501969039440155,
+                  -1.3933862447738647,
+                  -0.5304272770881653,
+                  -0.5304272770881653,
+                  -0.5304272770881653,
+                  -0.05574677884578705,
+                  0,
+                  -0.4067436158657074,
+                  -0.4067436158657074,
+                  0,
+                  0,
+                  -0.07068080455064774,
+                  -2.764051914215088,
+                  -0.8173079490661621,
+                  -0.8173079490661621,
+                  -2.2047200202941895,
+                  -2.2047200202941895,
+                  -2.2047200202941895,
+                  -5.877376556396484,
+                  0,
+                  0,
+                  -4.045248031616211,
+                  -0.08352132886648178,
+                  -3.1201465129852295,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -0.9711817354863799
+                ],
+                [
+                  -0.5300654768943787,
+                  -0.5201009511947632,
+                  -0.5152456760406494,
+                  -0.4443189799785614,
+                  -0.22402873635292053,
+                  -0.4833661615848541,
+                  -0.9160101413726807,
+                  -1.2606288194656372,
+                  -0.5009783506393433,
+                  0.5353790521621704,
+                  1.4155168533325195,
+                  -0.012161505408585072,
+                  -1.896356225013733,
+                  2.0010972023010254,
+                  -0.4418640732765198,
+                  -0.7759917974472046,
+                  0,
+                  -2.885409116744995,
+                  -0.6267606019973755,
+                  -1.5288878679275513,
+                  1.246774673461914,
+                  -2.222701072692871,
+                  1.770580768585205,
+                  -0.9223898649215698,
+                  -0.04788842797279358,
+                  -0.8241689801216125,
+                  -1.1855716705322266,
+                  -0.35253801941871643,
+                  -0.35253801941871643,
+                  -0.08621571958065033,
+                  13.496702194213867,
+                  0.4753166735172272,
+                  2.7489099502563477,
+                  -5.094998359680176,
+                  11.686229705810547,
+                  -5.094998359680176,
+                  2.8425464630126953,
+                  0.9104570150375366,
+                  -0.10755142569541931,
+                  -0.5668684244155884,
+                  -3.9452321529388428,
+                  -1.2105549573898315,
+                  6.08498477935791,
+                  -4.314709186553955,
+                  1.6331130266189575,
+                  -6.3517560958862305,
+                  -0.7015193700790405,
+                  -2.8163979053497314,
+                  -2.311924457550049,
+                  -2.311924457550049,
+                  1.4059656858444214,
+                  -3.1285133361816406,
+                  -0.8276751637458801,
+                  -1.070879578590393,
+                  -1.1054210662841797,
+                  -0.9475783109664917,
+                  -0.3517135679721832,
+                  -0.9847877621650696,
+                  -1.3637994527816772,
+                  -1.5938282012939453,
+                  0.9308946132659912,
+                  -0.47889387607574463,
+                  -0.7287946939468384,
+                  -0.13995179533958435,
+                  -0.36082157492637634,
+                  -0.6912476420402527,
+                  -0.27926182746887207,
+                  -0.5146864652633667,
+                  -0.27458369731903076,
+                  -0.9512052536010742,
+                  -1.3751003742218018,
+                  -0.6537666320800781,
+                  2.6430070400238037,
+                  -0.819890022277832,
+                  -0.5982125997543335,
+                  -0.5982125997543335,
+                  -0.05834320932626724,
+                  -0.05834320932626724,
+                  -1.099519968032837,
+                  -2.871415615081787,
+                  -0.7780681252479553,
+                  -1.9618173837661743,
+                  -0.0810835137963295,
+                  -0.07353901118040085,
+                  -0.609705924987793,
+                  -0.39292043447494507,
+                  -1.5571551322937012,
+                  -0.08721735328435898,
+                  -0.08721735328435898,
+                  -1.2049907445907593,
+                  -0.5208907723426819,
+                  -0.03281591832637787,
+                  -0.14713157713413239,
+                  2.1551930904388428,
+                  -1.1738829612731934,
+                  2.964141607284546,
+                  0,
+                  -0.016811415553092957,
+                  0,
+                  0,
+                  0,
+                  -2.313072919845581,
+                  -0.3205997347831726,
+                  0,
+                  9.777731895446777,
+                  7.580472469329834,
+                  7.693173885345459,
+                  7.062495708465576,
+                  8.17662525177002,
+                  2.650712013244629,
+                  2.595712661743164,
+                  10.269783973693848,
+                  5.230366230010986,
+                  11.387685775756836,
+                  -0.857310950756073,
+                  -0.6516640782356262,
+                  -0.7551015019416809,
+                  -0.5069112181663513,
+                  -0.6932137608528137,
+                  -0.14798122644424438,
+                  -0.7814112901687622,
+                  -1.219826340675354,
+                  -0.8646957278251648,
+                  0,
+                  -3.9594101905822754,
+                  -4.167191028594971,
+                  -0.05844535678625107,
+                  -0.5312424898147583,
+                  -0.33086496591567993,
+                  -0.2297024130821228,
+                  -0.2297024130821228,
+                  -0.5794739127159119,
+                  -0.8905320167541504,
+                  -0.7869753837585449,
+                  -0.2186182290315628,
+                  -0.008087306283414364,
+                  -0.008087306283414364,
+                  -0.008087306283414364,
+                  -0.5370415449142456,
+                  0,
+                  -0.0552668571472168,
+                  -0.0552668571472168,
+                  -0.1270340532064438,
+                  -0.7282657027244568,
+                  -2.728091239929199,
+                  0,
+                  -0.009518471546471119,
+                  -0.009518471546471119,
+                  -0.3912808895111084,
+                  -0.3912808895111084,
+                  -0.3912808895111084,
+                  0,
+                  -2.0793392658233643,
+                  -1.6088032722473145,
+                  -3.469074249267578,
+                  -0.20397984981536865,
+                  -2.280442953109741,
+                  -4.304161548614502,
+                  -1.5657615661621094,
+                  -1.2639977931976318,
+                  -0.6443502902984619,
+                  -0.6443502902984619,
+                  -0.6735688636878919
+                ],
+                [
+                  -0.7255328893661499,
+                  -0.7055739760398865,
+                  -0.2066306173801422,
+                  -0.6067948937416077,
+                  0,
+                  -0.03427651897072792,
+                  -7.019843101501465,
+                  10.09031867980957,
+                  -7.038862705230713,
+                  -0.5421672463417053,
+                  -0.1789858192205429,
+                  -0.36276403069496155,
+                  -1.1558406352996826,
+                  1.6721912622451782,
+                  2.523021936416626,
+                  -10.737343788146973,
+                  -3.167466640472412,
+                  -3.8716061115264893,
+                  12.696590423583984,
+                  3.9966585636138916,
+                  -6.017910480499268,
+                  -0.02416255883872509,
+                  -2.08314847946167,
+                  -0.8659693598747253,
+                  0,
+                  -0.275894433259964,
+                  -1.6800304651260376,
+                  -0.7174515724182129,
+                  -0.6453786492347717,
+                  -0.10944264382123947,
+                  -3.7748844623565674,
+                  -3.1640584468841553,
+                  -0.6750120520591736,
+                  0,
+                  -1.8311504125595093,
+                  0,
+                  -1.8735969066619873,
+                  -0.6328912973403931,
+                  -0.0010104894172400236,
+                  1.5585664510726929,
+                  13.202238082885742,
+                  -2.1601147651672363,
+                  0.5047957301139832,
+                  13.1454496383667,
+                  -0.6485434174537659,
+                  0.007026090752333403,
+                  16.36066436767578,
+                  0.4125167429447174,
+                  15.127429008483887,
+                  0.28270578384399414,
+                  1.645491123199463,
+                  1.3813551664352417,
+                  -14.366311073303223,
+                  -1.1683474779129028,
+                  -0.9963956475257874,
+                  -0.16615307331085205,
+                  -0.3412870764732361,
+                  -1.0787808895111084,
+                  -0.6702236533164978,
+                  -0.33984139561653137,
+                  -2.271982192993164,
+                  -0.06518993526697159,
+                  -0.2726458013057709,
+                  -0.06518993526697159,
+                  -0.3118906319141388,
+                  -0.13344651460647583,
+                  -0.15286724269390106,
+                  -0.434539258480072,
+                  -0.02979494445025921,
+                  -0.17656727135181427,
+                  -0.02014581859111786,
+                  -0.02014581859111786,
+                  0.44106170535087585,
+                  -1.1047440767288208,
+                  -0.4756186306476593,
+                  -0.1193542629480362,
+                  0,
+                  0,
+                  -2.003878116607666,
+                  -0.13818767666816711,
+                  -3.940347909927368,
+                  -2.241582155227661,
+                  -0.3037951588630676,
+                  -0.2733120918273926,
+                  -2.2225334644317627,
+                  -2.6030921936035156,
+                  -0.15973611176013947,
+                  -0.32078802585601807,
+                  -0.32078802585601807,
+                  -3.0308756828308105,
+                  -1.754905104637146,
+                  -1.3547207117080688,
+                  -3.677513360977173,
+                  -0.167507603764534,
+                  -1.3112537860870361,
+                  2.295551061630249,
+                  -0.0020099361427128315,
+                  -1.2319271564483643,
+                  -0.01740356720983982,
+                  0,
+                  -0.3950652480125427,
+                  -0.8141688108444214,
+                  -0.7062692642211914,
+                  0,
+                  -1.0171170234680176,
+                  -0.5487167239189148,
+                  0,
+                  -1.425713062286377,
+                  -0.8140556812286377,
+                  -1.4687590599060059,
+                  0,
+                  -2.9339077472686768,
+                  0.3162825107574463,
+                  0,
+                  10.587815284729004,
+                  14.346084594726562,
+                  -2.460979700088501,
+                  -1.1508688926696777,
+                  13.03713607788086,
+                  1.528510332107544,
+                  6.689581871032715,
+                  0.9938557744026184,
+                  1.2910306453704834,
+                  3.82279896736145,
+                  -2.8434107303619385,
+                  -3.961648464202881,
+                  -5.180383205413818,
+                  -0.2604422867298126,
+                  -0.007128281053155661,
+                  -0.1606278419494629,
+                  -0.1606278419494629,
+                  0,
+                  -0.7463259696960449,
+                  -0.6934428811073303,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -4.343790531158447,
+                  0,
+                  0,
+                  -0.00014211115194484591,
+                  0,
+                  -0.019192548468708992,
+                  -0.7494075298309326,
+                  -0.09406141191720963,
+                  -0.09406141191720963,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -0.05391338840126991,
+                  0,
+                  -0.864816427230835,
+                  -0.17725615203380585,
+                  -2.3532333374023438,
+                  -2.894073009490967,
+                  0,
+                  -1.8034718036651611,
+                  0,
+                  0,
+                  -0.5049033216399302
+                ],
+                [
+                  -0.20689736306667328,
+                  -0.1964690387248993,
+                  -0.18700189888477325,
+                  -0.23326852917671204,
+                  -0.11066176742315292,
+                  -0.12964673340320587,
+                  -0.8425372838973999,
+                  -7.659120082855225,
+                  3.1826047897338867,
+                  -0.6143038272857666,
+                  -0.9753734469413757,
+                  -0.020947180688381195,
+                  -1.2496018409729004,
+                  4.79303503036499,
+                  -2.655113458633423,
+                  13.122790336608887,
+                  -0.10567105561494827,
+                  -2.227022647857666,
+                  -11.710554122924805,
+                  -2.59867787361145,
+                  -1.8469573259353638,
+                  -0.9823150038719177,
+                  5.274979114532471,
+                  2.338895082473755,
+                  -0.21615825593471527,
+                  -0.37860608100891113,
+                  -1.2436037063598633,
+                  -0.2690587639808655,
+                  -0.2690587639808655,
+                  3.606562614440918,
+                  -4.207129001617432,
+                  5.294034481048584,
+                  3.3242557048797607,
+                  0,
+                  -3.197639226913452,
+                  0,
+                  -0.6978940963745117,
+                  2.0812795162200928,
+                  0,
+                  -2.7720513343811035,
+                  -0.5350126028060913,
+                  -0.907738447189331,
+                  -2.228358030319214,
+                  -1.6817585229873657,
+                  4.865976333618164,
+                  12.622430801391602,
+                  -4.086820125579834,
+                  0.9178562164306641,
+                  -3.3700292110443115,
+                  1.4706963300704956,
+                  -0.43798717856407166,
+                  -0.12475578486919403,
+                  15.344719886779785,
+                  13.019015312194824,
+                  1.3377100229263306,
+                  -0.12256062775850296,
+                  -1.0778831243515015,
+                  -1.1149779558181763,
+                  -0.4926950931549072,
+                  -0.3742651641368866,
+                  -2.1295664310455322,
+                  -0.2005814164876938,
+                  -4.359378337860107,
+                  -0.046066075563430786,
+                  -0.8369623422622681,
+                  -0.10605438798666,
+                  -0.40191715955734253,
+                  -0.8392943143844604,
+                  -3.775954008102417,
+                  -0.9655734896659851,
+                  -0.03419030085206032,
+                  -0.04043303802609444,
+                  1.158618450164795,
+                  -0.1713135838508606,
+                  -0.21452952921390533,
+                  -0.04818999022245407,
+                  -0.0008135866955853999,
+                  -0.0008135866955853999,
+                  -2.4841153621673584,
+                  -1.4392344951629639,
+                  -1.810320258140564,
+                  -3.9179182052612305,
+                  -0.047515783458948135,
+                  -0.02889978140592575,
+                  -1.0986127853393555,
+                  -0.48048803210258484,
+                  -0.5847663283348083,
+                  -0.0385570228099823,
+                  -0.0385570228099823,
+                  -0.32887473702430725,
+                  -0.2222011834383011,
+                  -0.06085018068552017,
+                  1.3517489433288574,
+                  3.0283148288726807,
+                  -1.61737060546875,
+                  -5.711917877197266,
+                  -0.004740324802696705,
+                  -0.06039515882730484,
+                  0,
+                  0,
+                  0,
+                  -0.45623642206192017,
+                  0,
+                  -0.039394866675138474,
+                  -2.0064265727996826,
+                  2.7342870235443115,
+                  0,
+                  -1.3327029943466187,
+                  -1.0121653079986572,
+                  0,
+                  0,
+                  0,
+                  -1.4333771467208862,
+                  -0.0018394090002402663,
+                  -14.486493110656738,
+                  -14.309162139892578,
+                  -0.0009318129159510136,
+                  -1.1565465927124023,
+                  -4.998022079467773,
+                  -3.9344286918640137,
+                  -1.1018354892730713,
+                  -3.9884352684020996,
+                  -2.3326103687286377,
+                  -1.3376439809799194,
+                  12.335633277893066,
+                  10.574593544006348,
+                  8.04164981842041,
+                  4.792974472045898,
+                  -0.20964746177196503,
+                  -0.2754344940185547,
+                  -0.2754344940185547,
+                  -0.33376553654670715,
+                  -0.5570852160453796,
+                  -0.3697630763053894,
+                  -0.13654206693172455,
+                  -0.25472292304039,
+                  -0.25472292304039,
+                  -0.25472292304039,
+                  -0.05168234184384346,
+                  -0.30585455894470215,
+                  -0.03143143281340599,
+                  -0.03143143281340599,
+                  -0.33395206928253174,
+                  -0.01153505127876997,
+                  -1.3730071783065796,
+                  -0.20981933176517487,
+                  -0.509548544883728,
+                  -0.509548544883728,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -0.03370744735002518,
+                  -1.7043120861053467,
+                  -2.146639108657837,
+                  -0.4412021040916443,
+                  -2.4416701793670654,
+                  -0.10744363069534302,
+                  -1.8100720643997192,
+                  -0.39108118414878845,
+                  0,
+                  0,
+                  -3.5915787468627203
+                ],
+                [
+                  -0.678102970123291,
+                  -0.663607656955719,
+                  -0.6519610285758972,
+                  -1.9737026691436768,
+                  -0.17623044550418854,
+                  -0.6027793884277344,
+                  -0.1300637125968933,
+                  -2.026973009109497,
+                  -0.5372258424758911,
+                  -2.1388072967529297,
+                  3.045574426651001,
+                  -1.5453649759292603,
+                  -1.0381170511245728,
+                  -0.837683379650116,
+                  -2.8229787349700928,
+                  0,
+                  0,
+                  -0.44948098063468933,
+                  -0.05997856333851814,
+                  0.7597343325614929,
+                  2.9242446422576904,
+                  -1.5422443151474,
+                  -4.17103385925293,
+                  -0.3489258289337158,
+                  -0.3489258289337158,
+                  -1.8186601400375366,
+                  -5.308431625366211,
+                  -0.9098145961761475,
+                  -0.22627803683280945,
+                  -0.5088167190551758,
+                  -2.585580348968506,
+                  -0.034112606197595596,
+                  -0.5510109066963196,
+                  -0.04009591042995453,
+                  -0.13485071063041687,
+                  -0.04009591042995453,
+                  -0.8192554712295532,
+                  -2.0134010314941406,
+                  -1.910565733909607,
+                  -4.4351959228515625,
+                  -0.06633732467889786,
+                  -0.834643542766571,
+                  -0.4248860478401184,
+                  2.410194158554077,
+                  -2.4167444705963135,
+                  -2.0374886989593506,
+                  0,
+                  -0.6063157320022583,
+                  -0.016576949506998062,
+                  -0.016576949506998062,
+                  -3.539137601852417,
+                  -0.6439399123191833,
+                  -0.8509559035301208,
+                  0,
+                  5.211781978607178,
+                  2.725034236907959,
+                  4.332286357879639,
+                  3.928309202194214,
+                  3.235558271408081,
+                  6.6368184089660645,
+                  4.215709686279297,
+                  4.107733726501465,
+                  6.601963520050049,
+                  0.27601510286331177,
+                  5.80372953414917,
+                  2.695552349090576,
+                  1.7249616384506226,
+                  1.9491610527038574,
+                  3.6420280933380127,
+                  2.133725881576538,
+                  -3.732998847961426,
+                  -2.268998861312866,
+                  -0.022901631891727448,
+                  -1.1299604177474976,
+                  -1.0718969106674194,
+                  -0.8192554712295532,
+                  -3.489938259124756,
+                  -4.149425029754639,
+                  -4.018400192260742,
+                  -0.022828061133623123,
+                  -0.6719274520874023,
+                  -0.40955138206481934,
+                  -0.07824573665857315,
+                  -0.0689239427447319,
+                  -0.5550899505615234,
+                  -0.6519790887832642,
+                  -0.00281295133754611,
+                  -0.2555558681488037,
+                  -0.2555558681488037,
+                  -0.07864020764827728,
+                  -0.22153912484645844,
+                  0,
+                  -1.4894875288009644,
+                  -1.5039068460464478,
+                  -0.4280661344528198,
+                  1.2933100461959839,
+                  0,
+                  -0.5198940634727478,
+                  -0.2061861753463745,
+                  0,
+                  -0.05997856333851814,
+                  -0.002837106818333268,
+                  0,
+                  -0.10863422602415085,
+                  0,
+                  -2.106048345565796,
+                  -0.0646650567650795,
+                  -0.0063978536054492,
+                  0,
+                  -0.0664789155125618,
+                  -0.055037692189216614,
+                  0,
+                  -0.03576601669192314,
+                  -2.174485683441162,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -0.010257936082780361,
+                  -0.010257936082780361,
+                  0,
+                  -1.4660727977752686,
+                  -2.2537827491760254,
+                  0,
+                  -0.9592925906181335,
+                  3.6866846084594727,
+                  0,
+                  0,
+                  4.697842597961426,
+                  1.4637172222137451,
+                  1.4637172222137451,
+                  4.7422895431518555,
+                  5.656054496765137,
+                  2.9015116691589355,
+                  0.9104774594306946,
+                  2.0542070865631104,
+                  2.0542070865631104,
+                  2.0542070865631104,
+                  2.0097153186798096,
+                  4.229232311248779,
+                  1.7589881420135498,
+                  1.7589881420135498,
+                  1.03909170627594,
+                  -1.5058187246322632,
+                  -0.601455569267273,
+                  -0.12138841301202774,
+                  -0.2955918312072754,
+                  -0.2955918312072754,
+                  -1.4577805995941162,
+                  -1.4577805995941162,
+                  -1.4577805995941162,
+                  -0.022828061133623123,
+                  -0.6600334048271179,
+                  -0.13615821301937103,
+                  -1.6333844661712646,
+                  -0.040932197123765945,
+                  -0.9072580933570862,
+                  -0.03576601669192314,
+                  -0.0026951865293085575,
+                  -0.014300255104899406,
+                  -0.722245991230011,
+                  -0.722245991230011,
+                  0.5064210426147344
+                ],
+                [
+                  -0.1994495391845703,
+                  -0.18803587555885315,
+                  -0.17788709700107574,
+                  -1.0346428155899048,
+                  -0.08163505047559738,
+                  -0.10151979327201843,
+                  1.7413403987884521,
+                  -1.3969630002975464,
+                  -2.9618170261383057,
+                  1.3551874160766602,
+                  -1.145961880683899,
+                  -1.9733341932296753,
+                  -3.3119497299194336,
+                  -2.685150146484375,
+                  -1.6174770593643188,
+                  -1.4041517972946167,
+                  -1.4041517972946167,
+                  4.620986461639404,
+                  -1.5375280380249023,
+                  -2.704866647720337,
+                  2.184257745742798,
+                  -1.2610591650009155,
+                  2.4853553771972656,
+                  -0.01242336817085743,
+                  -0.01242336817085743,
+                  4.252979278564453,
+                  1.2377816438674927,
+                  -2.5157058238983154,
+                  0,
+                  -0.4212816655635834,
+                  -1.9373598098754883,
+                  -0.7706537842750549,
+                  0.9858075380325317,
+                  0,
+                  -0.07963769137859344,
+                  0,
+                  1.761102557182312,
+                  -0.07963769137859344,
+                  -0.9501058459281921,
+                  -1.9822789430618286,
+                  0,
+                  -0.16928748786449432,
+                  0,
+                  -4.169773578643799,
+                  -0.04698633775115013,
+                  -4.2061848640441895,
+                  -0.23912294209003448,
+                  2.8588385581970215,
+                  0,
+                  0,
+                  1.3841941356658936,
+                  -6.939209938049316,
+                  0,
+                  0,
+                  -2.0169360637664795,
+                  3.7812674045562744,
+                  -1.3244014978408813,
+                  -0.38386857509613037,
+                  3.797088384628296,
+                  -2.8048956394195557,
+                  5.874574661254883,
+                  -3.735919713973999,
+                  8.023092269897461,
+                  -2.9025752544403076,
+                  0,
+                  -1.6138224601745605,
+                  0,
+                  -4.323975086212158,
+                  -5.7117838859558105,
+                  4.111367702484131,
+                  7.707866191864014,
+                  -1.5331966876983643,
+                  5.681514263153076,
+                  4.239439010620117,
+                  5.522915840148926,
+                  1.9449580907821655,
+                  1.6626267433166504,
+                  5.94005823135376,
+                  8.082011222839355,
+                  6.018926620483398,
+                  1.6880254745483398,
+                  -0.12768226861953735,
+                  -0.04598987475037575,
+                  -0.04213058203458786,
+                  -1.5421589612960815,
+                  -0.5854309797286987,
+                  -0.45587319135665894,
+                  -0.03263446316123009,
+                  -0.03263446316123009,
+                  -0.07648436725139618,
+                  -0.005827697925269604,
+                  -0.047650743275880814,
+                  2.4785654544830322,
+                  -0.022418346256017685,
+                  8.437234878540039,
+                  -0.0020606759935617447,
+                  -2.3737735748291016,
+                  -0.16273319721221924,
+                  -0.0901726484298706,
+                  -1.4978342056274414,
+                  -0.08401570469141006,
+                  -0.026028914377093315,
+                  -2.456688165664673,
+                  0,
+                  -1.238876461982727,
+                  -0.085416279733181,
+                  -0.085416279733181,
+                  0,
+                  -2.7365612983703613,
+                  0,
+                  0,
+                  0,
+                  -0.05219796672463417,
+                  -1.2814719676971436,
+                  -0.016091810539364815,
+                  -0.9159966707229614,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -3.8579750061035156,
+                  6.076213836669922,
+                  0,
+                  -4.197725772857666,
+                  -4.363208293914795,
+                  0,
+                  0,
+                  -1.7007075548171997,
+                  -0.05583953112363815,
+                  -0.05583953112363815,
+                  -0.8225953578948975,
+                  -6.747505187988281,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -1.6138224601745605,
+                  -0.24979327619075775,
+                  -0.1511448323726654,
+                  -0.1511448323726654,
+                  0,
+                  -1.3727049827575684,
+                  3.546454429626465,
+                  -0.010332251898944378,
+                  6.576302528381348,
+                  6.576302528381348,
+                  6.315068244934082,
+                  6.315068244934082,
+                  6.315068244934082,
+                  6.2770256996154785,
+                  -0.2674673795700073,
+                  -0.1290968656539917,
+                  -2.0540785789489746,
+                  -0.10914290696382523,
+                  -1.5384601354599,
+                  -0.05219796672463417,
+                  -0.06161901727318764,
+                  -0.00947671290487051,
+                  -0.03608891740441322,
+                  -0.03608891740441322,
+                  -5.267640870749982
+                ],
+                [
+                  -0.6689351201057434,
+                  -0.629785418510437,
+                  -0.5992826819419861,
+                  -2.2243075370788574,
+                  -0.23392188549041748,
+                  -0.44966399669647217,
+                  3.7460827827453613,
+                  2.3801496028900146,
+                  -1.4475393295288086,
+                  -3.0604448318481445,
+                  -0.9287998080253601,
+                  0.9939259886741638,
+                  -0.3122921884059906,
+                  -0.46475598216056824,
+                  1.1469122171401978,
+                  -0.616788387298584,
+                  -0.616788387298584,
+                  -5.492020606994629,
+                  -2.011486291885376,
+                  0.676631510257721,
+                  0.6964486837387085,
+                  -2.5871543884277344,
+                  -0.9030715823173523,
+                  -2.902930974960327,
+                  -0.14117591083049774,
+                  -6.30721378326416,
+                  3.019986867904663,
+                  -1.7194061279296875,
+                  -1.7080167531967163,
+                  -2.9748873710632324,
+                  -14.024749755859375,
+                  6.775052547454834,
+                  3.0074689388275146,
+                  -0.04442347586154938,
+                  -2.260857582092285,
+                  -0.04442347586154938,
+                  -2.1330313682556152,
+                  -0.024369295686483383,
+                  1.9323713779449463,
+                  10.218428611755371,
+                  -8.600876808166504,
+                  -1.1815900802612305,
+                  -0.2679199278354645,
+                  -3.1524808406829834,
+                  4.6514153480529785,
+                  -9.096053123474121,
+                  -0.4964309334754944,
+                  3.071819305419922,
+                  -1.537622094154358,
+                  -1.537622094154358,
+                  4.588074207305908,
+                  0.4300759732723236,
+                  -1.350965976715088,
+                  -2.5535717010498047,
+                  -1.2027368545532227,
+                  -0.7389653921127319,
+                  -0.20386499166488647,
+                  -0.20386499166488647,
+                  -0.9225014448165894,
+                  -0.08758888393640518,
+                  -1.329983115196228,
+                  -1.3222134113311768,
+                  -2.0505475997924805,
+                  -0.49758774042129517,
+                  -1.0599921941757202,
+                  -1.3595110177993774,
+                  -1.0599921941757202,
+                  -0.5766053795814514,
+                  -0.4181964099407196,
+                  -1.220914363861084,
+                  0,
+                  0,
+                  -5.15246057510376,
+                  -1.8335046768188477,
+                  -0.3967190086841583,
+                  -0.7819569110870361,
+                  -1.5048656463623047,
+                  -1.5048656463623047,
+                  -0.525465726852417,
+                  -0.28711727261543274,
+                  7.855803966522217,
+                  2.9749996662139893,
+                  -0.15623246133327484,
+                  -0.13580524921417236,
+                  -3.021153450012207,
+                  -5.339087963104248,
+                  -1.0639044046401978,
+                  -0.28806447982788086,
+                  -0.28806447982788086,
+                  1.0175913572311401,
+                  -1.114385962486267,
+                  -0.05209748074412346,
+                  -0.28198567032814026,
+                  2.9233152866363525,
+                  -0.7867385745048523,
+                  -0.5658198595046997,
+                  -0.7819569110870361,
+                  -2.97416090965271,
+                  -2.8774147033691406,
+                  -4.367481708526611,
+                  -0.13639244437217712,
+                  0,
+                  -0.8861319422721863,
+                  0,
+                  -1.1539596319198608,
+                  -7.560187339782715,
+                  -7.560187339782715,
+                  0,
+                  -2.323728561401367,
+                  -0.07559699565172195,
+                  0,
+                  -7.086019515991211,
+                  -1.6093993186950684,
+                  -1.4789228439331055,
+                  -1.069703221321106,
+                  -1.1864831447601318,
+                  -0.7013094425201416,
+                  -0.2417217195034027,
+                  -1.6742666959762573,
+                  0,
+                  -0.0055256676860153675,
+                  -0.914758563041687,
+                  -0.13326066732406616,
+                  0,
+                  -2.230583429336548,
+                  -0.463107705116272,
+                  0,
+                  -0.2880573868751526,
+                  -0.03200014680624008,
+                  0,
+                  0,
+                  -0.823101282119751,
+                  0,
+                  0,
+                  -0.017597021535038948,
+                  0,
+                  0,
+                  0,
+                  -0.2991972863674164,
+                  0,
+                  -0.004625149071216583,
+                  -0.004625149071216583,
+                  0,
+                  0,
+                  0,
+                  2.0629801750183105,
+                  -4.550235748291016,
+                  -4.550235748291016,
+                  -0.4488123655319214,
+                  -0.4488123655319214,
+                  -0.4488123655319214,
+                  -0.28711727261543274,
+                  4.848844528198242,
+                  8.154500007629395,
+                  8.521944046020508,
+                  8.758618354797363,
+                  2.2962636947631836,
+                  7.177125453948975,
+                  9.577750205993652,
+                  1.0227735042572021,
+                  2.239753246307373,
+                  2.239753246307373,
+                  -1.5404364819880605
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "hello"
+      ],
+      [
+        "en",
+        "hi"
+      ],
+      [
+        "en",
+        "hey"
+      ],
+      [
+        "en",
+        "good morning"
+      ],
+      [
+        "en",
+        "howdy"
+      ],
+      [
+        "en",
+        "what do you recommend?"
+      ],
+      [
+        "en",
+        "what is good here?"
+      ],
+      [
+        "en",
+        "suggest something"
+      ],
+      [
+        "en",
+        "i don't know what to eat"
+      ],
+      [
+        "en",
+        "what are the popular dishes?"
+      ],
+      [
+        "en",
+        "best sellers"
+      ],
+      [
+        "en",
+        "what should i order"
+      ],
+      [
+        "en",
+        "customer favorites"
+      ],
+      [
+        "en",
+        "i want something spicy"
+      ],
+      [
+        "en",
+        "do you have spicy food?"
+      ],
+      [
+        "en",
+        "anything hot and spicy?"
+      ],
+      [
+        "en",
+        "spicy dishes"
+      ],
+      [
+        "en",
+        "i like it hot"
+      ],
+      [
+        "en",
+        "what is spicy on the menu?"
+      ],
+      [
+        "en",
+        "i want vegetarian food"
+      ],
+      [
+        "en",
+        "are there any vegan options?"
+      ],
+      [
+        "en",
+        "i don't eat meat"
+      ],
+      [
+        "en",
+        "meatless dishes please"
+      ],
+      [
+        "en",
+        "plant based options"
+      ],
+      [
+        "en",
+        "vegetarian menu"
+      ],
+      [
+        "en",
+        "show me vegan dishes"
+      ],
+      [
+        "en",
+        "show me meat dishes"
+      ],
+      [
+        "en",
+        "non vegan options"
+      ],
+      [
+        "en",
+        "i want non vegan food"
+      ],
+      [
+        "en",
+        "show me meaty dishes"
+      ],
+      [
+        "en",
+        "what is in the burger?"
+      ],
+      [
+        "en",
+        "tell me about the pizza"
+      ],
+      [
+        "en",
+        "describe the tacos"
+      ],
+      [
+        "en",
+        "what does the nachos contain?"
+      ],
+      [
+        "en",
+        "what are the ingredients of the salad?"
+      ],
+      [
+        "en",
+        "tell me about shrimp tacos"
+      ],
+      [
+        "en",
+        "what comes in the burrito"
+      ],
+      [
+        "en",
+        "what goes well with the burger?"
+      ],
+      [
+        "en",
+        "what do people order with the tacos?"
+      ],
+      [
+        "en",
+        "i like the pizza, what else should i try?"
+      ],
+      [
+        "en",
+        "what is usually ordered alongside the nachos?"
+      ],
+      [
+        "en",
+        "suggest something to pair with my order"
+      ],
+      [
+        "en",
+        "what should i pair with shrimp tacos?"
+      ],
+      [
+        "en",
+        "show me the menu"
+      ],
+      [
+        "en",
+        "what foods do you have?"
+      ],
+      [
+        "en",
+        "what can i order?"
+      ],
+      [
+        "en",
+        "what is on the menu?"
+      ],
+      [
+        "en",
+        "show me your food options"
+      ],
+      [
+        "en",
+        "hello there"
+      ],
+      [
+        "en",
+        "hi there"
+      ],
+      [
+        "en",
+        "good afternoon"
+      ],
+      [
+        "en",
+        "good evening"
+      ],
+      [
+        "en",
+        "hey assistant"
+      ],
+      [
+        "en",
+        "can you help me"
+      ],
+      [
+        "en",
+        "i need help ordering"
+      ],
+      [
+        "en",
+        "are you there"
+      ],
+      [
+        "en",
+        "start chat"
+      ],
+      [
+        "en",
+        "restaurant assistant"
+      ],
+      [
+        "en",
+        "help me choose food"
+      ],
+      [
+        "en",
+        "i need some help"
+      ],
+      [
+        "en",
+        "please assist me"
+      ],
+      [
+        "en",
+        "can you assist with ordering"
+      ],
+      [
+        "en",
+        "i need assistance choosing food"
+      ],
+      [
+        "en",
+        "recommend a meal for me"
+      ],
+      [
+        "en",
+        "give me a recommendation"
+      ],
+      [
+        "en",
+        "what should i try today"
+      ],
+      [
+        "en",
+        "pick something for me"
+      ],
+      [
+        "en",
+        "what are your top picks"
+      ],
+      [
+        "en",
+        "show customer favorites"
+      ],
+      [
+        "en",
+        "what is everyone ordering"
+      ],
+      [
+        "en",
+        "suggest a popular meal"
+      ],
+      [
+        "en",
+        "i want your best food"
+      ],
+      [
+        "en",
+        "help me decide what to eat"
+      ],
+      [
+        "en",
+        "recommend something tasty"
+      ],
+      [
+        "en",
+        "what do people like most"
+      ],
+      [
+        "en",
+        "give me a strong pick"
+      ],
+      [
+        "en",
+        "show me recommended dishes"
+      ],
+      [
+        "en",
+        "show hot dishes"
+      ],
+      [
+        "en",
+        "recommend something with chili"
+      ],
+      [
+        "en",
+        "i want a spicy meal"
+      ],
+      [
+        "en",
+        "what has heat on the menu"
+      ],
+      [
+        "en",
+        "give me spicy options"
+      ],
+      [
+        "en",
+        "any jalapeno dishes"
+      ],
+      [
+        "en",
+        "i like chili food"
+      ],
+      [
+        "en",
+        "show food with spice"
+      ],
+      [
+        "en",
+        "which meals are hot"
+      ],
+      [
+        "en",
+        "bring me something spicy"
+      ],
+      [
+        "en",
+        "spiciest menu items"
+      ],
+      [
+        "en",
+        "hot food recommendations"
+      ],
+      [
+        "en",
+        "recommend spicy tacos"
+      ],
+      [
+        "en",
+        "what is the hottest dish"
+      ],
+      [
+        "en",
+        "show vegetarian options"
+      ],
+      [
+        "en",
+        "i need vegan food"
+      ],
+      [
+        "en",
+        "what can i eat without meat"
+      ],
+      [
+        "en",
+        "recommend plant based meals"
+      ],
+      [
+        "en",
+        "give me vegetarian dishes"
+      ],
+      [
+        "en",
+        "show no meat options"
+      ],
+      [
+        "en",
+        "i prefer plant based food"
+      ],
+      [
+        "en",
+        "do you serve vegan meals"
+      ],
+      [
+        "en",
+        "meat free menu items"
+      ],
+      [
+        "en",
+        "vegetarian choices please"
+      ],
+      [
+        "en",
+        "what dishes are vegan friendly"
+      ],
+      [
+        "en",
+        "show vegan tacos or sides"
+      ],
+      [
+        "en",
+        "i want something without meat"
+      ],
+      [
+        "en",
+        "plant based recommendations"
+      ],
+      [
+        "en",
+        "food with no meat please"
+      ],
+      [
+        "en",
+        "meat free choices"
+      ],
+      [
+        "en",
+        "without animal meat please"
+      ],
+      [
+        "en",
+        "no meat meals please"
+      ],
+      [
+        "en",
+        "recommend meat options"
+      ],
+      [
+        "en",
+        "i want a meat meal"
+      ],
+      [
+        "en",
+        "show dishes with meat"
+      ],
+      [
+        "en",
+        "give me beef or chicken options"
+      ],
+      [
+        "en",
+        "what meat dishes do you have"
+      ],
+      [
+        "en",
+        "i am not vegetarian"
+      ],
+      [
+        "en",
+        "show non vegetarian food"
+      ],
+      [
+        "en",
+        "recommend chicken or beef"
+      ],
+      [
+        "en",
+        "what has meat in it"
+      ],
+      [
+        "en",
+        "meat based meals please"
+      ],
+      [
+        "en",
+        "show me pork or beef dishes"
+      ],
+      [
+        "en",
+        "i want something with chicken"
+      ],
+      [
+        "en",
+        "non vegan meals please"
+      ],
+      [
+        "en",
+        "best meat meals"
+      ],
+      [
+        "en",
+        "show beef dishes"
+      ],
+      [
+        "en",
+        "beef dishes please"
+      ],
+      [
+        "en",
+        "food with beef please"
+      ],
+      [
+        "en",
+        "not vegan dishes please"
+      ],
+      [
+        "en",
+        "not vegetarian dishes"
+      ],
+      [
+        "en",
+        "what is inside shrimp tacos"
+      ],
+      [
+        "en",
+        "what ingredients are in burrito"
+      ],
+      [
+        "en",
+        "tell me what comes with nachos"
+      ],
+      [
+        "en",
+        "describe carne asada tacos"
+      ],
+      [
+        "en",
+        "what does the burrito include"
+      ],
+      [
+        "en",
+        "give details about churros"
+      ],
+      [
+        "en",
+        "what is included in margarita"
+      ],
+      [
+        "en",
+        "tell me more about coca cola"
+      ],
+      [
+        "en",
+        "what is the description of pizza"
+      ],
+      [
+        "en",
+        "what comes with chicken nachos"
+      ],
+      [
+        "en",
+        "explain the vegan tacos"
+      ],
+      [
+        "en",
+        "what is in bean cheese burrito"
+      ],
+      [
+        "en",
+        "details for shrimp nachos"
+      ],
+      [
+        "en",
+        "ingredients in corn salad"
+      ],
+      [
+        "en",
+        "what pairs with burritos"
+      ],
+      [
+        "en",
+        "what should i order with nachos"
+      ],
+      [
+        "en",
+        "what drink goes with tacos"
+      ],
+      [
+        "en",
+        "what sides go well with burrito"
+      ],
+      [
+        "en",
+        "what else do people buy with pizza"
+      ],
+      [
+        "en",
+        "suggest a side for tacos"
+      ],
+      [
+        "en",
+        "what can i add to this meal"
+      ],
+      [
+        "en",
+        "show pairings for shrimp tacos"
+      ],
+      [
+        "en",
+        "what is commonly bought together"
+      ],
+      [
+        "en",
+        "what goes alongside burritos"
+      ],
+      [
+        "en",
+        "what do customers pair with nachos"
+      ],
+      [
+        "en",
+        "recommend something to go with my food"
+      ],
+      [
+        "en",
+        "what should accompany my order"
+      ],
+      [
+        "en",
+        "side dish pairing please"
+      ],
+      [
+        "en",
+        "open the menu"
+      ],
+      [
+        "en",
+        "list available dishes"
+      ],
+      [
+        "en",
+        "show all categories"
+      ],
+      [
+        "en",
+        "what categories are available"
+      ],
+      [
+        "en",
+        "browse menu items"
+      ],
+      [
+        "en",
+        "show restaurant menu"
+      ],
+      [
+        "en",
+        "what meals are available"
+      ],
+      [
+        "en",
+        "show dishes by category"
+      ],
+      [
+        "en",
+        "what food categories do you have"
+      ],
+      [
+        "en",
+        "display menu options"
+      ],
+      [
+        "en",
+        "let me see the menu"
+      ],
+      [
+        "en",
+        "what can i buy here"
+      ],
+      [
+        "en",
+        "show available food"
+      ],
+      [
+        "en",
+        "menu categories please"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "greetings.hello": [
+          {
+            "answer": "Hello! I am your restaurant assistant. I can recommend dishes, show categories, and help you find specific foods."
+          },
+          {
+            "answer": "Hi there! Ask me about tacos, drinks, vegan dishes, best sellers, pairings, or any food on the menu."
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

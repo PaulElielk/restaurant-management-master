@@ -1,0 +1,18 @@
+{
+  "source": [
+    "backend/models/BillStatusModel.js",
+    "backend/controllers/billstatus.js",
+    "frontend/src/admin/Dashboard.vue"
+  ],
+  "steps": [
+    "Admin requests forecast|GET /api/billstatus/forecast",
+    "Apply lookback window|Default 30 days, bounded by backend",
+    "Retrieve completed orders|billstatus joined with billdetails and food",
+    "Group by food item|Aggregate item_qty per food",
+    "Count active days|Distinct order dates within lookback",
+    "Compute daily velocity|total_qty / lookback_days",
+    "Apply horizon|daily velocity x forecast days",
+    "Assign confidence|Activity-day regularity: low, medium, high",
+    "Return forecast|Dashboard displays ranked forecast rows"
+  ]
+}

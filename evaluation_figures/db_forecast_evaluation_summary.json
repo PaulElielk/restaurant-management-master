@@ -1,0 +1,94 @@
+{
+  "source": "db_restaurant_v2 development MySQL database",
+  "seed_range": "billstatus/billdetails bill_id 50001-53000",
+  "model": "moving_average_velocity",
+  "lookback_days": 30,
+  "forecast_days": 7,
+  "confidence_counts": {
+    "low": 12,
+    "medium": 16,
+    "high": 14
+  },
+  "top_outputs": [
+    {
+      "food_id": 11,
+      "food_name": "bean & cheese burrito",
+      "total_qty": 117,
+      "active_days": 26,
+      "predicted_period_qty": 27.3,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 17,
+      "food_name": "shrimp nachos",
+      "total_qty": 112,
+      "active_days": 25,
+      "predicted_period_qty": 26.13,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 38,
+      "food_name": "Michelada",
+      "total_qty": 112,
+      "active_days": 25,
+      "predicted_period_qty": 26.13,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 2,
+      "food_name": "shrimp tacos",
+      "total_qty": 108,
+      "active_days": 24,
+      "predicted_period_qty": 25.2,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 13,
+      "food_name": "california burrito",
+      "total_qty": 98,
+      "active_days": 28,
+      "predicted_period_qty": 22.87,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 4,
+      "food_name": "tacos al pastor",
+      "total_qty": 91,
+      "active_days": 26,
+      "predicted_period_qty": 21.23,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 10,
+      "food_name": "poncho burrito",
+      "total_qty": 87,
+      "active_days": 25,
+      "predicted_period_qty": 20.3,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 16,
+      "food_name": "root beer pork nachos",
+      "total_qty": 84,
+      "active_days": 24,
+      "predicted_period_qty": 19.6,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 37,
+      "food_name": "Margarita",
+      "total_qty": 84,
+      "active_days": 24,
+      "predicted_period_qty": 19.6,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 1,
+      "food_name": "carne asada tacos",
+      "total_qty": 80,
+      "active_days": 23,
+      "predicted_period_qty": 18.67,
+      "confidence_hint": "high"
+    }
+  ]
+}

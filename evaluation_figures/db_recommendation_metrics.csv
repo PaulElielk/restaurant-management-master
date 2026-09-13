@@ -1,0 +1,4 @@
+K,Evaluated Users,Total Hits,Precision,Recall
+1,298,189,0.6342,0.1861
+3,298,436,0.4877,0.4310
+5,298,549,0.3685,0.5360

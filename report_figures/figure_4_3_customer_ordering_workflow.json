@@ -1,0 +1,21 @@
+{
+  "source": [
+    "frontend/src/pages/Menu.vue",
+    "frontend/src/pages/Checkout.vue",
+    "backend/routes/routes.js",
+    "backend/models/CartModel.js",
+    "backend/models/BillStatusModel.js",
+    "backend/models/BillDetailsModel.js"
+  ],
+  "steps": [
+    "Browse menu|Menu.vue retrieves foods and categories",
+    "Filter or search|Frontend filters menu items by category/status",
+    "View details|QuickView/food card shows description and price",
+    "Add to cart|POST /api/cartItem stores item quantity",
+    "Checkout|Checkout.vue collects delivery/payment details",
+    "Create bill status|POST /api/billstatus creates order header",
+    "Save bill details|POST /api/billdetails stores item lines",
+    "Clear cart|DELETE /api/cartItem/:id removes cart rows",
+    "Admin manages order|Dashboard updates status/paid/cancelled"
+  ]
+}

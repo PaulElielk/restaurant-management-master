@@ -1,0 +1,11 @@
+food_id,food_name,total_qty,active_days,predicted_period_qty,confidence_hint
+11,"bean & cheese burrito",117,26,27.30,high
+17,"shrimp nachos",112,25,26.13,high
+38,"Michelada",112,25,26.13,high
+2,"shrimp tacos",108,24,25.20,high
+13,"california burrito",98,28,22.87,high
+4,"tacos al pastor",91,26,21.23,high
+10,"poncho burrito",87,25,20.30,high
+16,"root beer pork nachos",84,24,19.60,high
+37,"Margarita",84,24,19.60,high
+1,"carne asada tacos",80,23,18.67,high

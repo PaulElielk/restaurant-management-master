@@ -1,0 +1,20 @@
+{
+  "source": [
+    "frontend/src/components/Chatbot.vue",
+    "backend/controllers/chatbot.js",
+    "backend/models/ChatbotService.js",
+    "backend/models/FoodModel.js"
+  ],
+  "steps": [
+    "User enters message|Floating Chatbot.vue component",
+    "POST chatbot endpoint|/api/chatbot/message",
+    "Normalize text|Lowercase, tokenize, remove stop words",
+    "Direct food matching|Find menu item names or dish candidates",
+    "Rule-based filters|Detect category, cuisine, vegan, meat, spicy, price",
+    "node-nlp classification|Intent model trained from labeled utterances",
+    "Select backend action|Menu overview, recommendation, details, pairings",
+    "Retrieve menu data|FoodModel queries MySQL when needed",
+    "Generate response|Text plus optional food card data",
+    "Return to frontend|Chatbot renders assistant reply"
+  ]
+}

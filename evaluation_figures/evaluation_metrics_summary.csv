@@ -1,0 +1,20 @@
+Metric,Value
+Precision@1,0.0000
+Recall@1,0.0000
+Precision@3,0.0000
+Recall@3,0.0000
+Precision@5,0.0000
+Recall@5,0.0000
+Evaluated users,5
+Chatbot training examples,48
+Chatbot intent greetings.hello,5
+Chatbot intent restaurant.also_bought,6
+Chatbot intent restaurant.dish_info,7
+Chatbot intent restaurant.menu_overview,5
+Chatbot intent restaurant.recommend_meat,4
+Chatbot intent restaurant.recommend_spicy,6
+Chatbot intent restaurant.recommend_vegan,7
+Chatbot intent restaurant.recommendation,8
+Forecast confidence low,42
+Forecast confidence medium,0
+Forecast confidence high,0

@@ -1,0 +1,7 @@
+Metric,Original Dataset,Expanded Dataset
+Precision@1,0.0000,0.6342
+Precision@3,0.0000,0.4877
+Precision@5,0.0000,0.3685
+Recall@1,0.0000,0.1861
+Recall@3,0.0000,0.4310
+Recall@5,0.0000,0.5360

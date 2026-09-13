@@ -1,0 +1,19 @@
+{
+  "source": [
+    "backend/models/FoodModel.js",
+    "backend/controllers/food.js",
+    "frontend/src/pages/Menu.vue",
+    "frontend/src/pages/Home.vue"
+  ],
+  "steps": [
+    "Receive user ID|GET /api/recommendations/:id",
+    "Load cart exclusions|Optional excludeCart removes current cart items",
+    "Retrieve purchase history|billstatus and billdetails joined with food",
+    "Compute preferences|Category and food_type quantities form profile",
+    "Load candidate foods|Available menu items and popularity signals",
+    "Apply co-purchase endpoint|Also-bought logic is available for item pairings",
+    "Calculate score|Popularity + category + type + vote signals",
+    "Rank items|Sort by recommendation_score",
+    "Return top results|Frontend displays reason and strategy fields"
+  ]
+}

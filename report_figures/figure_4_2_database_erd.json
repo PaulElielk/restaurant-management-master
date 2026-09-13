@@ -1,0 +1,7 @@
+{
+  "source": [
+    "frontend/src/resources/db_restaurant.sql",
+    "backend/sql/food_metadata_migration.sql",
+    "backend/models/*.js"
+  ]
+}

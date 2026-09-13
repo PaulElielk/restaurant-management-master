@@ -1,0 +1,608 @@
+{
+  "training_examples": 170,
+  "validation_examples": 64,
+  "intents": [
+    "greetings.hello",
+    "restaurant.also_bought",
+    "restaurant.dish_info",
+    "restaurant.menu_overview",
+    "restaurant.recommend_meat",
+    "restaurant.recommend_spicy",
+    "restaurant.recommend_vegan",
+    "restaurant.recommendation"
+  ],
+  "accuracy": 0.9375,
+  "macro_precision": 0.9405,
+  "macro_recall": 0.9375,
+  "macro_f1": 0.9373,
+  "per_intent": {
+    "greetings.hello": {
+      "support": 8,
+      "precision": 0.8889,
+      "recall": 1,
+      "f1": 0.9412
+    },
+    "restaurant.also_bought": {
+      "support": 8,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    "restaurant.dish_info": {
+      "support": 8,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    "restaurant.menu_overview": {
+      "support": 8,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    "restaurant.recommend_meat": {
+      "support": 8,
+      "precision": 0.7778,
+      "recall": 0.875,
+      "f1": 0.8235
+    },
+    "restaurant.recommend_spicy": {
+      "support": 8,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    "restaurant.recommend_vegan": {
+      "support": 8,
+      "precision": 0.8571,
+      "recall": 0.75,
+      "f1": 0.8
+    },
+    "restaurant.recommendation": {
+      "support": 8,
+      "precision": 1,
+      "recall": 0.875,
+      "f1": 0.9333
+    }
+  },
+  "confusion_matrix": {
+    "greetings.hello": {
+      "greetings.hello": 8,
+      "restaurant.also_bought": 0,
+      "restaurant.dish_info": 0,
+      "restaurant.menu_overview": 0,
+      "restaurant.recommend_meat": 0,
+      "restaurant.recommend_spicy": 0,
+      "restaurant.recommend_vegan": 0,
+      "restaurant.recommendation": 0,
+      "None": 0
+    },
+    "restaurant.also_bought": {
+      "greetings.hello": 0,
+      "restaurant.also_bought": 8,
+      "restaurant.dish_info": 0,
+      "restaurant.menu_overview": 0,
+      "restaurant.recommend_meat": 0,
+      "restaurant.recommend_spicy": 0,
+      "restaurant.recommend_vegan": 0,
+      "restaurant.recommendation": 0,
+      "None": 0
+    },
+    "restaurant.dish_info": {
+      "greetings.hello": 0,
+      "restaurant.also_bought": 0,
+      "restaurant.dish_info": 8,
+      "restaurant.menu_overview": 0,
+      "restaurant.recommend_meat": 0,
+      "restaurant.recommend_spicy": 0,
+      "restaurant.recommend_vegan": 0,
+      "restaurant.recommendation": 0,
+      "None": 0
+    },
+    "restaurant.menu_overview": {
+      "greetings.hello": 0,
+      "restaurant.also_bought": 0,
+      "restaurant.dish_info": 0,
+      "restaurant.menu_overview": 8,
+      "restaurant.recommend_meat": 0,
+      "restaurant.recommend_spicy": 0,
+      "restaurant.recommend_vegan": 0,
+      "restaurant.recommendation": 0,
+      "None": 0
+    },
+    "restaurant.recommend_meat": {
+      "greetings.hello": 0,
+      "restaurant.also_bought": 0,
+      "restaurant.dish_info": 0,
+      "restaurant.menu_overview": 0,
+      "restaurant.recommend_meat": 7,
+      "restaurant.recommend_spicy": 0,
+      "restaurant.recommend_vegan": 1,
+      "restaurant.recommendation": 0,
+      "None": 0
+    },
+    "restaurant.recommend_spicy": {
+      "greetings.hello": 0,
+      "restaurant.also_bought": 0,
+      "restaurant.dish_info": 0,
+      "restaurant.menu_overview": 0,
+      "restaurant.recommend_meat": 0,
+      "restaurant.recommend_spicy": 8,
+      "restaurant.recommend_vegan": 0,
+      "restaurant.recommendation": 0,
+      "None": 0
+    },
+    "restaurant.recommend_vegan": {
+      "greetings.hello": 0,
+      "restaurant.also_bought": 0,
+      "restaurant.dish_info": 0,
+      "restaurant.menu_overview": 0,
+      "restaurant.recommend_meat": 2,
+      "restaurant.recommend_spicy": 0,
+      "restaurant.recommend_vegan": 6,
+      "restaurant.recommendation": 0,
+      "None": 0
+    },
+    "restaurant.recommendation": {
+      "greetings.hello": 1,
+      "restaurant.also_bought": 0,
+      "restaurant.dish_info": 0,
+      "restaurant.menu_overview": 0,
+      "restaurant.recommend_meat": 0,
+      "restaurant.recommend_spicy": 0,
+      "restaurant.recommend_vegan": 0,
+      "restaurant.recommendation": 7,
+      "None": 0
+    }
+  },
+  "predictions": [
+    {
+      "text": "hello assistant",
+      "expected": "greetings.hello",
+      "predicted": "greetings.hello",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "good day can you help me",
+      "expected": "greetings.hello",
+      "predicted": "greetings.hello",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "hi i need help with food",
+      "expected": "greetings.hello",
+      "predicted": "greetings.hello",
+      "score": 0.9856,
+      "correct": true
+    },
+    {
+      "text": "hey can we start",
+      "expected": "greetings.hello",
+      "predicted": "greetings.hello",
+      "score": 0.8799,
+      "correct": true
+    },
+    {
+      "text": "is anyone available to help",
+      "expected": "greetings.hello",
+      "predicted": "greetings.hello",
+      "score": 0.9425,
+      "correct": true
+    },
+    {
+      "text": "good evening restaurant bot",
+      "expected": "greetings.hello",
+      "predicted": "greetings.hello",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "i need help with my order",
+      "expected": "greetings.hello",
+      "predicted": "greetings.hello",
+      "score": 0.8731,
+      "correct": true
+    },
+    {
+      "text": "can you assist me please",
+      "expected": "greetings.hello",
+      "predicted": "greetings.hello",
+      "score": 0.9028,
+      "correct": true
+    },
+    {
+      "text": "what meal would you suggest",
+      "expected": "restaurant.recommendation",
+      "predicted": "restaurant.recommendation",
+      "score": 0.8674,
+      "correct": true
+    },
+    {
+      "text": "give me your best recommendation",
+      "expected": "restaurant.recommendation",
+      "predicted": "restaurant.recommendation",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "what dish should i pick",
+      "expected": "restaurant.recommendation",
+      "predicted": "restaurant.recommendation",
+      "score": 0.9918,
+      "correct": true
+    },
+    {
+      "text": "show me something popular",
+      "expected": "restaurant.recommendation",
+      "predicted": "restaurant.recommendation",
+      "score": 0.9427,
+      "correct": true
+    },
+    {
+      "text": "what are customers buying most",
+      "expected": "restaurant.recommendation",
+      "predicted": "restaurant.recommendation",
+      "score": 0.9786,
+      "correct": true
+    },
+    {
+      "text": "recommend a good dinner",
+      "expected": "restaurant.recommendation",
+      "predicted": "restaurant.recommendation",
+      "score": 0.8735,
+      "correct": true
+    },
+    {
+      "text": "choose a meal for me",
+      "expected": "restaurant.recommendation",
+      "predicted": "greetings.hello",
+      "score": 0.5805,
+      "correct": false
+    },
+    {
+      "text": "what is a strong choice today",
+      "expected": "restaurant.recommendation",
+      "predicted": "restaurant.recommendation",
+      "score": 0.9893,
+      "correct": true
+    },
+    {
+      "text": "show me your hottest meals",
+      "expected": "restaurant.recommend_spicy",
+      "predicted": "restaurant.recommend_spicy",
+      "score": 0.5749,
+      "correct": true
+    },
+    {
+      "text": "i want food with chili",
+      "expected": "restaurant.recommend_spicy",
+      "predicted": "restaurant.recommend_spicy",
+      "score": 0.9978,
+      "correct": true
+    },
+    {
+      "text": "which dishes are spicy",
+      "expected": "restaurant.recommend_spicy",
+      "predicted": "restaurant.recommend_spicy",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "give me something hot and spicy",
+      "expected": "restaurant.recommend_spicy",
+      "predicted": "restaurant.recommend_spicy",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "recommend a spicy dish",
+      "expected": "restaurant.recommend_spicy",
+      "predicted": "restaurant.recommend_spicy",
+      "score": 0.9373,
+      "correct": true
+    },
+    {
+      "text": "what menu items have heat",
+      "expected": "restaurant.recommend_spicy",
+      "predicted": "restaurant.recommend_spicy",
+      "score": 0.5568,
+      "correct": true
+    },
+    {
+      "text": "i like spicy tacos",
+      "expected": "restaurant.recommend_spicy",
+      "predicted": "restaurant.recommend_spicy",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "show me food with spice",
+      "expected": "restaurant.recommend_spicy",
+      "predicted": "restaurant.recommend_spicy",
+      "score": 0.9829,
+      "correct": true
+    },
+    {
+      "text": "what meals have no meat",
+      "expected": "restaurant.recommend_vegan",
+      "predicted": "restaurant.recommend_meat",
+      "score": 0.9719,
+      "correct": false
+    },
+    {
+      "text": "i want vegan friendly food",
+      "expected": "restaurant.recommend_vegan",
+      "predicted": "restaurant.recommend_vegan",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "show vegetarian dishes",
+      "expected": "restaurant.recommend_vegan",
+      "predicted": "restaurant.recommend_vegan",
+      "score": 0.9967,
+      "correct": true
+    },
+    {
+      "text": "give me plant based options",
+      "expected": "restaurant.recommend_vegan",
+      "predicted": "restaurant.recommend_vegan",
+      "score": 0.9999,
+      "correct": true
+    },
+    {
+      "text": "do you have meat free meals",
+      "expected": "restaurant.recommend_vegan",
+      "predicted": "restaurant.recommend_vegan",
+      "score": 0.7077,
+      "correct": true
+    },
+    {
+      "text": "recommend something vegan",
+      "expected": "restaurant.recommend_vegan",
+      "predicted": "restaurant.recommend_vegan",
+      "score": 0.7222,
+      "correct": true
+    },
+    {
+      "text": "i cannot eat meat",
+      "expected": "restaurant.recommend_vegan",
+      "predicted": "restaurant.recommend_meat",
+      "score": 0.9999,
+      "correct": false
+    },
+    {
+      "text": "show vegan menu items",
+      "expected": "restaurant.recommend_vegan",
+      "predicted": "restaurant.recommend_vegan",
+      "score": 0.7804,
+      "correct": true
+    },
+    {
+      "text": "show food with beef",
+      "expected": "restaurant.recommend_meat",
+      "predicted": "restaurant.recommend_meat",
+      "score": 0.9721,
+      "correct": true
+    },
+    {
+      "text": "i want chicken dishes",
+      "expected": "restaurant.recommend_meat",
+      "predicted": "restaurant.recommend_meat",
+      "score": 0.9872,
+      "correct": true
+    },
+    {
+      "text": "recommend non vegetarian meals",
+      "expected": "restaurant.recommend_meat",
+      "predicted": "restaurant.recommend_meat",
+      "score": 0.9996,
+      "correct": true
+    },
+    {
+      "text": "what meat options are available",
+      "expected": "restaurant.recommend_meat",
+      "predicted": "restaurant.recommend_meat",
+      "score": 0.5877,
+      "correct": true
+    },
+    {
+      "text": "give me something with pork",
+      "expected": "restaurant.recommend_meat",
+      "predicted": "restaurant.recommend_vegan",
+      "score": 0.6358,
+      "correct": false
+    },
+    {
+      "text": "i want a meaty meal",
+      "expected": "restaurant.recommend_meat",
+      "predicted": "restaurant.recommend_meat",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "show beef or chicken meals",
+      "expected": "restaurant.recommend_meat",
+      "predicted": "restaurant.recommend_meat",
+      "score": 0.9829,
+      "correct": true
+    },
+    {
+      "text": "what dishes are not vegan",
+      "expected": "restaurant.recommend_meat",
+      "predicted": "restaurant.recommend_meat",
+      "score": 0.8979,
+      "correct": true
+    },
+    {
+      "text": "what comes inside carne asada tacos",
+      "expected": "restaurant.dish_info",
+      "predicted": "restaurant.dish_info",
+      "score": 0.9993,
+      "correct": true
+    },
+    {
+      "text": "tell me details about fried ice cream",
+      "expected": "restaurant.dish_info",
+      "predicted": "restaurant.dish_info",
+      "score": 0.9709,
+      "correct": true
+    },
+    {
+      "text": "what ingredients are in chicken nachos",
+      "expected": "restaurant.dish_info",
+      "predicted": "restaurant.dish_info",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "describe the california burrito",
+      "expected": "restaurant.dish_info",
+      "predicted": "restaurant.dish_info",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "what does horchata include",
+      "expected": "restaurant.dish_info",
+      "predicted": "restaurant.dish_info",
+      "score": 0.93,
+      "correct": true
+    },
+    {
+      "text": "explain shrimp nachos to me",
+      "expected": "restaurant.dish_info",
+      "predicted": "restaurant.dish_info",
+      "score": 0.8589,
+      "correct": true
+    },
+    {
+      "text": "what is in the corn salad",
+      "expected": "restaurant.dish_info",
+      "predicted": "restaurant.dish_info",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "give me information about churros",
+      "expected": "restaurant.dish_info",
+      "predicted": "restaurant.dish_info",
+      "score": 0.817,
+      "correct": true
+    },
+    {
+      "text": "what should i pair with tacos",
+      "expected": "restaurant.also_bought",
+      "predicted": "restaurant.also_bought",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "what goes well with burritos",
+      "expected": "restaurant.also_bought",
+      "predicted": "restaurant.also_bought",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "what do customers buy together with nachos",
+      "expected": "restaurant.also_bought",
+      "predicted": "restaurant.also_bought",
+      "score": 0.9544,
+      "correct": true
+    },
+    {
+      "text": "suggest a drink for my order",
+      "expected": "restaurant.also_bought",
+      "predicted": "restaurant.also_bought",
+      "score": 0.5,
+      "correct": true
+    },
+    {
+      "text": "what side should come with my meal",
+      "expected": "restaurant.also_bought",
+      "predicted": "restaurant.also_bought",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "show items commonly bought together",
+      "expected": "restaurant.also_bought",
+      "predicted": "restaurant.also_bought",
+      "score": 0.8999,
+      "correct": true
+    },
+    {
+      "text": "what else should i add to tacos",
+      "expected": "restaurant.also_bought",
+      "predicted": "restaurant.also_bought",
+      "score": 0.9946,
+      "correct": true
+    },
+    {
+      "text": "recommend a pairing for burrito",
+      "expected": "restaurant.also_bought",
+      "predicted": "restaurant.also_bought",
+      "score": 0.8564,
+      "correct": true
+    },
+    {
+      "text": "let me browse the menu",
+      "expected": "restaurant.menu_overview",
+      "predicted": "restaurant.menu_overview",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "show all your food categories",
+      "expected": "restaurant.menu_overview",
+      "predicted": "restaurant.menu_overview",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "what can customers order here",
+      "expected": "restaurant.menu_overview",
+      "predicted": "restaurant.menu_overview",
+      "score": 0.5293,
+      "correct": true
+    },
+    {
+      "text": "display the restaurant menu",
+      "expected": "restaurant.menu_overview",
+      "predicted": "restaurant.menu_overview",
+      "score": 0.9579,
+      "correct": true
+    },
+    {
+      "text": "what dishes are available",
+      "expected": "restaurant.menu_overview",
+      "predicted": "restaurant.menu_overview",
+      "score": 0.8201,
+      "correct": true
+    },
+    {
+      "text": "open menu categories",
+      "expected": "restaurant.menu_overview",
+      "predicted": "restaurant.menu_overview",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "list your menu options",
+      "expected": "restaurant.menu_overview",
+      "predicted": "restaurant.menu_overview",
+      "score": 1,
+      "correct": true
+    },
+    {
+      "text": "show available meals",
+      "expected": "restaurant.menu_overview",
+      "predicted": "restaurant.menu_overview",
+      "score": 0.9999,
+      "correct": true
+    }
+  ]
+}

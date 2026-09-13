@@ -1,0 +1,65 @@
+{
+  "original_dataset": {
+    "users": 5,
+    "orders": 10,
+    "products": 42,
+    "line_items": 30,
+    "average_orders_per_user": 2.0,
+    "average_unique_products_per_user": 5.8,
+    "unique_user_product_interactions": 29,
+    "interaction_density": 0.1381,
+    "users_with_at_least_3_unique_products": 5
+  },
+  "expanded_dataset": {
+    "users": 300,
+    "orders": 5000,
+    "products": 42,
+    "line_items": 11738,
+    "average_orders_per_user": 16.67,
+    "average_unique_products_per_user": 14.73,
+    "unique_user_product_interactions": 4420,
+    "interaction_density": 0.3508,
+    "users_with_at_least_3_unique_products": 298
+  },
+  "original_metrics": {
+    "1": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "users": 5,
+      "hits": 0
+    },
+    "3": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "users": 5,
+      "hits": 0
+    },
+    "5": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "users": 5,
+      "hits": 0
+    }
+  },
+  "expanded_metrics": {
+    "1": {
+      "precision": 0.6342,
+      "recall": 0.1861,
+      "users": 298,
+      "hits": 189
+    },
+    "3": {
+      "precision": 0.4877,
+      "recall": 0.431,
+      "users": 298,
+      "hits": 436
+    },
+    "5": {
+      "precision": 0.3685,
+      "recall": 0.536,
+      "users": 298,
+      "hits": 549
+    }
+  },
+  "method": "Offline reproduction of backend holdout evaluator using seeded SQL data."
+}

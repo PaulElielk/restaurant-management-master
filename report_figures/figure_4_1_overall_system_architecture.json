@@ -1,0 +1,9 @@
+{
+  "source": [
+    "frontend/src/router/index.js",
+    "frontend/src/axios.js",
+    "backend/index.js",
+    "backend/routes/routes.js",
+    "backend/config/database.js"
+  ]
+}

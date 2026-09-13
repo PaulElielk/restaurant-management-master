@@ -1,0 +1,20 @@
+{
+  "source": [
+    "frontend/src/store/index.js",
+    "frontend/src/axios.js",
+    "backend/routes/routes.js",
+    "backend/controllers/*.js",
+    "backend/models/*.js"
+  ],
+  "steps": [
+    "Vue component|Menu, Checkout, Dashboard, Chatbot, etc.",
+    "Vuex state|Shared allFoods, user, and admin state",
+    "Axios request|Base URL points to :8001/api",
+    "Express route|routes.js maps endpoint to controller",
+    "Controller|Reads params/body and calls model",
+    "Model|Runs mysql2 query against database",
+    "MySQL result|Rows returned from db_restaurant_v2",
+    "JSON response|Controller sends API response",
+    "UI update|Component refreshes reactive data"
+  ]
+}
