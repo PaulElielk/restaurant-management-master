@@ -768,3 +768,4 @@ JOIN (
 
     SELECT 'Gbofloto (Ivorian Beignets)', 'gluten'
 ) item ON f.food_name = item.food_name;
+

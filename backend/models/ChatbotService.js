@@ -7,6 +7,8 @@ import {
     getPopularFoods,
     getRecommendedFoodsForUser,
     getUsersAlsoBought,
+    getIngredientsByFoodId,
+    getFoodsByIngredient,
 } from './FoodModel.js';
 
 const manager = new NlpManager({ languages: ['en'], forceNER: true });
@@ -46,13 +48,32 @@ const trainingDocuments = [
     ['i want non vegan food', 'restaurant.recommend_meat'],
     ['show me meaty dishes', 'restaurant.recommend_meat'],
 
-    ['what is in the burger?', 'restaurant.dish_info'],
+    ['what is in the burger?', 'restaurant.check_dish_ingredient'],
     ['tell me about the pizza', 'restaurant.dish_info'],
     ['describe the tacos', 'restaurant.dish_info'],
-    ['what does the nachos contain?', 'restaurant.dish_info'],
-    ['what are the ingredients of the salad?', 'restaurant.dish_info'],
+    ['what does the nachos contain?', 'restaurant.check_dish_ingredient'],
+    ['what are the ingredients of the salad?', 'restaurant.check_dish_ingredient'],
     ['tell me about shrimp tacos', 'restaurant.dish_info'],
-    ['what comes in the burrito', 'restaurant.dish_info'],
+    ['what comes in the burrito', 'restaurant.check_dish_ingredient'],
+    ['what dishes have plantain?', 'restaurant.query_by_ingredient'],
+    ['what dishes contain shrimp?', 'restaurant.query_by_ingredient'],
+    ['foods with cheese', 'restaurant.query_by_ingredient'],
+    ['do you have anything with cassava?', 'restaurant.query_by_ingredient'],
+    ['what do you make with chicken?', 'restaurant.query_by_ingredient'],
+    ['show me dishes with plantain', 'restaurant.query_by_ingredient'],
+    ['what food has tuna?', 'restaurant.query_by_ingredient'],
+    ['which meals contain attieke?', 'restaurant.query_by_ingredient'],
+    ['meals made with beef', 'restaurant.query_by_ingredient'],
+    ['dishes containing garlic', 'restaurant.query_by_ingredient'],
+    ['foods containing shrimp', 'restaurant.query_by_ingredient'],
+    ['does garba have tuna in it?', 'restaurant.check_dish_ingredient'],
+    ['does the burger contain onions?', 'restaurant.check_dish_ingredient'],
+    ['is there cheese in the tacos?', 'restaurant.check_dish_ingredient'],
+    ['what are the ingredients of kedjenou?', 'restaurant.check_dish_ingredient'],
+    ['what is inside the burger?', 'restaurant.check_dish_ingredient'],
+    ['what is in garba?', 'restaurant.check_dish_ingredient'],
+    ['ingredients of alloco', 'restaurant.check_dish_ingredient'],
+    ['what is in the chicken burger?', 'restaurant.check_dish_ingredient'],
 
     ['what goes well with the burger?', 'restaurant.also_bought'],
     ['what do people order with the tacos?', 'restaurant.also_bought'],
@@ -154,20 +175,46 @@ const additionalTrainingDocuments = [
     ['not vegan dishes please', 'restaurant.recommend_meat'],
     ['not vegetarian dishes', 'restaurant.recommend_meat'],
 
-    ['what is inside shrimp tacos', 'restaurant.dish_info'],
-    ['what ingredients are in burrito', 'restaurant.dish_info'],
+    ['what is inside shrimp tacos', 'restaurant.check_dish_ingredient'],
+    ['what ingredients are in burrito', 'restaurant.check_dish_ingredient'],
     ['tell me what comes with nachos', 'restaurant.dish_info'],
     ['describe carne asada tacos', 'restaurant.dish_info'],
-    ['what does the burrito include', 'restaurant.dish_info'],
+    ['what does the burrito include', 'restaurant.check_dish_ingredient'],
     ['give details about churros', 'restaurant.dish_info'],
     ['what is included in margarita', 'restaurant.dish_info'],
     ['tell me more about coca cola', 'restaurant.dish_info'],
     ['what is the description of pizza', 'restaurant.dish_info'],
     ['what comes with chicken nachos', 'restaurant.dish_info'],
     ['explain the vegan tacos', 'restaurant.dish_info'],
-    ['what is in bean cheese burrito', 'restaurant.dish_info'],
+    ['what is in bean cheese burrito', 'restaurant.check_dish_ingredient'],
     ['details for shrimp nachos', 'restaurant.dish_info'],
-    ['ingredients in corn salad', 'restaurant.dish_info'],
+    ['ingredients in corn salad', 'restaurant.check_dish_ingredient'],
+
+    ['dishes with plantain', 'restaurant.query_by_ingredient'],
+    ['foods with avocado', 'restaurant.query_by_ingredient'],
+    ['meals with rice', 'restaurant.query_by_ingredient'],
+    ['anything made with plantains', 'restaurant.query_by_ingredient'],
+    ['what dishes have peanut sauce', 'restaurant.query_by_ingredient'],
+    ['foods containing eggs', 'restaurant.query_by_ingredient'],
+    ['what do you have with fish', 'restaurant.query_by_ingredient'],
+    ['dishes with mushrooms', 'restaurant.query_by_ingredient'],
+    ['meals made with chicken', 'restaurant.query_by_ingredient'],
+    ['foods with bacon', 'restaurant.query_by_ingredient'],
+    ['options with shrimp', 'restaurant.query_by_ingredient'],
+    ['dishes with cassava', 'restaurant.query_by_ingredient'],
+    ['any meals with onions', 'restaurant.query_by_ingredient'],
+
+    ['does kedjenou have chicken', 'restaurant.check_dish_ingredient'],
+    ['is there pork in the burrito', 'restaurant.check_dish_ingredient'],
+    ['what ingredients are in attieke', 'restaurant.check_dish_ingredient'],
+    ['what goes into garba', 'restaurant.check_dish_ingredient'],
+    ['what are the ingredients of the burger', 'restaurant.check_dish_ingredient'],
+    ['is there tuna in garba', 'restaurant.check_dish_ingredient'],
+    ['does alloco contain plantains', 'restaurant.check_dish_ingredient'],
+    ['what is inside tacos', 'restaurant.check_dish_ingredient'],
+    ['ingredients of foutou', 'restaurant.check_dish_ingredient'],
+    ['what comes in kedjenou', 'restaurant.check_dish_ingredient'],
+    ['does the pizza have cheese', 'restaurant.check_dish_ingredient'],
 
     ['what pairs with burritos', 'restaurant.also_bought'],
     ['what should i order with nachos', 'restaurant.also_bought'],
@@ -245,8 +292,15 @@ const CATEGORY_ALIASES = {
     sides: ['side', 'sides', 'side dish', 'side dishes'],
     dessert: ['dessert', 'desserts', 'sweet', 'sweets'],
     drink: ['drink', 'drinks', 'beverage', 'beverages', 'juice', 'juices', 'cocktail', 'cocktails'],
-    'fast food': ['fast food', 'burger', 'burgers', 'hotdog', 'hot dog', 'pizza', 'shawarma'],
-    african: ['african', 'west african', 'ivorian', 'senegalese'],
+    burger: ['burger', 'burgers', 'cheeseburger', 'hamburger'],
+    chicken: ['chicken'],
+    sandwich: ['sandwich', 'sandwiches'],
+    street_food: ['street food', 'street-food'],
+    grill: ['grill', 'grilled', 'braise', 'braised'],
+    stew: ['stew', 'stews', 'sauce', 'soup'],
+    rice: ['rice'],
+    traditional: ['traditional'],
+    quick_bite: ['quick bite', 'quick bites', 'snack', 'snacks'],
 };
 
 const STATUS_ALIASES = {
@@ -282,8 +336,34 @@ const PAIRING_PATTERNS = [
 ];
 
 const INFO_PATTERNS = [
-    'tell me about', 'what is in', 'what comes in', 'describe', 'ingredients',
-    'contains', 'contain', 'what is', 'what are'
+    'tell me about', 'describe', 'details for', 'give details', 'tell me more about',
+    'explain the', 'description of'
+];
+
+const QUERY_INGREDIENT_PATTERNS = [
+    /(?:what|which)\s+(?:dishes|foods?|meals?|options?)\s+(?:have|contain|feature)\s+([a-z\s]+?)(?:\?|$|\.|\b(?:on the menu|in it|inside|please|available)\b)/i,
+    /(?:what|which)\s+do\s+you\s+(?:have|make)\s+with\s+([a-z\s]+?)(?:\?|$|\.|\b(?:on the menu|in it|inside|please|available)\b)/i,
+    /(?:do\s+you\s+have\s+)?anything\s+(?:with|containing|made\s+with)\s+([a-z\s]+?)(?:\?|$|\.|\b(?:on the menu|in it|inside|please|available)\b)/i,
+    /(?:show\s+me\s+)?(?:dishes|foods?|meals?|options?)\s+(?:with|containing|made\s+with)\s+([a-z\s]+?)(?:\?|$|\.|\b(?:on the menu|in it|inside|please|available)\b)/i,
+    /(?:any\s+)?(?:dishes|foods?|meals?|options?)\s+(?:with|containing)\s+([a-z\s]+?)(?:\?|$|\.|\b(?:on the menu|in it|inside|please|available)\b)/i,
+    /(?:what\s+food\s+has|what\s+foods\s+have)\s+([a-z\s]+?)(?:\?|$|\.|\b(?:on the menu|in it|inside|please|available)\b)/i,
+    /(?:meals|dishes|foods?)\s+made\s+with\s+([a-z\s]+?)(?:\?|$|\.|\b(?:on the menu|in it|inside|please|available)\b)/i,
+    /(?:dishes|foods?|meals?)\s+containing\s+([a-z\s]+?)(?:\?|$|\.|\b(?:on the menu|in it|inside|please|available)\b)/i,
+    /(?:foods?|dishes|meals?)\s+with\s+([a-z\s]+?)(?:\?|$|\.|\b(?:on the menu|in it|inside|please|available)\b)/i,
+];
+
+const DISH_INGREDIENT_SPECIFIC_PATTERNS = [
+    /(?:does|do)\s+(.+?)\s+(?:have|contain|include)\s+([a-z\s]+?)(?:\s+in\s+it)?(?:\?|$|\.)/i,
+    /is\s+there\s+([a-z\s]+?)\s+in\s+(?:the\s+)?(.+?)(?:\?|$|\.)/i,
+    /has\s+(.+?)\s+got\s+([a-z\s]+?)(?:\?|$|\.)/i,
+];
+
+const DISH_INGREDIENT_GENERAL_PATTERNS = [
+    /(?:what\s+are\s+the\s+ingredients\s+(?:of|for|in)|ingredients\s+(?:of|for|in))\s+(?:the\s+)?(.+?)(?:\?|$|\.)/i,
+    /(?:what\s+is\s+inside|what(?:\s*s|\s+is)\s+in)\s+(?:the\s+)?(.+?)(?:\?|$|\.)/i,
+    /what\s+ingredients\s+(?:are\s+in|go\s+into)\s+(?:the\s+)?(.+?)(?:\?|$|\.)/i,
+    /what\s+(?:does|do)\s+(?:the\s+)?(.+?)\s+contain(?:\?|$|\.)/i,
+    /what\s+comes\s+(?:in|with)\s+(?:the\s+)?(.+?)(?:\?|$|\.)/i,
 ];
 
 const MENU_OVERVIEW_PATTERNS = [
@@ -418,6 +498,8 @@ const resolveFoodFromCatalog = (message, catalog = []) => {
                 score = 300 + (overlap.length * 40);
             } else if (foodTokens.length === 1 && overlap.length === 1 && overlap[0].length >= 5) {
                 score = 250;
+            } else if (overlap.length >= 1 && (overlap.some((t) => t === foodTokens[0]) || overlap.some((t) => t.length >= 5))) {
+                score = 280 + (overlap.length * 30);
             }
         }
 
@@ -432,6 +514,65 @@ const resolveFoodFromCatalog = (message, catalog = []) => {
 const looksLikePairingQuestion = (normalizedMessage) =>
     PAIRING_PATTERNS.some((pattern) => containsPhrase(normalizedMessage, pattern));
 
+const extractQueryIngredient = (message) => {
+    const clean = normalizeText(message);
+    for (const pattern of QUERY_INGREDIENT_PATTERNS) {
+        const match = clean.match(pattern);
+        if (match && match[1]) {
+            let candidate = match[1].trim();
+            candidate = candidate.replace(/\b(on the menu|in it|inside|please|available|today|here)\b/gi, '').trim();
+            if (candidate.length >= 2) {
+                return candidate;
+            }
+        }
+    }
+    return null;
+};
+
+const extractDishIngredientInquiry = (message) => {
+    const clean = normalizeText(message);
+
+    // Sub-case A: Specific ingredient check
+    for (let i = 0; i < DISH_INGREDIENT_SPECIFIC_PATTERNS.length; i++) {
+        const match = clean.match(DISH_INGREDIENT_SPECIFIC_PATTERNS[i]);
+        if (match) {
+            const dish = (i === 1 ? match[2] : match[1]).trim();
+            const ingr = (i === 1 ? match[1] : match[2]).trim();
+            if (!['you', 'we', 'i', 'they', 'u'].includes(dish.toLowerCase())) {
+                return {
+                    dishCandidate: dish,
+                    targetIngredient: ingr,
+                };
+            }
+        }
+    }
+
+    // Sub-case B: General ingredients of dish
+    for (const pattern of DISH_INGREDIENT_GENERAL_PATTERNS) {
+        const match = clean.match(pattern);
+        if (match && match[1]) {
+            return {
+                dishCandidate: match[1].trim(),
+                targetIngredient: null,
+            };
+        }
+    }
+
+    return null;
+};
+
+const looksLikeQueryByIngredient = (normalizedMessage) =>
+    extractQueryIngredient(normalizedMessage) !== null ||
+    /(?:what\s+dishes\s+have|what\s+dishes\s+contain|dishes\s+with|foods\s+with|meals\s+with|dishes\s+containing|foods\s+containing|meals\s+containing|anything\s+with|what\s+food\s+has|which\s+meals\s+contain)/i.test(
+        normalizedMessage
+    );
+
+const looksLikeDishIngredientCheck = (normalizedMessage) =>
+    extractDishIngredientInquiry(normalizedMessage) !== null ||
+    /(?:ingredients\s+(?:of|for|in)|what\s+are\s+the\s+ingredients|what\s+is\s+inside|what(?:\s*s|\s+is)\s+in|what\s+does\s+.+\s+contain|does\s+.+\s+(?:have|contain)|is\s+there\s+.+\s+in)/i.test(
+        normalizedMessage
+    );
+
 const looksLikeDishInfoQuestion = (normalizedMessage) =>
     INFO_PATTERNS.some((pattern) => containsPhrase(normalizedMessage, pattern));
 
@@ -439,6 +580,10 @@ const looksLikeMenuOverviewRequest = (normalizedMessage) =>
     MENU_OVERVIEW_PATTERNS.some((pattern) => containsPhrase(normalizedMessage, pattern));
 
 const extractDishNameCandidate = (message) => {
+    const aboutMatch = message.match(/(?:tell\s+me\s+about|describe|about|info\s+on)\s+(?:the\s+|a\s+|an\s+)?([a-z\s]+?)(?:\?|$|,|\.)/i);
+    if (aboutMatch && aboutMatch[1].trim()) {
+        return aboutMatch[1].trim();
+    }
     const match = message.match(/(?:the|a|an)\s+([a-z\s]+?)(?:\?|$|,|\.)/i);
     return match ? match[1].trim() : null;
 };
@@ -576,7 +721,7 @@ const buildFilterDescription = (filters) => {
     return titleCase(parts.join(' ').replace(/\s+/g, ' ').trim());
 };
 
-const buildDishInfoReply = (food) => {
+const buildDishInfoReply = async (food) => {
     const details = [];
     const category = getCategory(food);
     const cuisine = getCuisine(food);
@@ -603,11 +748,165 @@ const buildDishInfoReply = (food) => {
         details.push(titleCase(cuisine));
     }
 
+    let ingredientsText = '';
+    try {
+        const rawIngredients = await promisifyCallback(getIngredientsByFoodId, food.food_id);
+        const ingredientNames = Array.isArray(rawIngredients)
+            ? rawIngredients.map((r) => (r.ingredient_name || '').trim()).filter(Boolean)
+            : [];
+        if (ingredientNames.length > 0) {
+            ingredientsText = `\n\n**Ingredients:** ${ingredientNames.join(', ')}`;
+        }
+    } catch {
+        // Non-fatal, proceed without ingredients
+    }
+
     return {
-        reply: `**${food.food_name}** - ${discountedPrice(food).toFixed(0)} Fcfa\n${details.length ? `${details.join(' | ')}\n` : ''}${food.description || food.food_desc || 'No description available.'}`,
+        reply: `**${food.food_name}** - ${discountedPrice(food).toFixed(0)} Fcfa\n${details.length ? `${details.join(' | ')}\n` : ''}${food.description || food.food_desc || 'No description available.'}${ingredientsText}`,
         action: 'show_cards',
         data: [food],
     };
+};
+
+const handleQueryByIngredient = async (ingredient) => {
+    if (!ingredient || typeof ingredient !== 'string' || !ingredient.trim()) {
+        return {
+            reply: 'Which ingredient are you looking for? Try asking: "What dishes have plantain?" or "Foods with cheese."',
+            action: 'none',
+            data: [],
+        };
+    }
+
+    const cleanIngredient = ingredient.trim();
+
+    try {
+        const foods = await promisifyCallback(getFoodsByIngredient, `%${cleanIngredient}%`);
+        if (foods && foods.length > 0) {
+            const list = formatFoodList(foods);
+            return {
+                reply: `Here are our dishes containing ${cleanIngredient}:\n\n${list}`,
+                action: 'show_cards',
+                data: foods,
+            };
+        }
+
+        return {
+            reply: `I couldn't find any dishes containing ${cleanIngredient} on our menu.`,
+            action: 'none',
+            data: [],
+        };
+    } catch (err) {
+        console.error('[Chatbot] Error querying foods by ingredient:', err);
+        return {
+            reply: `Sorry, I encountered an issue checking the ingredients for "${cleanIngredient}". Please try again.`,
+            action: 'none',
+            data: [],
+        };
+    }
+};
+
+const handleDishIngredientCheck = async (dishCandidate, targetIngredient, catalog, userMessage, directFoodMatch) => {
+    let food = null;
+
+    if (dishCandidate) {
+        const cleanedDish = dishCandidate.replace(/^(the|a|an)\s+/i, '').trim();
+        food = resolveFoodFromCatalog(cleanedDish, catalog);
+        if (!food) {
+            try {
+                food = await promisifyCallback(getFoodByName, cleanedDish);
+            } catch {
+                food = null;
+            }
+        }
+    }
+
+    if (!food && directFoodMatch) {
+        food = directFoodMatch;
+    }
+
+    if (!food) {
+        const fallbackCandidate = extractDishNameCandidate(userMessage);
+        if (fallbackCandidate) {
+            food = resolveFoodFromCatalog(fallbackCandidate, catalog);
+            if (!food) {
+                try {
+                    food = await promisifyCallback(getFoodByName, fallbackCandidate);
+                } catch {
+                    food = null;
+                }
+            }
+        }
+    }
+
+    if (!food) {
+        return {
+            reply: 'Which dish would you like to check ingredients for? Try asking: "What are the ingredients of Kedjenou?" or "Does Garba have tuna in it?"',
+            action: 'none',
+            data: [],
+        };
+    }
+
+    try {
+        const rawIngredients = await promisifyCallback(getIngredientsByFoodId, food.food_id);
+        const ingredientNames = Array.isArray(rawIngredients)
+            ? rawIngredients.map((row) => (row.ingredient_name || '').trim()).filter(Boolean)
+            : [];
+
+        // Sub-case A: A specific ingredient was queried
+        if (targetIngredient && targetIngredient.trim()) {
+            const cleanTarget = targetIngredient.trim().toLowerCase();
+            const hasIngredient = ingredientNames.some((name) => {
+                const lower = name.toLowerCase();
+                return lower.includes(cleanTarget) || cleanTarget.includes(lower);
+            });
+
+            if (hasIngredient) {
+                const list = ingredientNames.join(', ');
+                return {
+                    reply: list
+                        ? `Yes, the **${food.food_name}** contains ${targetIngredient.trim()}. Here are its ingredients: ${list}.`
+                        : `Yes, the **${food.food_name}** contains ${targetIngredient.trim()}.`,
+                    action: 'show_cards',
+                    data: [food],
+                };
+            }
+
+            const list = ingredientNames.join(', ');
+            return {
+                reply: list
+                    ? `No, the **${food.food_name}** does not contain ${targetIngredient.trim()}. Its ingredients are: ${list}.`
+                    : `No, the **${food.food_name}** does not contain ${targetIngredient.trim()}.`,
+                action: 'show_cards',
+                data: [food],
+            };
+        }
+
+        // Sub-case B: General ingredients inquiry
+        if (ingredientNames.length > 0) {
+            return {
+                reply: `The **${food.food_name}** is made with: ${ingredientNames.join(', ')}.`,
+                action: 'show_cards',
+                data: [food],
+            };
+        }
+
+        // Fallback if legacy dish has no rows in food_ingredients
+        const desc = food.description || food.food_desc;
+        return {
+            reply: desc
+                ? `We don't have a detailed ingredients breakdown for **${food.food_name}** yet, but here is what it is: ${desc}`
+                : `We don't have detailed ingredient information for **${food.food_name}** yet.`,
+            action: 'show_cards',
+            data: [food],
+        };
+    } catch (err) {
+        console.error('[Chatbot] Error fetching dish ingredients:', err);
+        return {
+            reply: `Sorry, I could not retrieve ingredient details for **${food.food_name}** right now.`,
+            action: 'none',
+            data: [],
+        };
+    }
 };
 
 const buildMenuOverviewReply = (catalog = []) => {
@@ -678,16 +977,36 @@ export const processChatMessage = async (userMessage, userId) => {
         };
     }
 
+    if (looksLikeQueryByIngredient(normalizedMessage)) {
+        const ingredient = extractQueryIngredient(userMessage);
+        if (ingredient) {
+            return await handleQueryByIngredient(ingredient);
+        }
+    }
+
+    if (looksLikeDishIngredientCheck(normalizedMessage)) {
+        const inquiry = extractDishIngredientInquiry(userMessage);
+        if (inquiry) {
+            return await handleDishIngredientCheck(
+                inquiry.dishCandidate,
+                inquiry.targetIngredient,
+                catalog,
+                userMessage,
+                directFoodMatch
+            );
+        }
+    }
+
     if (looksLikeDishInfoQuestion(normalizedMessage) || (directFoodMatch && tokenize(userMessage).length <= 4)) {
         if (directFoodMatch) {
-            return buildDishInfoReply(directFoodMatch);
+            return await buildDishInfoReply(directFoodMatch);
         }
 
         const dishNameCandidate = extractDishNameCandidate(userMessage);
         if (dishNameCandidate) {
             const food = await promisifyCallback(getFoodByName, dishNameCandidate);
             if (food) {
-                return buildDishInfoReply(food);
+                return await buildDishInfoReply(food);
             }
         }
     }
@@ -784,6 +1103,22 @@ export const processChatMessage = async (userMessage, userId) => {
             };
         }
 
+        case 'restaurant.query_by_ingredient': {
+            const ingredient = extractQueryIngredient(userMessage) || tokenize(userMessage).pop();
+            return await handleQueryByIngredient(ingredient);
+        }
+
+        case 'restaurant.check_dish_ingredient': {
+            const inquiry = extractDishIngredientInquiry(userMessage);
+            return await handleDishIngredientCheck(
+                inquiry ? inquiry.dishCandidate : null,
+                inquiry ? inquiry.targetIngredient : null,
+                catalog,
+                userMessage,
+                directFoodMatch
+            );
+        }
+
         case 'restaurant.dish_info': {
             const dishNameCandidate = extractDishNameCandidate(userMessage);
             const food = directFoodMatch || (dishNameCandidate ? await promisifyCallback(getFoodByName, dishNameCandidate) : null);
@@ -796,7 +1131,7 @@ export const processChatMessage = async (userMessage, userId) => {
                 };
             }
 
-            return buildDishInfoReply(food);
+            return await buildDishInfoReply(food);
         }
 
         case 'restaurant.also_bought': {

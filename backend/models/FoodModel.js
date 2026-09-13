@@ -575,3 +575,72 @@ export const getUsersAlsoBought = (foodId, limit, result) => {
     });
 };
 
+// Get all ingredients for a specific food item
+export const getIngredientsByFoodId = (foodId, result) => {
+    const parsedFoodId = Number.parseInt(foodId, 10);
+    if (Number.isNaN(parsedFoodId) || parsedFoodId <= 0) {
+        result(null, []);
+        return;
+    }
+
+    const query = `
+        SELECT ingredient_name
+        FROM food_ingredients
+        WHERE food_id = ?
+        ORDER BY ingredient_name ASC
+    `;
+
+    db.query(query, [parsedFoodId], (err, results) => {
+        if (err) {
+            console.log(err);
+            result(err, null);
+            return;
+        }
+        result(null, results);
+    });
+};
+
+// Get foods that contain a specific ingredient (case-insensitive partial match)
+export const getFoodsByIngredient = (ingredientName, result) => {
+    if (!ingredientName || typeof ingredientName !== 'string' || !ingredientName.trim()) {
+        result(null, []);
+        return;
+    }
+
+    const query = `
+        SELECT DISTINCT
+            f.food_id,
+            f.food_name,
+            f.food_price,
+            f.food_discount,
+            f.food_star,
+            f.food_vote,
+            f.food_desc,
+            f.food_src,
+            f.food_status,
+            f.food_type,
+            f.food_category,
+            f.image_url,
+            f.rating,
+            f.spice_level,
+            f.cuisine_type
+        FROM food f
+        JOIN food_ingredients fi ON f.food_id = fi.food_id
+        WHERE LOWER(fi.ingredient_name) LIKE LOWER(?)
+    `;
+
+    const cleanedTerm = ingredientName.trim();
+    const pattern = cleanedTerm.startsWith('%') || cleanedTerm.endsWith('%')
+        ? cleanedTerm
+        : `%${cleanedTerm}%`;
+
+    db.query(query, [pattern], (err, results) => {
+        if (err) {
+            console.log(err);
+            result(err, null);
+            return;
+        }
+        result(null, results);
+    });
+};
+
