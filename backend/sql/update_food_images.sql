@@ -41,7 +41,7 @@ WHERE food_id = 58 OR food_name = 'Crispy Chicken Caesar Wrap';
 
 -- African Items
 UPDATE food SET food_src = 'African/alloco_oeuf.jpg', image_url = 'African/alloco_oeuf.jpg' 
-WHERE food_id = 61 OR food_name = 'Alloco avec Œuf Bouilli & Sauce Piment';
+WHERE food_id = 61 OR food_name = 'Alloco avec Oeuf Bouilli & Sauce Piment';
 
 UPDATE food SET food_src = 'African/poisson_braise.jpg', image_url = 'African/poisson_braise.jpg' 
 WHERE food_id = 62 OR food_name = 'Attiéké Poisson Braisé';
@@ -72,3 +72,4 @@ WHERE food_id = 73 OR food_name = 'Placali Sauce Gombo Frais (Vegan)';
 
 UPDATE food SET food_src = 'African/gnamakoudji.jpg', image_url = 'African/gnamakoudji.jpg' 
 WHERE food_id = 74 OR food_name = 'Gnamakoudji (Fresh Ginger Juice)';
+

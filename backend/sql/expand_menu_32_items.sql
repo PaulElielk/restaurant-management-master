@@ -131,7 +131,7 @@ INSERT INTO food (
     'ivorian', 'sides', 'none', 1, 'mild', 'African/alloco.jpg', 4.80, 0
 ),
 (
-    'Alloco avec Œuf Bouilli & Sauce Piment', '4.7', '820', '2000', '0', '01 plate fried plantains with boiled egg & chili sauce',
+    'Alloco avec Oeuf Bouilli & Sauce Piment', '4.7', '820', '2000', '0', '01 plate fried plantains with boiled egg & chili sauce',
     'best seller', 'meat', 'street_food', 'African/alloco_oeuf.jpg',
     'Golden fried sweet plantains served with a hard-boiled egg and a fiery side sauce made of crushed onions, tomatoes, and red habanero peppers.',
     'ivorian', 'street_food', 'none', 0, 'hot', 'African/alloco_oeuf.jpg', 4.70, 0
@@ -379,13 +379,13 @@ JOIN (
     SELECT 'Alloco Simple', 'vegetable oil' UNION ALL
     SELECT 'Alloco Simple', 'sea salt' UNION ALL
 
-    -- 19. Alloco avec Œuf Bouilli & Sauce Piment
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'ripe plantains' UNION ALL
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'hard-boiled egg' UNION ALL
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'tomatoes' UNION ALL
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'red onions' UNION ALL
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'habanero chili' UNION ALL
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'vegetable oil' UNION ALL
+    -- 19. Alloco avec Oeuf Bouilli & Sauce Piment
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'ripe plantains' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'hard-boiled egg' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'tomatoes' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'red onions' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'habanero chili' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'vegetable oil' UNION ALL
 
     -- 20. Attiéké Poisson Braisé
     SELECT 'Attiéké Poisson Braisé', 'whole tilapia fish' UNION ALL
@@ -606,11 +606,11 @@ JOIN (
     SELECT 'Alloco Simple', 'plantain' UNION ALL
     SELECT 'Alloco Simple', 'alloco' UNION ALL
 
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'street food' UNION ALL
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'vegetarian' UNION ALL
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'spicy' UNION ALL
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'sweet' UNION ALL
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'protein' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'street food' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'vegetarian' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'spicy' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'sweet' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'protein' UNION ALL
 
     SELECT 'Attiéké Poisson Braisé', 'grilled' UNION ALL
     SELECT 'Attiéké Poisson Braisé', 'charcoal' UNION ALL
@@ -747,7 +747,7 @@ JOIN (
     -- Ivorian & West African
     SELECT 'Garba (Attiéké Thon Frit)', 'fish' UNION ALL
 
-    SELECT 'Alloco avec Œuf Bouilli & Sauce Piment', 'egg' UNION ALL
+    SELECT 'Alloco avec Oeuf Bouilli & Sauce Piment', 'egg' UNION ALL
 
     SELECT 'Attiéké Poisson Braisé', 'fish' UNION ALL
 

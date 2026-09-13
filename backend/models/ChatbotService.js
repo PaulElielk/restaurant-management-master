@@ -215,6 +215,14 @@ const additionalTrainingDocuments = [
     ['ingredients of foutou', 'restaurant.check_dish_ingredient'],
     ['what comes in kedjenou', 'restaurant.check_dish_ingredient'],
     ['does the pizza have cheese', 'restaurant.check_dish_ingredient'],
+    ['what is in duegue', 'restaurant.check_dish_ingredient'],
+    ['tell me about duegue', 'restaurant.dish_info'],
+    ['what is in degue', 'restaurant.check_dish_ingredient'],
+    ['tell me about degue', 'restaurant.dish_info'],
+    ['what is inside sauce arachide', 'restaurant.check_dish_ingredient'],
+    ['tell me about sauce arachide', 'restaurant.dish_info'],
+    ['what ingredients are in mafe', 'restaurant.check_dish_ingredient'],
+    ['tell me about mafe', 'restaurant.dish_info'],
 
     ['what pairs with burritos', 'restaurant.also_bought'],
     ['what should i order with nachos', 'restaurant.also_bought'],
@@ -312,12 +320,52 @@ const STATUS_ALIASES = {
 };
 
 const CUISINE_ALIASES = {
-    african: ['african'],
+    african: ['african', 'ivorian', 'west african', 'west-african', 'cote d ivoire'],
     mexican: ['mexican'],
-    american: ['american'],
+    american: ['american', 'fast food', 'fast-food'],
     italian: ['italian'],
     middle_eastern: ['middle eastern', 'middle-eastern'],
     international: ['international'],
+};
+
+const DISH_NAME_ALIASES = {
+    duegue: 'degue',
+    thiakry: 'degue',
+    thiacry: 'degue',
+    degue: 'degue',
+    'sauce arachide': 'sauce arachide',
+    mafe: 'sauce arachide',
+    tiguadegue: 'sauce arachide',
+    tigadegue: 'sauce arachide',
+    'peanut stew': 'sauce arachide',
+    'pain chien': 'pain brochette',
+    'pain-chien': 'pain brochette',
+    'suya sandwich': 'pain brochette',
+    garba: 'garba',
+    attieke: 'attieke',
+    'poisson braise': 'poisson braise',
+    'poulet braise': 'poulet braise',
+    choukouya: 'choukouya',
+    kedjenou: 'kedjenou',
+    placali: 'placali',
+    foutou: 'foutou',
+    alloco: 'alloco',
+    gbofloto: 'gbofloto',
+    gnamakoudji: 'gnamakoudji',
+    'chili cheese fries': 'loaded chili cheese fries',
+    wings: 'spicy buffalo wings',
+    'buffalo wings': 'spicy buffalo wings',
+    'chicken tenders': 'crispy chicken tenders',
+    tenders: 'crispy chicken tenders',
+    'pulled pork': 'bbq pulled pork sandwich',
+    'onion rings': 'beer-battered onion rings',
+    'mozzarella sticks': 'mozzarella cheese sticks',
+    'jalapeno poppers': 'jalapeno poppers',
+    'beyond burger': 'plant-based beyond burger',
+    'caesar wrap': 'crispy chicken caesar wrap',
+    'fish and chips': 'crispy fish and chips',
+    'hot dog': 'classic hot dog deluxe',
+    hotdog: 'classic hot dog deluxe',
 };
 
 const MEAT_ALIASES = {
@@ -475,6 +523,12 @@ const resolveFoodFromCatalog = (message, catalog = []) => {
     const messageTokens = tokenize(message);
     let bestMatch = null;
 
+    // Check direct dish alias lookup
+    const aliasKey = Object.keys(DISH_NAME_ALIASES).find(
+        (key) => normalizedMessage === key || containsPhrase(normalizedMessage, key) || normalizedMessage.includes(key)
+    );
+    const canonicalTarget = aliasKey ? DISH_NAME_ALIASES[aliasKey] : null;
+
     for (const food of catalog) {
         const normalizedName = normalizeText(food.food_name);
         if (!normalizedName) {
@@ -484,7 +538,13 @@ const resolveFoodFromCatalog = (message, catalog = []) => {
         const foodTokens = tokenize(food.food_name);
         let score = 0;
 
-        if (containsPhrase(normalizedMessage, normalizedName)) {
+        if (canonicalTarget && (normalizedName === canonicalTarget || foodTokens.includes(canonicalTarget))) {
+            score = 2500;
+        } else if (canonicalTarget && (normalizedName.includes(canonicalTarget) || canonicalTarget.includes(normalizedName))) {
+            score = 1500;
+        } else if (normalizedName === normalizedMessage || foodTokens.includes(normalizedMessage)) {
+            score = 2000;
+        } else if (containsPhrase(normalizedMessage, normalizedName)) {
             score = 1000 + normalizedName.length;
         } else if (normalizedName.includes(normalizedMessage) && normalizedMessage.length >= 4) {
             score = 700 + normalizedMessage.length;
