@@ -38,33 +38,33 @@ INSERT INTO food (
 ),
 (
     'Spicy Buffalo Wings', '4.6', '640', '4200', '0', '08 pieces per serving with dip',
-    'best seller', 'meat', 'chicken', 'fastfood/friedchicken.jpg',
+    'best seller', 'meat', 'chicken', 'fastfood/buffalo_wings.jpg',
     'Crispy deep-fried chicken wings tossed in a tangy, fiery cayenne pepper hot sauce, served with cool blue cheese dip.',
-    'american', 'chicken', 'chicken', 0, 'hot', 'fastfood/friedchicken.jpg', 4.60, 0
+    'american', 'chicken', 'chicken', 0, 'hot', 'fastfood/buffalo_wings.jpg', 4.60, 0
 ),
 (
     'Loaded Chili Cheese Fries', '4.4', '510', '3500', '0', '01 sharing tray per serving',
-    'new dishes', 'meat', 'sides', 'side/fries.jpg',
+    'new dishes', 'meat', 'sides', 'fastfood/chili_cheese_fries.jpg',
     'Golden crispy french fries smothered in slow-simmered minced beef chili, warm melted cheddar cheese sauce, and pickled jalapeños.',
-    'american', 'sides', 'beef', 0, 'medium', 'side/fries.jpg', 4.40, 0
+    'american', 'sides', 'beef', 0, 'medium', 'fastfood/chili_cheese_fries.jpg', 4.40, 0
 ),
 (
     'Philly Cheesesteak Sub', '4.6', '590', '5200', '0', '01 hoagie roll per serving',
-    'normal', 'meat', 'sandwich', 'fastfood/shawarma.jpg',
+    'normal', 'meat', 'sandwich', 'fastfood/philly_cheesesteak.jpg',
     'Thinly shaved ribeye steak griddled with sweet bell peppers and onions, melted provolone cheese, packed into a soft hoagie roll.',
-    'american', 'sandwich', 'beef', 0, 'mild', 'fastfood/shawarma.jpg', 4.60, 0
+    'american', 'sandwich', 'beef', 0, 'mild', 'fastfood/philly_cheesesteak.jpg', 4.60, 0
 ),
 (
     'Crispy Chicken Tenders', '4.5', '670', '3800', '0', '05 pieces per serving with dip',
-    'best seller', 'meat', 'chicken', 'fastfood/friedchicken.jpg',
+    'best seller', 'meat', 'chicken', 'fastfood/chicken_tenders.jpg',
     'Hand-breaded crispy chicken breast tenderloins seasoned with garlic and onion powder, served with sweet honey mustard sauce.',
-    'american', 'chicken', 'chicken', 0, 'mild', 'fastfood/friedchicken.jpg', 4.50, 0
+    'american', 'chicken', 'chicken', 0, 'mild', 'fastfood/chicken_tenders.jpg', 4.50, 0
 ),
 (
     'BBQ Pulled Pork Sandwich', '4.6', '430', '4800', '0', '01 sandwich with coleslaw',
-    'seasonal dishes', 'meat', 'sandwich', 'fastfood/smokedribs.jpg',
+    'seasonal dishes', 'meat', 'sandwich', 'fastfood/pulled_pork.jpg',
     'Slow-smoked pork shoulder shredded and tossed in sweet and smoky barbecue sauce, topped with crisp cabbage coleslaw on a brioche bun.',
-    'american', 'sandwich', 'pork', 0, 'mild', 'fastfood/smokedribs.jpg', 4.60, 0
+    'american', 'sandwich', 'pork', 0, 'mild', 'fastfood/pulled_pork.jpg', 4.60, 0
 ),
 (
     'Classic Hot Dog Deluxe', '4.3', '490', '2500', '0', '01 hotdog per serving',
@@ -74,9 +74,9 @@ INSERT INTO food (
 ),
 (
     'Beer-Battered Onion Rings', '4.4', '380', '2200', '0', '08 pieces per serving with garlic dip',
-    'normal', 'vegan', 'sides', 'side/side-1.png',
+    'normal', 'vegan', 'sides', 'fastfood/onion_rings.jpg',
     'Thick-cut sweet Spanish onions dipped in a light, crunchy beer batter, fried golden brown and served with garlic dip.',
-    'american', 'sides', 'none', 1, 'mild', 'side/side-1.png', 4.40, 0
+    'american', 'sides', 'none', 1, 'mild', 'fastfood/onion_rings.jpg', 4.40, 0
 ),
 (
     'Golden French Fries', '4.7', '1100', '1800', '0', '01 large bowl per serving',
@@ -86,33 +86,33 @@ INSERT INTO food (
 ),
 (
     'Mozzarella Cheese Sticks', '4.5', '560', '2800', '0', '06 pieces per serving with marinara',
-    'normal', 'meat', 'sides', 'side/side-2.png',
+    'normal', 'meat', 'sides', 'fastfood/mozzarella_sticks.jpg',
     'Gooey whole-milk mozzarella coated in seasoned Italian breadcrumbs, fried crisp and served with rich warm marinara sauce.',
-    'american', 'sides', 'none', 0, 'mild', 'side/side-2.png', 4.50, 0
+    'american', 'sides', 'none', 0, 'mild', 'fastfood/mozzarella_sticks.jpg', 4.50, 0
 ),
 (
     'Jalapeño Poppers', '4.5', '420', '3000', '0', '05 pieces per serving',
-    'seasonal dishes', 'meat', 'sides', 'side/side-3.png',
+    'seasonal dishes', 'meat', 'sides', 'fastfood/jalapeno_poppers.jpg',
     'Hollowed spicy jalapeño peppers stuffed with herb cream cheese and cheddar, breaded and fried to a crisp golden finish.',
-    'american', 'sides', 'none', 0, 'hot', 'side/side-3.png', 4.50, 0
+    'american', 'sides', 'none', 0, 'hot', 'fastfood/jalapeno_poppers.jpg', 4.50, 0
 ),
 (
     'Crispy Fish and Chips', '4.6', '610', '5000', '500', '01 platter with chips & tartar dip',
-    'best seller', 'meat', 'seafood', 'fastfood/frenchtacos.jpg',
+    'best seller', 'meat', 'seafood', 'fastfood/fish_and_chips.jpg',
     'Fresh white fish fillet coated in crispy golden batter, served with chunky potato chips, tartar sauce, and a lemon wedge.',
-    'american', 'seafood', 'seafood', 0, 'mild', 'fastfood/frenchtacos.jpg', 4.60, 0
+    'american', 'seafood', 'seafood', 0, 'mild', 'fastfood/fish_and_chips.jpg', 4.60, 0
 ),
 (
     'Plant-Based Beyond Burger', '4.6', '540', '5200', '0', '01 plant-based burger with vegan cheese',
-    'new dishes', 'vegan', 'burger', 'fastfood/burger.jpg',
+    'new dishes', 'vegan', 'burger', 'fastfood/beyond_burger.jpg',
     '100% plant-based grilled protein patty with dairy-free vegan cheddar, fresh crisp lettuce, sliced tomato, and vegan herb mayo.',
-    'american', 'burger', 'plant_based', 1, 'mild', 'fastfood/burger.jpg', 4.60, 0
+    'american', 'burger', 'plant_based', 1, 'mild', 'fastfood/beyond_burger.jpg', 4.60, 0
 ),
 (
     'Crispy Chicken Caesar Wrap', '4.5', '470', '4000', '0', '01 rolled tortilla wrap',
-    'normal', 'meat', 'wrap', 'fastfood/frenchtacos.jpg',
+    'normal', 'meat', 'wrap', 'fastfood/chicken_wrap.jpg',
     'Sliced breaded chicken breast, crisp romaine lettuce, grated parmesan cheese, and creamy garlic caesar dressing rolled in a flour tortilla.',
-    'american', 'wrap', 'chicken', 0, 'mild', 'fastfood/frenchtacos.jpg', 4.50, 0
+    'american', 'wrap', 'chicken', 0, 'mild', 'fastfood/chicken_wrap.jpg', 4.50, 0
 ),
 
 -- ========================================================================
@@ -132,33 +132,33 @@ INSERT INTO food (
 ),
 (
     'Alloco avec Œuf Bouilli & Sauce Piment', '4.7', '820', '2000', '0', '01 plate fried plantains with boiled egg & chili sauce',
-    'best seller', 'meat', 'street_food', 'African/alloco_fish.jpg',
+    'best seller', 'meat', 'street_food', 'African/alloco_oeuf.jpg',
     'Golden fried sweet plantains served with a hard-boiled egg and a fiery side sauce made of crushed onions, tomatoes, and red habanero peppers.',
-    'ivorian', 'street_food', 'none', 0, 'hot', 'African/alloco_fish.jpg', 4.70, 0
+    'ivorian', 'street_food', 'none', 0, 'hot', 'African/alloco_oeuf.jpg', 4.70, 0
 ),
 (
     'Attiéké Poisson Braisé', '4.9', '1250', '5500', '0', '01 whole grilled fish with attieke & salsa',
-    'best seller', 'meat', 'grill', 'African/cheick.jpg',
+    'best seller', 'meat', 'grill', 'African/poisson_braise.jpg',
     'Whole fresh tilapia marinated in garlic, ginger, and lemon, slowly flame-grilled over hot charcoal. Served with fresh attiéké, sliced raw onions, tomatoes, and spicy chili paste.',
-    'ivorian', 'grill', 'seafood', 0, 'medium', 'African/cheick.jpg', 4.90, 0
+    'ivorian', 'grill', 'seafood', 0, 'medium', 'African/poisson_braise.jpg', 4.90, 0
 ),
 (
     'Poulet Braisé Ivoirien', '4.9', '1300', '6000', '0', 'Half grilled chicken with onion salsa',
-    'best seller', 'meat', 'grill', 'African/cheick.jpg',
+    'best seller', 'meat', 'grill', 'African/poulet_braise.jpg',
     'Tender chicken marinated in an aromatic blend of mustard, garlic, bay leaf, and local spices, flame-grilled to smoky perfection. Served with spicy tomato-onion salsa.',
-    'ivorian', 'grill', 'chicken', 0, 'medium', 'African/cheick.jpg', 4.90, 0
+    'ivorian', 'grill', 'chicken', 0, 'medium', 'African/poulet_braise.jpg', 4.90, 0
 ),
 (
     'Choukouya de Mouton', '4.8', '870', '5000', '0', '01 platter tender roasted mutton with kankan spice',
-    'best seller', 'meat', 'grill', 'African/mika.jpg',
+    'best seller', 'meat', 'grill', 'African/choukouya.jpg',
     'Street-style barbecue mutton braised and roasted in foil over open coals, cut into bite-sized tender chunks and dusted with aromatic kan-kan roasted pepper spice.',
-    'ivorian', 'grill', 'mutton', 0, 'hot', 'African/mika.jpg', 4.80, 0
+    'ivorian', 'grill', 'mutton', 0, 'hot', 'African/choukouya.jpg', 4.80, 0
 ),
 (
     'Kedjenou de Poulet', '4.8', '760', '5500', '0', '01 clay pot slow simmered chicken stew',
-    'best seller', 'meat', 'stew', 'African/kader.jpg',
+    'best seller', 'meat', 'stew', 'African/kedjenou.jpg',
     'Traditional slow-cooked chicken stew simmered in a sealed canari clay pot with ripe tomatoes, eggplants, onions, ginger, and hot peppers with no added water.',
-    'ivorian', 'stew', 'chicken', 0, 'hot', 'African/kader.jpg', 4.80, 0
+    'ivorian', 'stew', 'chicken', 0, 'hot', 'African/kedjenou.jpg', 4.80, 0
 ),
 (
     'Placali Sauce Kopè', '4.7', '890', '4000', '0', '01 bowl placali with okra seafood soup',
@@ -180,40 +180,40 @@ INSERT INTO food (
 ),
 (
     'Pain Brochette (Pain-Chien d\'Abidjan)', '4.8', '1050', '2000', '0', '01 crusty baguette with grilled beef skewers & onions',
-    'best seller', 'meat', 'sandwich', 'African/mounir.jpg',
+    'best seller', 'meat', 'sandwich', 'African/pain_brochette.jpg',
     'Warm crusty baguette stuffed with skewered grilled beef suya, sliced raw red onions, spicy pepper sauce, and a drizzle of mayonnaise.',
-    'ivorian', 'sandwich', 'beef', 0, 'medium', 'African/mounir.jpg', 4.80, 0
+    'ivorian', 'sandwich', 'beef', 0, 'medium', 'African/pain_brochette.jpg', 4.80, 0
 ),
 (
     'Sauce Arachide (Tiguadèguè / Mafé)', '4.8', '830', '4000', '0', 'Creamy peanut stew with chicken & vegetables',
-    'best seller', 'meat', 'stew', 'African/yam.jpg',
+    'best seller', 'meat', 'stew', 'African/mafe.jpg',
     'Creamy and savory ground peanut butter stew simmered slowly with chicken, root vegetables, and tomatoes. Best paired with steamed white rice.',
-    'west_african', 'stew', 'chicken', 0, 'mild', 'African/yam.jpg', 4.80, 0
+    'west_african', 'stew', 'chicken', 0, 'mild', 'African/mafe.jpg', 4.80, 0
 ),
 (
     'Dêguê', '4.7', '690', '1500', '0', '01 chilled cup sweet yogurt & steamed millet granules',
-    'new dishes', 'meat', 'dessert', 'dessert/dessert-3.png',
+    'new dishes', 'meat', 'dessert', 'African/degue.jpg',
     'Refreshing West African dessert of steamed granulated millet couscous blended with sweetened curdled milk, creamy yogurt, nutmeg, and vanilla.',
-    'west_african', 'dessert', 'none', 0, 'mild', 'dessert/dessert-3.png', 4.70, 0
+    'west_african', 'dessert', 'none', 0, 'mild', 'African/degue.jpg', 4.70, 0
 ),
 (
     'Gbofloto (Ivorian Beignets)', '4.8', '950', '1000', '0', '05 golden fried dough beignets',
-    'best seller', 'vegan', 'dessert', 'dessert/dessert-1.png',
+    'best seller', 'vegan', 'dessert', 'African/gbofloto.jpg',
     'Golden deep-fried sweet dough balls, fluffy and pillowy on the inside with a delicate crust. Eaten as a snack or dessert.',
-    'ivorian', 'dessert', 'none', 1, 'mild', 'dessert/dessert-1.png', 4.80, 0
+    'ivorian', 'dessert', 'none', 1, 'mild', 'African/gbofloto.jpg', 4.80, 0
 ),
 (
     'Placali Sauce Gombo Frais (Vegan)', '4.6', '410', '3000', '0', 'Stretchy cassava dough with fresh okra sauce (plant-based)',
-    'new dishes', 'vegan', 'traditional', 'African/placali.webp',
+    'new dishes', 'vegan', 'traditional', 'African/sauce_gombo.jpg',
     'Traditional stretchy cassava dough served with a fresh sliced okra sauce cooked with red palm oil, tomatoes, and fragrant seasonings without animal products.',
-    'ivorian', 'traditional', 'none', 1, 'medium', 'African/placali.webp', 4.60, 0
+    'ivorian', 'traditional', 'none', 1, 'medium', 'African/sauce_gombo.jpg', 4.60, 0
 ),
 (
     'Gnamakoudji (Fresh Ginger Juice)', '4.9', '1120', '1000', '0', '01 cold-pressed fresh ginger bottle (330ml)',
-    'best seller', 'vegan', 'drinks', 'drink/drink-5.png',
+    'best seller', 'vegan', 'drinks', 'African/gnamakoudji.jpg',
     'Fiery and invigorating homemade cold-pressed ginger root juice mellowed with fresh pineapple juice, lime juice, and mint leaves.',
-    'ivorian', 'drinks', 'none', 1, 'medium', 'drink/drink-5.png', 4.90, 0
-)
+    'ivorian', 'drinks', 'none', 1, 'medium', 'African/gnamakoudji.jpg', 4.90, 0
+),
 ON DUPLICATE KEY UPDATE
     food_star = VALUES(food_star),
     food_vote = VALUES(food_vote),
