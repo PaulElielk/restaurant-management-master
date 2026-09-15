@@ -207,22 +207,25 @@ export default {
         },
 
         async onQtyChange(e, i) {
-            if (e.target.value < 1) {
-                e.target.value = 1
-                this.itemQuantity[i] = 1
-            } else {
-                this.itemQuantity[i] = e.target.value;
+            let parsed = parseInt(e.target.value, 10);
+            if (isNaN(parsed) || parsed < 1) {
+                parsed = 1;
             }
+            e.target.value = parsed;
+            this.itemQuantity[i] = parsed;
 
             let data = {
                 user_id: parseInt(this.user.user_id),
                 food_id: parseInt(this.cartItem[i]),
-                item_qty: this.itemQuantity[i]
+                item_qty: parsed
             };
-            await axios.put("/cartItem/", data)
+            await axios.put("/cartItem/", data);
         },
 
         async cancelBtn() {
+            if (!window.confirm("Are you sure you want to clear all items from your cart?")) {
+                return;
+            }
             await axios.delete("/cartItem/" + this.user.user_id);
 
             this.cartItem = [];

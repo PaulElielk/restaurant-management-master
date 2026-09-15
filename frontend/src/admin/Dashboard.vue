@@ -540,7 +540,18 @@ export default {
 
         formatDate(dateStr) {
             if (!dateStr) return "-";
-            return String(dateStr).replace("T", " ");
+            const date = new Date(dateStr);
+            if (isNaN(date.getTime())) {
+                return String(dateStr).replace("T", " ");
+            }
+            return date.toLocaleString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+            });
         },
 
         statusClass(status) {
@@ -613,6 +624,9 @@ export default {
         },
 
         async cancelBtn(id) {
+            if (!window.confirm("Are you sure you want to cancel this order? This action cannot be undone.")) {
+                return;
+            }
             await axios.put("/billstatus/cancel/" + id);
             this.getAllBills();
         },

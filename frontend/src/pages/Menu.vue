@@ -201,7 +201,7 @@
     </span>
 </div>
 
-                                <button class="btn" @click="addItem(index)">Add to cart</button>
+                                <button class="btn" @click="addItem(index)"><i class="fas fa-cart-plus"></i> Add to cart</button>
                             </div>
                         </div>
                     </div>

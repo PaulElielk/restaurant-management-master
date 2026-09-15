@@ -21,7 +21,11 @@
                         <input type="number" name="qty" id="qty" value="1" min="1" max="1000"
                             @change="onQtyChange($event)" />
                     </div>
-                    <button class="btn" @click="addToCart">Add to cart</button>
+                    <button class="btn" :disabled="isAdding" @click="addToCart">
+                        <span v-if="isAdding"><i class="fas fa-spinner fa-spin"></i> Adding...</span>
+                        <span v-else-if="addedSuccess"><i class="fas fa-check"></i> Added ✓</span>
+                        <span v-else>Add to cart</span>
+                    </button>
                 </div>
             </div>
             <also-bought :food-id="f.food_id" @add-to-cart="addToCartFromAlsoBought" />
@@ -52,6 +56,10 @@ export default {
     data() {
         return {
             qty: 1,
+            isAdding: false,
+            addedSuccess: false,
+            addingAlsoBoughtId: null,
+            addedAlsoBoughtId: null,
         }
     },
 
@@ -74,43 +82,70 @@ export default {
         },
 
         async addToCart() {
-            let existItem = await axios.get('/cartItem/' + parseInt(this.user.user_id) + '/' + parseInt(this.food));
+            if (this.isAdding) return;
+            this.isAdding = true;
 
-            if (existItem.data.length == 1) {
-                let data = {
-                    user_id: parseInt(this.user.user_id),
-                    food_id: parseInt(this.food),
-                    item_qty: parseInt(this.qty) + parseInt(existItem.data[0].item_qty)
-                };
-                await axios.put("/cartItem/", data)
-                this.$refs.alert.showAlert('success', 'Thank you!', 'Add To Cart Successfully !')
+            try {
+                let existItem = await axios.get('/cartItem/' + parseInt(this.user.user_id) + '/' + parseInt(this.food));
 
-            } else {
-                let data = {
-                    user_id: parseInt(this.user.user_id),
-                    food_id: parseInt(this.food),
-                    item_qty: parseInt(this.qty)
-                };
+                if (existItem.data.length == 1) {
+                    let data = {
+                        user_id: parseInt(this.user.user_id),
+                        food_id: parseInt(this.food),
+                        item_qty: parseInt(this.qty) + parseInt(existItem.data[0].item_qty)
+                    };
+                    await axios.put("/cartItem/", data);
+                } else {
+                    let data = {
+                        user_id: parseInt(this.user.user_id),
+                        food_id: parseInt(this.food),
+                        item_qty: parseInt(this.qty)
+                    };
 
-                await axios.post("/cartItem/", data)
-                this.$refs.alert.showAlert('success', 'Thank you!', 'Add To Cart Successfully !')
+                    await axios.post("/cartItem/", data);
+                }
+                this.addedSuccess = true;
+                this.$refs.alert.showAlert('success', 'Thank you!', 'Added To Cart Successfully !');
+                setTimeout(() => {
+                    this.addedSuccess = false;
+                }, 1200);
+            } catch (err) {
+                console.error(err);
+                this.$refs.alert.showAlert('error', 'Error', 'Failed to add item to cart. Please try again.');
+            } finally {
+                this.isAdding = false;
             }
         },
 
         async addToCartFromAlsoBought(food) {
             const foodId = parseInt(food.food_id);
-            const userId = parseInt(this.user.user_id);
-            let existItem = await axios.get(`/cartItem/${userId}/${foodId}`);
-            if (existItem.data.length === 1) {
-                await axios.put('/cartItem/', {
-                    user_id: userId,
-                    food_id: foodId,
-                    item_qty: 1 + parseInt(existItem.data[0].item_qty)
-                });
-            } else {
-                await axios.post('/cartItem/', { user_id: userId, food_id: foodId, item_qty: 1 });
+            if (this.addingAlsoBoughtId === foodId) return;
+            this.addingAlsoBoughtId = foodId;
+
+            try {
+                const userId = parseInt(this.user.user_id);
+                let existItem = await axios.get(`/cartItem/${userId}/${foodId}`);
+                if (existItem.data.length === 1) {
+                    await axios.put('/cartItem/', {
+                        user_id: userId,
+                        food_id: foodId,
+                        item_qty: 1 + parseInt(existItem.data[0].item_qty)
+                    });
+                } else {
+                    await axios.post('/cartItem/', { user_id: userId, food_id: foodId, item_qty: 1 });
+                }
+                this.addedAlsoBoughtId = foodId;
+                this.$refs.alert.showAlert('success', 'Thank you!', 'Added To Cart Successfully !');
+                setTimeout(() => {
+                    if (this.addedAlsoBoughtId === foodId) {
+                        this.addedAlsoBoughtId = null;
+                    }
+                }, 1200);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                this.addingAlsoBoughtId = null;
             }
-            this.$refs.alert.showAlert('success', 'Thank you!', 'Add To Cart Successfully !');
         }
     },
 

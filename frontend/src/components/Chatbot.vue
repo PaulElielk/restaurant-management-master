@@ -85,7 +85,7 @@
 
                 <!-- Quick-reply suggestion chips -->
                 <div class="suggestion-chips">
-                    <button v-for="chip in suggestions" :key="chip" class="chip" @click="sendChip(chip)">
+                    <button v-for="chip in suggestions" :key="chip" class="chip" :disabled="isTyping" @click="sendChip(chip)">
                         {{ chip }}
                     </button>
                 </div>
@@ -93,14 +93,16 @@
                 <!-- Input Area -->
                 <div class="chatbot-input-area">
                     <input
+                        ref="chatInput"
                         v-model="userInput"
                         type="text"
                         placeholder="Ask me anything..."
-                        @keyup.enter="sendMessage"
+                        @keyup.enter="!isTyping && userInput.trim() && sendMessage()"
                         :disabled="isTyping"
                     />
-                    <button @click="sendMessage" :disabled="isTyping || !userInput.trim()">
-                        <i class="fas fa-paper-plane"></i>
+                    <button @click="sendMessage" :disabled="isTyping || !userInput.trim()" :title="isTyping ? 'Assistant is typing...' : 'Send message'">
+                        <i v-if="!isTyping" class="fas fa-paper-plane"></i>
+                        <i v-else class="fas fa-circle-notch fa-spin"></i>
                     </button>
                 </div>
 
@@ -313,16 +315,26 @@ export default {
                 });
             } finally {
                 this.isTyping = false;
-                this.$nextTick(() => this.scrollToBottom());
+                this.scrollToBottom();
+                this.$nextTick(() => {
+                    if (this.$refs.chatInput) {
+                        this.$refs.chatInput.focus();
+                    }
+                });
             }
         },
 
         // Auto-scroll the message window to the latest message
         scrollToBottom() {
-            const container = this.$refs.messagesContainer;
-            if (container) {
-                container.scrollTop = container.scrollHeight;
-            }
+            this.$nextTick(() => {
+                const box = this.$refs.messagesContainer || this.$refs.chatBox || document.querySelector('.chatbot-messages');
+                if (box) {
+                    box.scrollTop = box.scrollHeight;
+                    setTimeout(() => {
+                        if (box) box.scrollTop = box.scrollHeight;
+                    }, 80);
+                }
+            });
         },
 
         // Convert **bold** markdown to <strong> HTML tags safely
@@ -627,9 +639,13 @@ export default {
     transition: background 0.2s;
     white-space: nowrap;
 }
-.chip:hover {
+.chip:hover:not(:disabled) {
     background: #27ae60;
     color: #fff;
+}
+.chip:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
 }
 
 /* ── Input Area ────────────────────────────────────────────── */

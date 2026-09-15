@@ -19,8 +19,10 @@
                     <p class="also-bought-price">
                         {{ parseFloat(food.food_price) - parseFloat(food.food_discount) }} Fcfa
                     </p>
-                    <button class="also-bought-btn" @click="addToCart(food)">
-                        + Add to cart
+                    <button class="also-bought-btn" :disabled="isAdding(food.food_id)" @click="addToCart(food)">
+                        <span v-if="isAdding(food.food_id)"><i class="fas fa-spinner fa-spin"></i> Adding...</span>
+                        <span v-else-if="isAdded(food.food_id)"><i class="fas fa-check"></i> Added ✓</span>
+                        <span v-else>+ Add to cart</span>
                     </button>
                 </div>
             </div>
@@ -43,6 +45,8 @@ export default {
     data() {
         return {
             alsoBought: [],
+            addingId: null,
+            addedId: null,
         };
     },
 
@@ -57,6 +61,14 @@ export default {
     },
 
     methods: {
+        isAdding(id) {
+            return this.addingId === parseInt(id, 10);
+        },
+
+        isAdded(id) {
+            return this.addedId === parseInt(id, 10);
+        },
+
         async fetchAlsoBought(id) {
             if (!id) return;
             try {
@@ -69,8 +81,24 @@ export default {
         },
 
         async addToCart(food) {
-            // Emit so the parent page can handle the cart logic the same way it already does
-            this.$emit("add-to-cart", food);
+            const id = parseInt(food.food_id, 10);
+            if (this.addingId === id) return;
+            this.addingId = id;
+            try {
+                await this.$emit("add-to-cart", food);
+                this.addedId = id;
+                setTimeout(() => {
+                    if (this.addedId === id) {
+                        this.addedId = null;
+                    }
+                }, 1200);
+            } finally {
+                setTimeout(() => {
+                    if (this.addingId === id) {
+                        this.addingId = null;
+                    }
+                }, 300);
+            }
         },
     },
 };
@@ -210,5 +238,12 @@ export default {
 
 .also-bought-btn:active {
     transform: translateY(0);
+}
+
+.also-bought-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 </style>

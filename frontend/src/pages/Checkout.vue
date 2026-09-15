@@ -10,14 +10,16 @@
                 <div class="form-group details-group">
                     <h4>Shipping Details</h4>
                     <div class="form-group">
-                        <input type="text" name="coPhone" id="coPhone" placeholder="Phone number" class="form-control"
+                        <input type="text" name="coPhone" id="coPhone" ref="firstInput" placeholder="Phone number" class="form-control"
+                            :class="{ 'is-invalid': errorObj.phoneErr.length > 0 }"
                             v-model="checkoutObj.phone" />
                         <p class="error-mess" v-if="errorObj.phoneErr.length > 0">{{ errorObj.phoneErr[0] }}</p>
                     </div>
 
                     <div class="form-group">
                         <input type="text" name="coAddress" id="coAddress" placeholder="Address in Côte d'Ivoire"
-                            class="form-control" v-model="checkoutObj.address" />
+                            class="form-control" :class="{ 'is-invalid': errorObj.addressErr.length > 0 }"
+                            v-model="checkoutObj.address" />
                         <p class="error-mess" v-if="errorObj.addressErr.length > 0">{{ errorObj.addressErr[0] }}</p>
                     </div>
                 </div>
@@ -38,18 +40,20 @@
                     <div v-if="checkoutObj.paymentMethod == 'card'">
                         <div class="form-group">
                             <input type="text" name="coCardNum" placeholder="Enter your card number" id="coCardNum"
-                                class="form-control" v-model="cardObj.number" size="16" maxlength="16" />
+                                class="form-control" :class="{ 'is-invalid': errorObj.numErr.length > 0 }"
+                                v-model="cardObj.number" size="16" maxlength="16" />
                             <p class="error-mess" v-if="errorObj.numErr.length > 0">{{ errorObj.numErr[0] }}</p>
                         </div>
 
                         <div class="form-group">
                             <input v-upcase type="text" name="coCardName" placeholder="Enter the name in your card "
-                                id="coCardName" class="form-control" v-model="cardObj.name" />
+                                id="coCardName" class="form-control" :class="{ 'is-invalid': errorObj.nameErr.length > 0 }"
+                                v-model="cardObj.name" />
                             <p class="error-mess" v-if="errorObj.nameErr.length > 0">{{ errorObj.nameErr[0] }}</p>
                         </div>
 
                         <div class="form-group">
-                            <div class="form-control">
+                            <div class="form-control" :class="{ 'is-invalid': errorObj.exDateErr.length > 0 }">
                                 <span
                                     style="font-size: 1.6rem; position: absolute; margin-left: -5px; margin-top: -11px;">Expiry
                                     Date:
@@ -64,6 +68,7 @@
 
                         <div class="form-group">
                             <input type="text" name="coCardCvv" placeholder="CVV" id="coCardCvv" class="form-control"
+                                :class="{ 'is-invalid': errorObj.cvvErr.length > 0 }"
                                 v-model="cardObj.cvv" />
                             <p class="error-mess" v-if="errorObj.cvvErr.length > 0">{{ errorObj.cvvErr[0] }}</p>
                         </div>
@@ -71,8 +76,10 @@
                 </div>
 
                 <div v-if="user" class="form-group">
-                    <input type="submit" value="CONFIRM & PAY" class="btn"
-                        :disabled="filterFoods.length ? false : true" />
+                    <button type="submit" class="btn" :disabled="!filterFoods.length || isSubmitting" style="min-width: 180px;">
+                        <span v-if="isSubmitting"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
+                        <span v-else>CONFIRM & PAY</span>
+                    </button>
                 </div>
             </form>
         </div>
@@ -92,15 +99,17 @@ export default {
             errorObj: { phoneErr: [], addressErr: [], payErr: [], numErr: [], nameErr: [], exDateErr: [], cvvErr: [] },
             cartItem: [],
             itemQuantity: [],
+            isSubmitting: false,
         }
     },
 
-    // created() {
-    //     this.getAllCartItem();
-    // },
-
     mounted() {
         this.getAllCartItem();
+        this.$nextTick(() => {
+            if (this.$refs.firstInput) {
+                this.$refs.firstInput.focus();
+            }
+        });
     },
 
     computed: {
@@ -290,23 +299,28 @@ export default {
         },
 
         async handleSubmit(e) {
+            e.preventDefault();
+            if (this.isSubmitting) return;
+
             this.checkForm();
 
             if (!this.checkEmptyErr()) {
-                e.preventDefault();
-            } else {
-                e.preventDefault();
+                return;
+            }
+
+            try {
+                this.isSubmitting = true;
                 let billId = (await axios.get("/billstatus/new")).data;
 
                 if (billId == "") {
-                    billId = 1
+                    billId = 1;
                 } else {
-                    billId = parseInt(billId.bill_id) + 1
+                    billId = parseInt(billId.bill_id) + 1;
                 }
 
-                this.cartItem.forEach((foodId, index) => {
-                    this.sendBillDetails(billId, foodId, this.itemQuantity[index])
-                });
+                await Promise.all(this.cartItem.map((foodId, index) => {
+                    return this.sendBillDetails(billId, foodId, this.itemQuantity[index]);
+                }));
 
                 var now = new Date();
                 var day = ("0" + now.getDate()).slice(-2);
@@ -327,16 +341,18 @@ export default {
                     bill_total: parseInt(this.calculateSummaryPrice()[3]),
                     bill_paid: this.isPaid(),
                     bill_status: 1
-                }
+                };
 
-                axios.post("/billstatus", billStatus);
-                axios.delete("/cartItem/" + this.user.user_id);
+                await axios.post("/billstatus", billStatus);
+                await axios.delete("/cartItem/" + this.user.user_id);
 
                 this.cartItem = [];
                 this.itemQuantity = [];
 
                 this.$router.push("/thank");
-
+            } catch (err) {
+                console.error("Order submission error:", err);
+                this.isSubmitting = false;
             }
         }
     }
@@ -393,7 +409,14 @@ const vUpcase = {
     color: #130f40;
     text-transform: none;
     width: 100%;
-    border: none;
+    border: 1.5px solid transparent;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.checkout-container .checkout-form-container form .form-control.is-invalid,
+.checkout-container .checkout-form-container form input.form-control.is-invalid {
+    border: 1.5px solid #e74c3c !important;
+    background-color: #fff9f9;
 }
 
 .checkout-container .checkout-form-container form label {
