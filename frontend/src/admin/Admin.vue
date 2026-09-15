@@ -1,154 +1,259 @@
 <template>
-    <div class="admin-container">
-        <div class="admin-form-container">
-            <form id="adminForm" @submit="handleSubmit" novalidate autocomplete="off">
-                <h3>ADMIN</h3>
+    <div class="admin-login-page">
+        <div class="admin-card">
+            <div class="brand-header">
+                <img src="../assets/images/taco-logo.png" alt="P&C's Kitchen Logo" class="brand-logo" />
+                <h2 class="brand-title">P&C's Kitchen</h2>
+                <span class="brand-tag">Admin Portal</span>
+                <p class="brand-desc">Enter your administrative password to access operations and forecasting.</p>
+            </div>
 
+            <form id="adminForm" @submit="handleSubmit" novalidate autocomplete="off">
                 <div v-if="errors.length" class="error-box">
                     <ul>
-                        <li v-for="error in errors" :key="error">{{ error }}</li>
+                        <li v-for="error in errors" :key="error">
+                            <i class="fas fa-circle-exclamation"></i> {{ error }}
+                        </li>
                     </ul>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" id="uPass" name="uPass" class="form-control"
-                        placeholder="enter admin password" v-model="adminObj.pass" />
+                    <label for="uPass" class="field-label">Security Key</label>
+                    <div class="input-container">
+                        <i class="fas fa-lock field-icon"></i>
+                        <input
+                            type="password"
+                            id="uPass"
+                            name="uPass"
+                            class="form-control"
+                            placeholder="Enter admin password..."
+                            v-model="adminObj.pass"
+                            autofocus
+                        />
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <input type="submit" value="admin access" class="btn">
+                <button type="submit" class="btn submit-btn">
+                    <span>Access Dashboard</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <div class="return-home">
+                    <router-link to="/">
+                        <i class="fas fa-arrow-left"></i> Return to Restaurant Website
+                    </router-link>
                 </div>
             </form>
         </div>
     </div>
 </template>
 
-
 <script>
 import { mapMutations } from "vuex";
+
 export default {
-    name: 'Admin',
+    name: "Admin",
 
     data() {
         return {
             adminObj: { pass: "" },
             key: "25082002",
             errors: [],
-        }
+        };
     },
 
     methods: {
         ...mapMutations(["setAdmin"]),
 
         handleSubmit(e) {
+            e.preventDefault();
             this.errors = [];
+
             if (!this.adminObj.pass) {
-                this.errors.push('Password is required');
+                this.errors.push("Password is required");
+                return;
             }
 
-            if (!this.errors.length == 0) {
-                e.preventDefault();
+            if (this.key === this.adminObj.pass) {
+                this.setAdmin("admin");
+                this.$router.push("/admin/dashboard");
+            } else {
+                this.errors.push("Admin password is wrong!");
             }
-            else {
-                e.preventDefault();
-                if (this.key === this.adminObj.pass) {
-                    this.setAdmin("admin");
-                    this.$router.push("/admin/dashboard");
-                }
-                else {
-                    this.errors.push("Admin password wrong!")
-                }
-
-            }
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
 <style scoped>
-.admin-container {
-    padding: 2rem 9%;
-}
-
-.admin-container .admin-form-container {
+.admin-login-page {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #fff;
-    height: 100vh;
+    padding: 3rem 9%;
 }
 
-.admin-container .admin-form-container form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 40rem;
+.admin-card {
+    max-width: 46rem;
     width: 100%;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
-    border: 0.1rem solid rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-    border-radius: .5rem;
-    animation: fadeUp .4s linear;
+    background: #fff;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.08);
+    border: 0.1rem solid #e1e7ec;
+    padding: 3.5rem 3rem;
+    border-radius: 1rem;
+    animation: fadeUp 0.4s linear;
 }
 
-.admin-container .admin-form-container form h3 {
-    padding-bottom: 1rem;
-    font-size: 2rem;
-    font-weight: bolder;
-    text-transform: uppercase;
-    color: #130f40;
-    margin: 0;
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.admin-container .admin-form-container form .form-control {
-    margin: .7rem 0;
-    border-radius: .5rem;
-    background: #f7f7f7;
-    padding: 2rem 1.2rem;
-    font-size: 1.6rem;
-    color: #130f40;
-    text-transform: none;
-    width: 100%;
-    border: none;
+.brand-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
 }
 
-.admin-container .admin-form-container form .btn {
+.brand-logo {
+    width: 6rem;
+    height: auto;
     margin-bottom: 1rem;
-    margin-top: 1rem;
-    width: 100%;
 }
 
-.admin-container .admin-form-container form p {
-    padding-top: 1rem;
+.brand-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #130f40;
+    margin: 0 0 0.4rem 0;
+}
+
+.brand-tag {
+    font-family: "Satisfy", cursive;
+    font-size: 2.6rem;
+    color: #27ae60;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.brand-desc {
     font-size: 1.5rem;
     color: #666;
     margin: 0;
+    line-height: 1.5;
 }
 
-.admin-container .admin-form-container form p a {
-    color: #27ae60;
-}
-
-.admin-container .admin-form-container form p a:hover {
+.field-label {
+    font-size: 1.5rem;
+    font-weight: 600;
     color: #130f40;
-    text-decoration: underline;
+    margin-bottom: 0.8rem;
+    display: block;
 }
 
-.admin-container .admin-form-container form .error-box {
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.field-icon {
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.8rem;
+    color: #888;
+    pointer-events: none;
+}
+
+.form-control {
+    width: 100%;
+    border-radius: 0.5rem;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+    transition: 0.2s linear;
+}
+
+.form-control:focus {
+    background: #fff;
+    border-color: #27ae60;
+    box-shadow: 0 0 0 0.3rem rgba(39, 174, 96, 0.15);
+}
+
+.submit-btn {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    padding: 1.3rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    background: #27ae60;
+    color: #fff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: 0.2s linear;
+}
+
+.submit-btn:hover {
+    background-color: #f38609;
+    color: #fff;
+}
+
+.return-home {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.return-home a {
+    font-size: 1.5rem;
+    color: #666;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: 0.2s linear;
+}
+
+.return-home a:hover {
+    color: #27ae60;
+    text-decoration: underline !important;
+}
+
+.error-box {
     background-color: #fff9fa;
-    box-sizing: border-box;
-    border: 2px solid rgba(255, 66, 79, .2);
-    border-radius: 2px;
-    font-size: 12px;
-    margin-bottom: 20px;
+    border: 1px solid rgba(255, 66, 79, 0.3);
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    padding: 1rem 1.5rem;
 }
 
-.admin-container .admin-form-container form .error-box ul {
+.error-box ul {
     list-style-type: none;
     margin: 0;
-    padding: 10px 0px;
+    padding: 0;
 }
 
-.admin-container .admin-form-container form .error-box ul li {
-    padding-left: 10px;
-    color: rgb(182, 0, 0);
+.error-box ul li {
+    color: #d63031;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.3rem 0;
 }
 </style>

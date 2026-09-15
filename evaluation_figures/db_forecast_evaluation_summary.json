@@ -5,89 +5,89 @@
   "lookback_days": 30,
   "forecast_days": 7,
   "confidence_counts": {
-    "low": 12,
-    "medium": 16,
-    "high": 14
+    "low": 0,
+    "medium": 0,
+    "high": 74
   },
   "top_outputs": [
     {
+      "food_id": 42,
+      "food_name": "Coca cola",
+      "total_qty": 840,
+      "active_days": 31,
+      "predicted_period_qty": 196,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 74,
+      "food_name": "Gnamakoudji (Fresh Ginger Juice)",
+      "total_qty": 783,
+      "active_days": 31,
+      "predicted_period_qty": 182.7,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 60,
+      "food_name": "Alloco Simple",
+      "total_qty": 681,
+      "active_days": 31,
+      "predicted_period_qty": 158.9,
+      "confidence_hint": "high"
+    },
+    {
       "food_id": 11,
       "food_name": "bean & cheese burrito",
-      "total_qty": 117,
-      "active_days": 26,
-      "predicted_period_qty": 27.3,
+      "total_qty": 657,
+      "active_days": 31,
+      "predicted_period_qty": 153.3,
       "confidence_hint": "high"
     },
     {
-      "food_id": 17,
-      "food_name": "shrimp nachos",
-      "total_qty": 112,
-      "active_days": 25,
-      "predicted_period_qty": 26.13,
+      "food_id": 43,
+      "food_name": "Classic Bacon Cheeseburger",
+      "total_qty": 655,
+      "active_days": 31,
+      "predicted_period_qty": 152.83,
       "confidence_hint": "high"
     },
     {
-      "food_id": 38,
-      "food_name": "Michelada",
-      "total_qty": 112,
-      "active_days": 25,
-      "predicted_period_qty": 26.13,
+      "food_id": 53,
+      "food_name": "Golden French Fries",
+      "total_qty": 651,
+      "active_days": 31,
+      "predicted_period_qty": 151.9,
       "confidence_hint": "high"
     },
     {
-      "food_id": 2,
-      "food_name": "shrimp tacos",
-      "total_qty": 108,
-      "active_days": 24,
-      "predicted_period_qty": 25.2,
+      "food_id": 12,
+      "food_name": "breakfast burrito",
+      "total_qty": 617,
+      "active_days": 31,
+      "predicted_period_qty": 143.97,
       "confidence_hint": "high"
     },
     {
-      "food_id": 13,
-      "food_name": "california burrito",
-      "total_qty": 98,
-      "active_days": 28,
-      "predicted_period_qty": 22.87,
+      "food_id": 59,
+      "food_name": "Garba (Attiéké Thon Frit)",
+      "total_qty": 617,
+      "active_days": 31,
+      "predicted_period_qty": 143.97,
       "confidence_hint": "high"
     },
     {
       "food_id": 4,
       "food_name": "tacos al pastor",
-      "total_qty": 91,
-      "active_days": 26,
-      "predicted_period_qty": 21.23,
+      "total_qty": 616,
+      "active_days": 31,
+      "predicted_period_qty": 143.73,
       "confidence_hint": "high"
     },
     {
-      "food_id": 10,
-      "food_name": "poncho burrito",
-      "total_qty": 87,
-      "active_days": 25,
-      "predicted_period_qty": 20.3,
-      "confidence_hint": "high"
-    },
-    {
-      "food_id": 16,
-      "food_name": "root beer pork nachos",
-      "total_qty": 84,
-      "active_days": 24,
-      "predicted_period_qty": 19.6,
-      "confidence_hint": "high"
-    },
-    {
-      "food_id": 37,
-      "food_name": "Margarita",
-      "total_qty": 84,
-      "active_days": 24,
-      "predicted_period_qty": 19.6,
-      "confidence_hint": "high"
-    },
-    {
-      "food_id": 1,
-      "food_name": "carne asada tacos",
-      "total_qty": 80,
-      "active_days": 23,
-      "predicted_period_qty": 18.67,
+      "food_id": 46,
+      "food_name": "Spicy Buffalo Wings",
+      "total_qty": 604,
+      "active_days": 31,
+      "predicted_period_qty": 140.93,
       "confidence_hint": "high"
     }
   ]
