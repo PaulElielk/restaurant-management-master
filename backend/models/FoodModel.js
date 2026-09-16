@@ -148,12 +148,14 @@ export const getRecommendedFoodsForUser = (userId, options, result) => {
             f.food_id,
             f.food_category,
             f.food_type,
+            f.cuisine_type,
+            f.category,
             SUM(bd.item_qty) AS qty
         FROM billstatus bs
         JOIN billdetails bd ON bd.bill_id = bs.bill_id
         JOIN food f ON f.food_id = bd.food_id
         WHERE bs.user_id = ? AND bs.bill_status > 0
-        GROUP BY f.food_id, f.food_category, f.food_type
+        GROUP BY f.food_id, f.food_category, f.food_type, f.cuisine_type, f.category
     `;
 
     const foodSignalsQuery = `
@@ -286,6 +288,7 @@ export const getRecommendedFoodsForUser = (userId, options, result) => {
                 const purchasedFoodIds = new Set();
                 const categoryPreference = {};
                 const typePreference = {};
+                const cuisinePreference = {};
                 let totalHistoryQty = 0;
 
                 userRows.forEach((row) => {
@@ -293,32 +296,70 @@ export const getRecommendedFoodsForUser = (userId, options, result) => {
 
                     const rowQty = Number.parseInt(row.qty, 10) || 0;
                     totalHistoryQty += rowQty;
-                    categoryPreference[row.food_category] = (categoryPreference[row.food_category] || 0) + rowQty;
-                    typePreference[row.food_type] = (typePreference[row.food_type] || 0) + rowQty;
+                    if (row.food_category) {
+                        categoryPreference[row.food_category] = (categoryPreference[row.food_category] || 0) + rowQty;
+                    }
+                    if (row.category) {
+                        categoryPreference[row.category] = (categoryPreference[row.category] || 0) + rowQty;
+                    }
+                    if (row.food_type) {
+                        typePreference[row.food_type] = (typePreference[row.food_type] || 0) + rowQty;
+                    }
+                    if (row.cuisine_type) {
+                        cuisinePreference[row.cuisine_type] = (cuisinePreference[row.cuisine_type] || 0) + rowQty;
+                    }
                 });
 
                 const historyIsLow = totalHistoryQty < safeMinHistory;
 
                 const excludedIds = new Set(cartExcludedIds);
 
+                const maxGlobalQty = Math.max(1, ...allFoods.map((f) => Number.parseInt(f.global_qty, 10) || 0));
+
+                const formatCuisine = (c) => {
+                    if (!c) return "";
+                    const mapping = {
+                        ivorian: "Ivorian",
+                        west_african: "West African",
+                        american: "American",
+                        mexican: "Mexican",
+                        italian: "Italian",
+                        asian: "Asian"
+                    };
+                    return mapping[c.toLowerCase()] || (c.charAt(0).toUpperCase() + c.slice(1));
+                };
+
                 const candidates = allFoods
                     .filter((food) => !excludedIds.has(Number.parseInt(food.food_id, 10)))
                     .map((food) => {
-                        const popularity = Number.parseInt(food.global_qty, 10) || 0;
-                        const categoryScore = categoryPreference[food.food_category] || 0;
-                        const typeScore = typePreference[food.food_type] || 0;
-                        const personalizedScore = (categoryScore * 3) + (typeScore * 2);
+                        const rawPop = Number.parseInt(food.global_qty, 10) || 0;
+                        const normPop = (rawPop / maxGlobalQty) * 100;
+
+                        const cuisineScore = (food.cuisine_type && cuisinePreference[food.cuisine_type])
+                            ? cuisinePreference[food.cuisine_type]
+                            : 0;
+                        const catScore = Math.max(
+                            categoryPreference[food.food_category] || 0,
+                            categoryPreference[food.category] || 0
+                        );
+                        const typeScore = (food.food_type && typePreference[food.food_type])
+                            ? typePreference[food.food_type]
+                            : 0;
+
+                        const personalizedScore = (cuisineScore * 50) + (catScore * 25) + (typeScore * 10);
                         const voteScore = (Number.parseFloat(food.food_vote) || 0) / 1000;
 
                         const score = historyIsLow
-                            ? (popularity * 0.75) + (personalizedScore * 0.25) + voteScore
-                            : popularity + personalizedScore + voteScore;
+                            ? (normPop * 0.70) + (personalizedScore * 0.30) + voteScore
+                            : (normPop * 0.25) + personalizedScore + voteScore;
 
                         let reason = "Popular with customers";
-                        if (categoryScore > 0 && typeScore > 0) {
-                            reason = `Because you like ${food.food_category} (${food.food_type})`;
-                        } else if (categoryScore > 0) {
-                            reason = `Because you order ${food.food_category}`;
+                        if (cuisineScore > 0) {
+                            reason = `Because you love ${formatCuisine(food.cuisine_type)} cuisine`;
+                        } else if (catScore > 0 && typeScore > 0) {
+                            reason = `Because you like ${food.food_category || food.category} (${food.food_type})`;
+                        } else if (catScore > 0) {
+                            reason = `Because you order ${food.food_category || food.category}`;
                         } else if (typeScore > 0) {
                             reason = `Because you prefer ${food.food_type} options`;
                         }
@@ -380,13 +421,15 @@ export const evaluateRecommendationsForUser = (userId, options, result) => {
             bd.food_id,
             f.food_category,
             f.food_type,
+            f.cuisine_type,
+            f.category,
             SUM(bd.item_qty) AS qty,
             MAX(bs.bill_id) AS last_bill_id
         FROM billstatus bs
         JOIN billdetails bd ON bd.bill_id = bs.bill_id
         JOIN food f ON f.food_id = bd.food_id
         WHERE bs.user_id = ? AND bs.bill_status > 0
-        GROUP BY bd.food_id, f.food_category, f.food_type
+        GROUP BY bd.food_id, f.food_category, f.food_type, f.cuisine_type, f.category
     `;
 
     const foodSignalsQuery = `
@@ -469,10 +512,21 @@ export const evaluateRecommendationsForUser = (userId, options, result) => {
 
         const categoryPreference = {};
         const typePreference = {};
+        const cuisinePreference = {};
         trainRows.forEach((row) => {
             const qty = Number.parseInt(row.qty, 10) || 0;
-            categoryPreference[row.food_category] = (categoryPreference[row.food_category] || 0) + qty;
-            typePreference[row.food_type] = (typePreference[row.food_type] || 0) + qty;
+            if (row.food_category) {
+                categoryPreference[row.food_category] = (categoryPreference[row.food_category] || 0) + qty;
+            }
+            if (row.category) {
+                categoryPreference[row.category] = (categoryPreference[row.category] || 0) + qty;
+            }
+            if (row.food_type) {
+                typePreference[row.food_type] = (typePreference[row.food_type] || 0) + qty;
+            }
+            if (row.cuisine_type) {
+                cuisinePreference[row.cuisine_type] = (cuisinePreference[row.cuisine_type] || 0) + qty;
+            }
         });
 
         db.query(foodSignalsQuery, (foodErr, allFoods) => {
@@ -482,14 +536,26 @@ export const evaluateRecommendationsForUser = (userId, options, result) => {
                 return;
             }
 
+            const maxGlobalQty = Math.max(1, ...allFoods.map((f) => Number.parseInt(f.global_qty, 10) || 0));
+
             const candidates = allFoods
                 .filter((food) => !trainFoodIds.has(Number.parseInt(food.food_id, 10)))
                 .map((food) => {
-                    const popularity = Number.parseInt(food.global_qty, 10) || 0;
-                    const categoryScore = categoryPreference[food.food_category] || 0;
-                    const typeScore = typePreference[food.food_type] || 0;
+                    const rawPop = Number.parseInt(food.global_qty, 10) || 0;
+                    const normPop = (rawPop / maxGlobalQty) * 100;
+                    const cuisineScore = (food.cuisine_type && cuisinePreference[food.cuisine_type])
+                        ? cuisinePreference[food.cuisine_type]
+                        : 0;
+                    const catScore = Math.max(
+                        categoryPreference[food.food_category] || 0,
+                        categoryPreference[food.category] || 0
+                    );
+                    const typeScore = (food.food_type && typePreference[food.food_type])
+                        ? typePreference[food.food_type]
+                        : 0;
+                    const personalizedScore = (cuisineScore * 50) + (catScore * 25) + (typeScore * 10);
                     const voteScore = (Number.parseFloat(food.food_vote) || 0) / 1000;
-                    const score = popularity + (categoryScore * 3) + (typeScore * 2) + voteScore;
+                    const score = (normPop * 0.25) + personalizedScore + voteScore;
 
                     return {
                         ...food,
