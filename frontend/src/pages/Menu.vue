@@ -262,17 +262,20 @@ export default {
 
     mounted() {
         this.getRecommendations();
-        if (this.$route && this.$route.query && this.$route.query.category) {
-            this.applyCategoryFromQuery(this.$route.query.category);
-        }
+        this.handleRouteQuery();
     },
 
     watch: {
         user() {
             this.getRecommendations();
         },
-        '$route.query.category'(newCat) {
-            this.applyCategoryFromQuery(newCat);
+        '$route.query'() {
+            this.handleRouteQuery();
+        },
+        allFoods() {
+            if (this.$route && this.$route.query && (this.$route.query.category || this.$route.query.food)) {
+                this.handleRouteQuery();
+            }
         }
     },
 computed: {
@@ -311,6 +314,29 @@ computed: {
         }
     },
     methods: {
+        handleRouteQuery() {
+            if (!this.$route || !this.$route.query) return;
+
+            if (this.$route.query.category) {
+                this.applyCategoryFromQuery(this.$route.query.category);
+            }
+
+            if (this.$route.query.food) {
+                const foodId = parseInt(this.$route.query.food, 10);
+                if (foodId && !isNaN(foodId)) {
+                    this.sendId = foodId;
+                    this.showQuickView = true;
+
+                    this.$nextTick(() => {
+                        const index = this.filterFoods.findIndex((f) => parseInt(f.food_id, 10) === foodId);
+                        if (index !== -1) {
+                            this.pageNum = Math.floor(index / this.perPage);
+                        }
+                    });
+                }
+            }
+        },
+
         applyCategoryFromQuery(category) {
             const queryCat = category ? String(category).toLowerCase().trim() : "all";
             this.foodObj.category = queryCat;

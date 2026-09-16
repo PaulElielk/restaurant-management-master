@@ -29,12 +29,27 @@
 
             <div class="recommended-grid">
                 <div v-for="(food, index) in recommendedFoods" :key="`home-rec-${index}`" class="recommended-card">
-                    <img :src="require(`../assets/images/${food.food_src}`)" :alt="food.food_name" />
-                    <h4>{{ food.food_name }}</h4>
+                    <router-link :to="getMenuUrl(food)" class="rec-image-link" @click="scrollToTop()">
+                        <img :src="require(`../assets/images/${food.food_src}`)" :alt="food.food_name" />
+                    </router-link>
+                    <h4>
+                        <router-link :to="getMenuUrl(food)" class="rec-title-link" @click="scrollToTop()">
+                            {{ food.food_name }}
+                        </router-link>
+                    </h4>
                     <p v-if="buildFoodSubtitle(food)" class="food-meta-subtitle">{{ buildFoodSubtitle(food) }}</p>
                     <p class="recommended-price">{{ parseFloat(food.food_price) - parseFloat(food.food_discount) }} Fcfa</p>
                     <p class="recommended-reason">{{ food.recommendation_reason }}</p>
-                    <router-link @click="scrollToTop()" to="/menu" class="btn">order now</router-link>
+                    <div class="card-btn-group">
+                        <button class="btn btn-add-cart" :disabled="isAdding(food.food_id)" @click="quickAddToCart(food)">
+                            <span v-if="isAdding(food.food_id)"><i class="fas fa-spinner fa-spin"></i> Adding...</span>
+                            <span v-else-if="isAdded(food.food_id)"><i class="fas fa-check"></i> Added ✓</span>
+                            <span v-else><i class="fas fa-cart-plus"></i> Add to cart</span>
+                        </button>
+                        <router-link :to="getMenuUrl(food)" class="btn btn-order-now" @click="scrollToTop()">
+                            <i class="fas fa-utensils"></i> Order now
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -155,6 +170,8 @@ export default {
         return {
             recommendationsLoading: false,
             recommendedFoods: [],
+            addingIds: [],
+            addedIds: [],
         };
     },
 
@@ -173,6 +190,112 @@ export default {
     },
 
     methods: {
+        getFoodCategory(food) {
+            if (!food) return "all";
+            const foodCat = String(food.food_category || "").toLowerCase().trim();
+            const generalCat = String(food.category || "").toLowerCase().trim();
+            const cuisine = String(food.cuisine_type || "").toLowerCase().trim();
+            const src = String(food.food_src || "").toLowerCase().trim();
+
+            if (
+                cuisine === "ivorian" ||
+                cuisine === "west_african" ||
+                cuisine.includes("african") ||
+                foodCat.includes("african") ||
+                generalCat.includes("african") ||
+                src.startsWith("african/")
+            ) {
+                return "african";
+            }
+
+            if (
+                cuisine === "american" ||
+                foodCat.includes("fast food") ||
+                generalCat.includes("fast food") ||
+                ["burger", "sandwich", "quick_bite", "wrap", "chicken"].includes(foodCat) ||
+                ["burger", "sandwich", "quick_bite", "wrap", "chicken"].includes(generalCat) ||
+                src.startsWith("fastfood/")
+            ) {
+                return "fast food";
+            }
+
+            if (foodCat.includes("taco") || generalCat.includes("taco") || src.includes("taco")) {
+                return "taco";
+            }
+            if (foodCat.includes("burrito") || generalCat.includes("burrito") || src.includes("burrito")) {
+                return "burrito";
+            }
+            if (foodCat.includes("nacho") || generalCat.includes("nacho") || src.includes("nacho")) {
+                return "nachos";
+            }
+            if (foodCat.includes("drink") || generalCat.includes("drink") || src.includes("drink") || src.includes("coca")) {
+                return "drink";
+            }
+            if (foodCat.includes("dessert") || generalCat.includes("dessert") || src.includes("dessert")) {
+                return "dessert";
+            }
+            if (foodCat.includes("side") || generalCat.includes("side") || src.includes("side") || src.includes("salad")) {
+                return "sides";
+            }
+
+            if (foodCat) return foodCat;
+            if (generalCat) return generalCat;
+            return "all";
+        },
+
+        getMenuUrl(food) {
+            const category = this.getFoodCategory(food);
+            const foodId = food && food.food_id ? food.food_id : "";
+            return `/menu?category=${encodeURIComponent(category)}&food=${encodeURIComponent(foodId)}`;
+        },
+
+        async quickAddToCart(food) {
+            if (!this.user) {
+                this.$router.push("/login");
+                return;
+            }
+
+            const foodId = parseInt(food.food_id, 10);
+            if (this.addingIds.includes(foodId)) return;
+
+            this.addingIds.push(foodId);
+
+            try {
+                const existItem = await axios.get(`/cartItem/${parseInt(this.user.user_id, 10)}/${foodId}`);
+                if (existItem.data && existItem.data.length > 0) {
+                    const currentQty = parseInt(existItem.data[0].item_qty, 10) || 1;
+                    await axios.put("/cartItem/", {
+                        user_id: parseInt(this.user.user_id, 10),
+                        food_id: foodId,
+                        item_qty: currentQty + 1
+                    });
+                } else {
+                    await axios.post("/cartItem/", {
+                        user_id: parseInt(this.user.user_id, 10),
+                        food_id: foodId,
+                        item_qty: 1
+                    });
+                }
+
+                this.addedIds.push(foodId);
+                setTimeout(() => {
+                    this.addedIds = this.addedIds.filter(id => id !== foodId);
+                }, 1500);
+            } catch (err) {
+                console.error("Failed to add recommended food to cart:", err);
+            } finally {
+                this.addingIds = this.addingIds.filter(id => id !== foodId);
+            }
+        },
+
+        isAdding(foodId) {
+            return this.addingIds.includes(parseInt(foodId, 10));
+        },
+
+        isAdded(foodId) {
+            return this.addedIds.includes(parseInt(foodId, 10));
+        },
+
         buildFoodSubtitle(food) {
             const normalize = (value) => {
                 if (value === null || value === undefined) {
@@ -362,14 +485,34 @@ export default {
 .home-recommended .recommended-card {
     background: #fff;
     border-radius: 0.8rem;
-    padding: 1.2rem;
+    padding: 1.4rem 1.2rem;
     text-align: center;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-recommended .recommended-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+.home-recommended .recommended-card .rec-image-link {
+    display: block;
+    cursor: pointer;
 }
 
 .home-recommended .recommended-card img {
     width: 100%;
     height: 14rem;
     object-fit: contain;
+    transition: transform 0.25s ease;
+}
+
+.home-recommended .recommended-card:hover img {
+    transform: scale(1.04);
 }
 
 .home-recommended .recommended-card h4 {
@@ -377,6 +520,16 @@ export default {
     color: #130f40;
     text-transform: capitalize;
     margin-top: 0.8rem;
+}
+
+.home-recommended .recommended-card .rec-title-link {
+    color: #130f40;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.home-recommended .recommended-card .rec-title-link:hover {
+    color: #27ae60;
 }
 
 .home-recommended .recommended-card .food-meta-subtitle {
@@ -387,16 +540,76 @@ export default {
 }
 
 .home-recommended .recommended-card .recommended-price {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: #27ae60;
-    margin: 0;
+    margin: 0.2rem 0;
 }
 
 .home-recommended .recommended-card .recommended-reason {
-    font-size: 1.3rem;
-    color: #666;
+    font-size: 1.25rem;
+    color: #777;
     min-height: 3.2rem;
     margin: 0.4rem 0 1rem;
+    line-height: 1.35;
+}
+
+.home-recommended .recommended-card .card-btn-group {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-recommended .recommended-card .btn-add-cart {
+    flex: 1;
+    background: #27ae60;
+    color: #fff;
+    padding: 0.8rem 0.6rem;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.home-recommended .recommended-card .btn-add-cart:hover:not(:disabled) {
+    background: #219150;
+}
+
+.home-recommended .recommended-card .btn-add-cart:disabled {
+    opacity: 0.85;
+    cursor: not-allowed;
+}
+
+.home-recommended .recommended-card .btn-order-now {
+    flex: 1;
+    background: #130f40;
+    color: #fff;
+    padding: 0.8rem 0.6rem;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-weight: 600;
+}
+
+.home-recommended .recommended-card .btn-order-now:hover {
+    background: #27ae60;
+    color: #fff;
 }
 
 
