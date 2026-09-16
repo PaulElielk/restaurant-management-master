@@ -278,6 +278,8 @@ export default {
                 }
 
                 this.addedIds.push(foodId);
+                await this.$store.dispatch("getCartItemCount");
+                window.dispatchEvent(new CustomEvent("cart-updated"));
                 setTimeout(() => {
                     this.addedIds = this.addedIds.filter(id => id !== foodId);
                 }, 1500);

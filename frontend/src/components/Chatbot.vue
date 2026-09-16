@@ -264,6 +264,8 @@ export default {
                     });
                 }
 
+                await this.$store.dispatch('getCartItemCount');
+                window.dispatchEvent(new CustomEvent('cart-updated'));
                 this.pushBotMessage(`**${food.food_name}** has been added to your cart.`);
             } catch (err) {
                 this.pushBotMessage(`I couldn't add **${food.food_name}** to your cart right now. Please try again.`);

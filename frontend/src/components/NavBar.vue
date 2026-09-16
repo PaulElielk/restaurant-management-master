@@ -14,8 +14,10 @@
 
         <div class="icons">
             <div id="menu-btn" class="fas fa-bars menu-btn" @click="showNav"></div>
-            <router-link @click="scrollToTop()" to="cart">
-                <div class="fas fa-shopping-cart cart"></div>
+            <router-link @click="scrollToTop()" to="/cart" class="cart-btn-link" title="Shopping Cart">
+                <div class="fas fa-shopping-cart cart">
+                    <span v-if="cartItemCount > 0" class="cart-badge">{{ cartItemCount > 99 ? '99+' : cartItemCount }}</span>
+                </div>
             </router-link>
 
             <div v-if="!user" class="fas fa-user account" @click="showLog">
@@ -46,23 +48,46 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 export default {
     name: 'NavBar',
 
     computed: {
-        ...mapState(["user"])
+        ...mapState(["user", "cartItemCount"])
+    },
+
+    watch: {
+        user: {
+            immediate: true,
+            handler(newUser) {
+                if (newUser && newUser.user_id) {
+                    this.getCartItemCount();
+                }
+            }
+        }
     },
 
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('cart-updated', this.handleCartUpdated);
+        if (this.user && this.user.user_id) {
+            this.getCartItemCount();
+        }
     },
     unmounted() {
         window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('cart-updated', this.handleCartUpdated);
     },
 
     methods: {
         ...mapMutations(["setUser"]),
+        ...mapActions(["getCartItemCount"]),
+
+        handleCartUpdated() {
+            if (this.user && this.user.user_id) {
+                this.getCartItemCount();
+            }
+        },
 
         scrollToTop() {
             window.scrollTo(0, 0);
@@ -156,6 +181,53 @@ export default {
 .header .icons a.router-link-exact-active .cart {
     background: #f38609;
     color: white;
+}
+
+.header .icons .cart-btn-link {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.header .icons .cart {
+    position: relative;
+}
+
+.header .icons .cart-badge {
+    position: absolute;
+    top: -0.6rem;
+    right: -0.6rem;
+    background: #e74c3c;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
+    min-width: 2.1rem;
+    height: 2.1rem;
+    padding: 0 0.4rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(231, 76, 60, 0.45);
+    border: 2px solid #ffffff;
+    pointer-events: none;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.3px;
+    z-index: 10;
+    animation: cart-badge-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes cart-badge-pop {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 #menu-btn {

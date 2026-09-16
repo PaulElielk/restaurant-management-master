@@ -105,6 +105,8 @@ export default {
                     await axios.post("/cartItem/", data);
                 }
                 this.addedSuccess = true;
+                await this.$store.dispatch("getCartItemCount");
+                window.dispatchEvent(new CustomEvent("cart-updated"));
                 this.$refs.alert.showAlert('success', 'Thank you!', 'Added To Cart Successfully !');
                 setTimeout(() => {
                     this.addedSuccess = false;
@@ -135,6 +137,8 @@ export default {
                     await axios.post('/cartItem/', { user_id: userId, food_id: foodId, item_qty: 1 });
                 }
                 this.addedAlsoBoughtId = foodId;
+                await this.$store.dispatch("getCartItemCount");
+                window.dispatchEvent(new CustomEvent("cart-updated"));
                 this.$refs.alert.showAlert('success', 'Thank you!', 'Added To Cart Successfully !');
                 setTimeout(() => {
                     if (this.addedAlsoBoughtId === foodId) {

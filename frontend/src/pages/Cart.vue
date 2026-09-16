@@ -220,6 +220,8 @@ export default {
                 item_qty: parsed
             };
             await axios.put("/cartItem/", data);
+            await this.$store.dispatch("getCartItemCount");
+            window.dispatchEvent(new CustomEvent("cart-updated"));
         },
 
         async cancelBtn() {
@@ -230,6 +232,8 @@ export default {
 
             this.cartItem = [];
             this.itemQuantity = [];
+            this.$store.commit("setCartItemCount", 0);
+            window.dispatchEvent(new CustomEvent("cart-updated"));
         },
 
         checkOutBtn: function () {
@@ -241,6 +245,8 @@ export default {
 
             this.cartItem.splice(index, 1);
             this.itemQuantity.splice(index, 1);
+            await this.$store.dispatch("getCartItemCount");
+            window.dispatchEvent(new CustomEvent("cart-updated"));
         },
 
         async getAllCartItem() {
@@ -250,6 +256,7 @@ export default {
                     this.cartItem.push(element.food_id);
                     this.itemQuantity.push(element.item_qty);
                 });
+                await this.$store.dispatch("getCartItemCount");
             }
         }
 

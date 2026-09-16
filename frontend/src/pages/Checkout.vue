@@ -348,6 +348,8 @@ export default {
 
                 this.cartItem = [];
                 this.itemQuantity = [];
+                this.$store.commit("setCartItemCount", 0);
+                window.dispatchEvent(new CustomEvent("cart-updated"));
 
                 this.$router.push("/thank");
             } catch (err) {
