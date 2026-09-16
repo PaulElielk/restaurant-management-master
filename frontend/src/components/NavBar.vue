@@ -161,6 +161,12 @@ export default {
     color: #f38609;
 }
 
+.header .icons {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
 .header .icons div {
     height: 4.5rem;
     width: 4.5rem;
@@ -169,9 +175,9 @@ export default {
     background: #f7f7f7;
     color: #130f40;
     border-radius: .5rem;
-    margin-left: .3rem;
     cursor: pointer;
     text-align: center;
+    margin: 0;
 }
 
 .header .icons div:hover {
@@ -180,24 +186,34 @@ export default {
 }
 
 .header .icons .cart-btn-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     text-decoration: none;
-    vertical-align: middle;
+    margin: 0;
+    line-height: 1;
 }
 
 .header .icons .cart-box {
+    height: 4.5rem;
+    width: 4.5rem;
+    background: #f7f7f7;
+    color: #130f40;
+    border-radius: .5rem;
     position: relative;
     overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0;
 }
 
 .header .icons .cart-box i {
     font-size: 2rem;
     color: #130f40;
     transition: color 0.2s;
+    line-height: 1;
 }
 
 .header .icons div:hover i,

@@ -1,12 +1,24 @@
 import {createStore} from "vuex"
 import axios from "axios"
 
+function getStoredItem(key) {
+    try {
+        const item = localStorage.getItem(key);
+        if (!item) return undefined;
+        const parsed = JSON.parse(item);
+        return parsed !== null && parsed !== "" ? parsed : undefined;
+    } catch (e) {
+        console.error(`Failed to retrieve ${key} from storage:`, e);
+        return undefined;
+    }
+}
+
 const store = createStore({
     state() {
         return {
             allFoods: [],
-            user: undefined,
-            admin: undefined,
+            user: getStoredItem("user"),
+            admin: getStoredItem("admin"),
             cartItemCount: 0,
         }
     },
@@ -15,13 +27,37 @@ const store = createStore({
             state.allFoods = payload;
         },
         setUser(state, payload){
-            state.user = payload;
-            if (!payload || !payload.user_id) {
+            state.user = payload || undefined;
+            if (payload && payload.user_id) {
+                try {
+                    localStorage.setItem("user", JSON.stringify(payload));
+                } catch (e) {
+                    console.error("Failed to persist user session:", e);
+                }
+            } else {
                 state.cartItemCount = 0;
+                try {
+                    localStorage.removeItem("user");
+                } catch (e) {
+                    console.error("Failed to clear user session:", e);
+                }
             }
         },
         setAdmin(state, payload){
-            state.admin = payload;
+            state.admin = payload || undefined;
+            if (payload) {
+                try {
+                    localStorage.setItem("admin", JSON.stringify(payload));
+                } catch (e) {
+                    console.error("Failed to persist admin session:", e);
+                }
+            } else {
+                try {
+                    localStorage.removeItem("admin");
+                } catch (e) {
+                    console.error("Failed to clear admin session:", e);
+                }
+            }
         },
         setCartItemCount(state, payload){
             state.cartItemCount = Number.isFinite(payload) ? Math.max(0, payload) : 0;
