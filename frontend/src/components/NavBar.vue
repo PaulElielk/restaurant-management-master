@@ -15,7 +15,8 @@
         <div class="icons">
             <div id="menu-btn" class="fas fa-bars menu-btn" @click="showNav"></div>
             <router-link @click="scrollToTop()" to="/cart" class="cart-btn-link" title="Shopping Cart">
-                <div class="fas fa-shopping-cart cart">
+                <div class="cart-box">
+                    <i class="fas fa-shopping-cart"></i>
                     <span v-if="cartItemCount > 0" class="cart-badge">{{ cartItemCount > 99 ? '99+' : cartItemCount }}</span>
                 </div>
             </router-link>
@@ -178,11 +179,6 @@ export default {
     background: #27ae60 !important;
 }
 
-.header .icons a.router-link-exact-active .cart {
-    background: #f38609;
-    color: white;
-}
-
 .header .icons .cart-btn-link {
     display: inline-block;
     position: relative;
@@ -190,22 +186,46 @@ export default {
     vertical-align: middle;
 }
 
-.header .icons .cart {
+.header .icons .cart-box {
     position: relative;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .icons .cart-box i {
+    font-size: 2rem;
+    color: #130f40;
+    transition: color 0.2s;
+}
+
+.header .icons div:hover i,
+.header .icons .cart-box:hover i {
+    color: #fff !important;
+}
+
+.header .icons a.router-link-exact-active .cart-box {
+    background: #f38609;
+    color: white;
+}
+
+.header .icons a.router-link-exact-active .cart-box i {
+    color: white !important;
 }
 
 .header .icons .cart-badge {
     position: absolute;
     top: -0.6rem;
     right: -0.6rem;
-    background: #e74c3c;
-    color: #ffffff;
+    background: #e74c3c !important;
+    color: #ffffff !important;
     font-size: 1.15rem;
     font-weight: 700;
-    line-height: 1;
+    line-height: 1 !important;
     min-width: 2.1rem;
     height: 2.1rem;
-    padding: 0 0.4rem;
+    padding: 0 0.45rem;
     border-radius: 9999px;
     display: flex;
     align-items: center;
@@ -213,9 +233,9 @@ export default {
     box-shadow: 0 2px 6px rgba(231, 76, 60, 0.45);
     border: 2px solid #ffffff;
     pointer-events: none;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
     letter-spacing: -0.3px;
-    z-index: 10;
+    z-index: 99;
     animation: cart-badge-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 

@@ -88,6 +88,8 @@ export default {
                     if (this.matchUser.user_password === this.loginObj.pass) {
                         this.matchUser.user_password = "";
                         this.setUser(this.matchUser);
+                        await this.$store.dispatch("getCartItemCount");
+                        window.dispatchEvent(new CustomEvent("cart-updated"));
                         this.$router.push("/");
                     }
                     else {

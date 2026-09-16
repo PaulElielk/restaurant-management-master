@@ -82,6 +82,11 @@ export default {
         },
 
         async addToCart() {
+            if (!this.user || !this.user.user_id) {
+                this.$router.push("/login");
+                return;
+            }
+
             if (this.isAdding) return;
             this.isAdding = true;
 
@@ -120,6 +125,11 @@ export default {
         },
 
         async addToCartFromAlsoBought(food) {
+            if (!this.user || !this.user.user_id) {
+                this.$router.push("/login");
+                return;
+            }
+
             const foodId = parseInt(food.food_id);
             if (this.addingAlsoBoughtId === foodId) return;
             this.addingAlsoBoughtId = foodId;
