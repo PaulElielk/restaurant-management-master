@@ -36,6 +36,9 @@
             <div v-else class="fas fa-user account" style="background: #f38609;color: white;" @click="showLog">
                 <ul class="drop-down-select">
                     <li>
+                        <router-link @click="scrollToTop()" to="/profile">my profile</router-link>
+                    </li>
+                    <li>
                         <router-link @click="scrollToTop()" to="/myorder">my orders</router-link>
                     </li>
                     <li>
@@ -273,7 +276,7 @@ export default {
 .header .icons .account .drop-down-select {
     display: none;
     position: absolute;
-    margin-left: -50px;
+    margin-left: -60px;
     list-style-type: none;
 }
 
@@ -283,7 +286,7 @@ export default {
     font-size: 15px;
     font-weight: 500;
     float: left;
-    width: 95px;
+    width: 105px;
     border-radius: 5%;
 
 }

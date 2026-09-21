@@ -14,6 +14,7 @@ import {
 
 import {
     showAUser,
+    showUserById,
     createAccount
 } from "../controllers/user.js";
 
@@ -77,7 +78,10 @@ router.get("/api/foods/:id/also-bought", showUsersAlsoBought);
 
 
 ////////////////////////// USER ////////////////////////////////
-// get all user
+// get user by id
+router.get("/api/users/id/:id", showUserById);
+
+// get user by email
 router.get("/api/users/:email", showAUser);
 
 // create account
