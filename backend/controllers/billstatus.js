@@ -1,3 +1,5 @@
+// Controller for order lifecycle management (bill status) and AI demand forecasting.
+
 import {
     getNewestId,
     insertBillStatus,

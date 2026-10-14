@@ -1,3 +1,11 @@
+/**
+ * BillStatusModel.js
+ * 
+ * Order lifecycle state management and AI demand forecasting:
+ * - Order statuses: 0 (Cancelled), 1 (Pending), 2 (Cooking), 3 (Delivering), 4 (Completed)
+ * - Moving-average sales velocity demand forecasting with confidence intervals
+ */
+
 // import connection
 import db from "../config/database.js";
 
@@ -106,7 +114,14 @@ export const cancelStatus = (id,result) => {
     });
 };
 
-// demand forecast by food based on recent order velocity
+/**
+ * Generates demand forecasts using moving-average daily order velocity.
+ * 
+ * Metrics:
+ * - Velocity = total_qty / lookbackDays
+ * - Forecast = Velocity * forecastDays
+ * - Confidence = High (activeDays/lookback >= 0.5), Medium (>= 0.2), Low (< 0.2)
+ */
 export const getDemandForecast = (lookbackDays, forecastDays, result) => {
     const safeLookback = Number.isNaN(Number.parseInt(lookbackDays, 10))
         ? 30

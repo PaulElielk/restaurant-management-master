@@ -1,3 +1,4 @@
+// Controller for receiving chatbot messages and delegating to ChatbotService.
 import { processChatMessage } from "../models/ChatbotService.js";
 
 export const handleChatbotMessage = async (req, res) => {

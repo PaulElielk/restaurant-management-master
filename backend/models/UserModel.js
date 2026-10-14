@@ -1,3 +1,5 @@
+// Data access layer for user authentication and customer profiles.
+
 // import connection
 import db from "../config/database.js";
 

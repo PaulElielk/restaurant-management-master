@@ -1,3 +1,12 @@
+/**
+ * ChatbotService.js
+ * 
+ * Natural Language Processing (NLP) customer assistant service:
+ * - Supervised intent classification via `node-nlp` (10 intents, 225 training pairs)
+ * - Deterministic entity extraction & ingredient-based dish lookup
+ * - Real-time catalog queries for dietary, category, and co-purchase queries
+ */
+
 import { NlpManager } from 'node-nlp';
 import {
     getFoods,
@@ -13,6 +22,7 @@ import {
 
 const manager = new NlpManager({ languages: ['en'], forceNER: true });
 
+// Intent classification training corpus
 const trainingDocuments = [
     ['hello', 'greetings.hello'],
     ['hi', 'greetings.hello'],
@@ -1089,6 +1099,8 @@ export const processChatMessage = async (userMessage, userId) => {
         };
     }
 
+
+    // Classify message intent using trained NLP manager
     const response = await manager.process('en', userMessage);
     const intent = response.intent;
 

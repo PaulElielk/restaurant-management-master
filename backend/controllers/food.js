@@ -1,3 +1,5 @@
+// Controller for food catalog, recommendations, and co-purchase analytics.
+
 // import functions from Food model
 
 import {

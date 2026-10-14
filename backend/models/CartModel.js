@@ -1,3 +1,5 @@
+// Data access layer for user cart items in MySQL.
+
 // import connection
 import db from "../config/database.js";
 

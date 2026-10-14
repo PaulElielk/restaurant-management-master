@@ -132,7 +132,9 @@ export default {
     right: 0;
     z-index: 1000;
     background: #fff;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
+    /* Projector-safe: Darker shadow and thicker, more contrasted border */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-bottom: 2px solid #d1d1d1;
     display: flex;
     align-items: center;
     justify-content: space-between;

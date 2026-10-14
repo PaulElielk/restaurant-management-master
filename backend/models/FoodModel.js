@@ -1,3 +1,13 @@
+/**
+ * FoodModel.js
+ * 
+ * Data access and AI analytics for food catalog:
+ * - Menu CRUD & dietary filtering (vegan, spicy, category, ingredients)
+ * - Hybrid Personalized Recommendation Engine
+ * - Offline Precision@K & Recall@K Recommender Evaluation
+ * - Co-purchase Market Basket Analysis ("Customers Also Bought")
+ */
+
 // import connection
 import db from "../config/database.js";
 
@@ -130,7 +140,15 @@ export const getPopularFoods = (limit = 5, result) => {
     );
 };
 
-// recommendation list for user (fallbacks to globally popular foods for new users)
+/**
+ * Generates personalized food recommendations for a given user.
+ * 
+ * Heuristic Formulation:
+ *   PersonalizedScore = (50 * W_cuisine) + (25 * W_category) + (10 * W_type)
+ *   FinalScore = (normPop * 0.25) + PersonalizedScore + (voteScore / 1000)
+ * 
+ * Falls back to global popularity when user order count < minHistory.
+ */
 export const getRecommendedFoodsForUser = (userId, options, result) => {
     const parsedUserId = Number.parseInt(userId, 10);
     const safeUserId = Number.isNaN(parsedUserId) ? 0 : parsedUserId;
@@ -587,7 +605,10 @@ export const evaluateRecommendationsForUser = (userId, options, result) => {
     });
 };
 
-// "Users also bought" — items frequently ordered in the same bill as the target food
+/**
+ * Co-purchase recommendations ("Customers Also Bought").
+ * Self-joins billdetails on matching bill_id to find items frequently ordered with foodId.
+ */
 export const getUsersAlsoBought = (foodId, limit, result) => {
     const parsedFoodId = Number.parseInt(foodId, 10);
     const safeLimit = Number.isNaN(Number.parseInt(limit, 10))
