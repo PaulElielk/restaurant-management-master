@@ -1,11 +1,11 @@
 food_id,food_name,total_qty,active_days,predicted_period_qty,confidence_hint
-42,"Coca cola",840,31,196.00,high
-74,"Gnamakoudji (Fresh Ginger Juice)",783,31,182.70,high
-60,"Alloco Simple",681,31,158.90,high
-11,"bean & cheese burrito",657,31,153.30,high
-43,"Classic Bacon Cheeseburger",655,31,152.83,high
-53,"Golden French Fries",651,31,151.90,high
-12,"breakfast burrito",617,31,143.97,high
-59,"Garba (Attiéké Thon Frit)",617,31,143.97,high
-4,"tacos al pastor",616,31,143.73,high
-46,"Spicy Buffalo Wings",604,31,140.93,high
+42,"Coca cola",851,31,198.57,high
+74,"Gnamakoudji (Fresh Ginger Juice)",796,31,185.73,high
+60,"Alloco Simple",692,31,161.47,high
+43,"Classic Bacon Cheeseburger",670,31,156.33,high
+11,"bean & cheese burrito",668,31,155.87,high
+53,"Golden French Fries",661,31,154.23,high
+12,"breakfast burrito",626,31,146.07,high
+4,"tacos al pastor",624,31,145.60,high
+59,"Garba (Attiéké Thon Frit)",622,31,145.13,high
+46,"Spicy Buffalo Wings",610,31,142.33,high

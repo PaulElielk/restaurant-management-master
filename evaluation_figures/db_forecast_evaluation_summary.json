@@ -13,81 +13,81 @@
     {
       "food_id": 42,
       "food_name": "Coca cola",
-      "total_qty": 840,
+      "total_qty": 851,
       "active_days": 31,
-      "predicted_period_qty": 196,
+      "predicted_period_qty": 198.57,
       "confidence_hint": "high"
     },
     {
       "food_id": 74,
       "food_name": "Gnamakoudji (Fresh Ginger Juice)",
-      "total_qty": 783,
+      "total_qty": 796,
       "active_days": 31,
-      "predicted_period_qty": 182.7,
+      "predicted_period_qty": 185.73,
       "confidence_hint": "high"
     },
     {
       "food_id": 60,
       "food_name": "Alloco Simple",
-      "total_qty": 681,
+      "total_qty": 692,
       "active_days": 31,
-      "predicted_period_qty": 158.9,
-      "confidence_hint": "high"
-    },
-    {
-      "food_id": 11,
-      "food_name": "bean & cheese burrito",
-      "total_qty": 657,
-      "active_days": 31,
-      "predicted_period_qty": 153.3,
+      "predicted_period_qty": 161.47,
       "confidence_hint": "high"
     },
     {
       "food_id": 43,
       "food_name": "Classic Bacon Cheeseburger",
-      "total_qty": 655,
+      "total_qty": 670,
       "active_days": 31,
-      "predicted_period_qty": 152.83,
+      "predicted_period_qty": 156.33,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 11,
+      "food_name": "bean & cheese burrito",
+      "total_qty": 668,
+      "active_days": 31,
+      "predicted_period_qty": 155.87,
       "confidence_hint": "high"
     },
     {
       "food_id": 53,
       "food_name": "Golden French Fries",
-      "total_qty": 651,
+      "total_qty": 661,
       "active_days": 31,
-      "predicted_period_qty": 151.9,
+      "predicted_period_qty": 154.23,
       "confidence_hint": "high"
     },
     {
       "food_id": 12,
       "food_name": "breakfast burrito",
-      "total_qty": 617,
+      "total_qty": 626,
       "active_days": 31,
-      "predicted_period_qty": 143.97,
-      "confidence_hint": "high"
-    },
-    {
-      "food_id": 59,
-      "food_name": "Garba (Attiéké Thon Frit)",
-      "total_qty": 617,
-      "active_days": 31,
-      "predicted_period_qty": 143.97,
+      "predicted_period_qty": 146.07,
       "confidence_hint": "high"
     },
     {
       "food_id": 4,
       "food_name": "tacos al pastor",
-      "total_qty": 616,
+      "total_qty": 624,
       "active_days": 31,
-      "predicted_period_qty": 143.73,
+      "predicted_period_qty": 145.6,
+      "confidence_hint": "high"
+    },
+    {
+      "food_id": 59,
+      "food_name": "Garba (Attiéké Thon Frit)",
+      "total_qty": 622,
+      "active_days": 31,
+      "predicted_period_qty": 145.13,
       "confidence_hint": "high"
     },
     {
       "food_id": 46,
       "food_name": "Spicy Buffalo Wings",
-      "total_qty": 604,
+      "total_qty": 610,
       "active_days": 31,
-      "predicted_period_qty": 140.93,
+      "predicted_period_qty": 142.33,
       "confidence_hint": "high"
     }
   ]
