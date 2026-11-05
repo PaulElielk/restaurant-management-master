@@ -14,6 +14,10 @@
             </div>
 
             <div class="navbar-actions">
+                <router-link to="/" class="btn btn-website" title="Switch to Customer Website">
+                    <i class="fas fa-store"></i>
+                    <span>Customer Website</span>
+                </router-link>
                 <button class="btn btn-sync" :disabled="isRefreshing" @click="refreshAll()">
                     <i class="fas fa-rotate" :class="{ 'fa-spin': isRefreshing }"></i>
                     <span>Sync</span>
@@ -728,6 +732,25 @@ export default {
     display: flex;
     align-items: center;
     gap: 1.2rem;
+}
+
+.btn-website {
+    background: #130f40;
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s linear;
+}
+
+.btn-website:hover {
+    background: #27ae60;
+    color: #fff;
 }
 
 .btn-sync {
