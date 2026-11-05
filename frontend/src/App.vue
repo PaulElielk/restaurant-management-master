@@ -1,8 +1,11 @@
 <template>
     <div id="app">
-        <div v-if="admin">
+        <!-- Admin Routes Layout (Admin Login & Dashboard) -->
+        <div v-if="isAdminRoute">
             <router-view></router-view>
         </div>
+
+        <!-- Customer Website Layout (always shows NavBar, Chatbot, Footer) -->
         <div v-else>
             <NavBar />
 
@@ -31,16 +34,16 @@ export default {
         Chatbot
     },
 
-    // created() {
-    //     this.getFoodsData()
-    // },
-
     mounted() {
         this.getFoodsData()
     },
 
     computed: {
-        ...mapState(["admin"])
+        ...mapState(["admin"]),
+
+        isAdminRoute() {
+            return Boolean(this.$route && this.$route.path && this.$route.path.startsWith('/admin'));
+        }
     },
 
     methods: {

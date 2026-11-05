@@ -1,5 +1,6 @@
 <template>
-    <div class="my-order-container" :class="filterBills.length > 0 ? '' : 'fit-screen'">
+    <div class="my-order-container">
+        <!-- Active Live Orders In Progress -->
         <div v-if="filterBills.length > 0" class="my-order-cards">
             <div v-for="b in filterBills.slice().reverse()" class="card" :key="b.bill_id">
                 <div class="card-head d-flex flex-wrap flex-sm-nowrap justify-content-between">
@@ -65,12 +66,11 @@
             </div>
         </div>
 
-
         <!-- Full Order History Section for Logged-In Users -->
         <OrderHistory v-if="user && user.user_id" :user-id="user.user_id" />
 
         <!-- Not Logged In Fallback -->
-        <div v-else class="box-content row no-food">
+        <div v-if="!user" class="box-content row no-food fit-screen">
             <div class="content">
                 <h2 style="color: #057835fa;">Please log in to view your orders</h2>
             </div>
@@ -102,7 +102,7 @@ export default {
 
     data() {
         return {
-            avaiableStatus: ["cancel", "confirmed", "preparing", "checking", "delivering", "delivered"],
+            avaiableStatus: ["cancel", "confirmed", "preparing", "checking", "delivering", "delivered", "completed"],
             allBills: [],
 
             showOrderDetails: false,
@@ -137,7 +137,11 @@ export default {
     methods: {
         async getAllBills() {
             if (this.user) {
+                const prevLength = this.allBills.length;
                 this.allBills = (await axios.get('/billstatus/user/' + this.user.user_id)).data;
+                if (Array.isArray(this.allBills) && this.allBills.length !== prevLength) {
+                    window.dispatchEvent(new CustomEvent("orders-updated"));
+                }
             }
         },
 

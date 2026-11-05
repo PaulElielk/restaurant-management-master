@@ -206,6 +206,17 @@ export default {
         }
     },
 
+    mounted() {
+        if (this.activeUserId) {
+            this.fetchOrderHistory();
+        }
+        window.addEventListener("orders-updated", this.fetchOrderHistory);
+    },
+
+    beforeUnmount() {
+        window.removeEventListener("orders-updated", this.fetchOrderHistory);
+    },
+
     methods: {
         async fetchOrderHistory() {
             if (!this.activeUserId) return;
@@ -747,3 +758,4 @@ export default {
     }
 }
 </style>
+
