@@ -119,6 +119,7 @@ Restaurant managers need to know how many ingredients to buy. Demand forecasting
 
 **Function:** `getDemandForecast(lookbackDays, forecastDays, result)`
 
+
 1. **The SQL Aggregation (Data Gathering):**
    The database does the heavy lifting. It examines all completed orders over a sequential lookback window ($W = 30$ days) and calculates:
    - `total_qty`: Total units of the item sold over the window.
