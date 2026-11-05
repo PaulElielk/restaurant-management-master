@@ -44,7 +44,8 @@ import {
     updateBillStatus,
     updateBillPaid,
     cancelBillStatus,
-    showDemandForecast
+    showDemandForecast,
+    getUserOrderHistory
 } from "../controllers/billstatus.js";
 
 import { handleChatbotMessage } from "../controllers/chatbot.js";
@@ -92,6 +93,9 @@ router.get("/api/billstatus", getAllBills);
 router.put("/api/billstatus/:id", updateBillStatus);
 router.put("/api/billstatus/paid/:id", updateBillPaid);
 router.put("/api/billstatus/cancel/:id", cancelBillStatus);
+
+// Order history with line items for authenticated user
+router.get("/api/orders/user/:id", getUserOrderHistory);
 
 // AI Demand Forecasting
 router.get("/api/billstatus/forecast", showDemandForecast);

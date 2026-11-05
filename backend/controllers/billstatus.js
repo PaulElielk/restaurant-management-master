@@ -9,7 +9,8 @@ import {
     updateStatus,
     updatePaid,
     cancelStatus,
-    getDemandForecast
+    getDemandForecast,
+    getOrderHistoryByUser
 } from "../models/BillStatusModel.js";
 
 // get newest Bill Status
@@ -110,6 +111,17 @@ export const showDemandForecast = (req, res) => {
     getDemandForecast(lookbackDays, forecastDays, (err, results) => {
         if (err) {
             res.send(err);
+        } else {
+            res.json(results);
+        }
+    });
+};
+
+// get complete order history for authenticated user
+export const getUserOrderHistory = (req, res) => {
+    getOrderHistoryByUser(req.params.id, (err, results) => {
+        if (err) {
+            res.status(500).json({ error: "Failed to retrieve order history", details: err });
         } else {
             res.json(results);
         }

@@ -23,7 +23,17 @@
 
         <div v-else-if="recommendedFoods.length" class="home-recommended">
             <div class="recommended-head">
-                <h3>{{ user ? "Recommended for you" : "Popular right now" }}</h3>
+                <div class="rec-title-wrap">
+                    <h3>{{ user ? "Recommended for you" : "Popular right now" }}</h3>
+                    <router-link
+                        v-if="user"
+                        to="/profile#order-history"
+                        class="history-pill-link"
+                        title="View verified past orders that trigger these recommendations"
+                    >
+                        <i class="fa-solid fa-clock-rotate-left"></i> View Past Orders
+                    </router-link>
+                </div>
                 <p>{{ user ? "Based on your order history" : "Top picks from all customers" }}</p>
             </div>
 
@@ -467,9 +477,38 @@ export default {
     margin-bottom: 1.5rem;
 }
 
+.home-recommended .rec-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.home-recommended .history-pill-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #e8f8f0;
+    color: #27ae60;
+    border: 1px solid #b7ebd0;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-transform: none;
+}
+
+.home-recommended .history-pill-link:hover {
+    background: #27ae60;
+    color: #fff;
+    border-color: #27ae60;
+}
+
 .home-recommended .recommended-head h3 {
     color: #130f40;
     font-size: 2.8rem;
+    margin: 0;
 }
 
 .home-recommended .recommended-head p {

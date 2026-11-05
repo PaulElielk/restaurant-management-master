@@ -121,6 +121,9 @@
                 </div>
             </div>
 
+            <!-- Order History Section -->
+            <OrderHistory :user-id="user.user_id" />
+
             <!-- Quick Action Navigation Links -->
             <div class="actions-section">
                 <div class="section-title">
@@ -128,9 +131,9 @@
                 </div>
 
                 <div class="action-buttons-wrap">
-                    <router-link to="/myorder" class="btn action-btn">
+                    <a href="#order-history" @click.prevent="scrollToHistory" class="btn action-btn">
                         <i class="fa-solid fa-clock-rotate-left"></i> View Order History
-                    </router-link>
+                    </a>
 
                     <router-link to="/menu" class="btn action-btn btn-accent">
                         <i class="fa-solid fa-utensils"></i> Explore Menu
@@ -169,9 +172,14 @@
 <script>
 import axios from "axios";
 import { mapState, mapMutations } from "vuex";
+import OrderHistory from "@/components/OrderHistory.vue";
 
 export default {
     name: "Profile",
+
+    components: {
+        OrderHistory
+    },
 
     data() {
         return {
@@ -213,7 +221,11 @@ export default {
     },
 
     mounted() {
-        window.scrollTo(0, 0);
+        if (this.$route && this.$route.hash === '#order-history') {
+            setTimeout(() => this.scrollToHistory(), 350);
+        } else {
+            window.scrollTo(0, 0);
+        }
         if (this.user && this.user.user_id) {
             this.loadProfileDetails();
         }
@@ -221,6 +233,13 @@ export default {
 
     methods: {
         ...mapMutations(["setUser"]),
+
+        scrollToHistory() {
+            const el = document.getElementById("order-history");
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            }
+        },
 
         async loadProfileDetails() {
             if (!this.user || !this.user.user_id) return;

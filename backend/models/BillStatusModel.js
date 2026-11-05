@@ -182,3 +182,61 @@ export const getDemandForecast = (lookbackDays, forecastDays, result) => {
         result(null, forecast);
     });
 };
+
+// get full order history with items for a specific user
+export const getOrderHistoryByUser = (userId, result) => {
+    const query = `
+        SELECT 
+            bs.bill_id,
+            bs.bill_when,
+            bs.bill_total,
+            bs.bill_status,
+            bs.bill_paid,
+            bd.food_id,
+            bd.item_qty,
+            f.food_name,
+            f.food_price,
+            f.food_discount,
+            f.food_src
+        FROM billstatus bs
+        LEFT JOIN billdetails bd ON bd.bill_id = bs.bill_id
+        LEFT JOIN food f ON f.food_id = bd.food_id
+        WHERE bs.user_id = ?
+        ORDER BY bs.bill_id DESC
+    `;
+    db.query(query, [userId], (err, rows) => {
+        if (err) {
+            console.log(err);
+            result(err, null);
+            return;
+        }
+
+        const orderMap = new Map();
+        (rows || []).forEach((row) => {
+            if (!orderMap.has(row.bill_id)) {
+                orderMap.set(row.bill_id, {
+                    bill_id: row.bill_id,
+                    bill_when: row.bill_when,
+                    bill_total: row.bill_total,
+                    bill_status: row.bill_status,
+                    bill_paid: row.bill_paid,
+                    items: []
+                });
+            }
+            if (row.food_id && row.food_name) {
+                const rawPrice = parseFloat(row.food_price) || 0;
+                const discount = parseFloat(row.food_discount) || 0;
+                orderMap.get(row.bill_id).items.push({
+                    food_id: row.food_id,
+                    food_name: row.food_name,
+                    item_qty: row.item_qty || 1,
+                    food_price: rawPrice,
+                    unit_price: Math.max(0, rawPrice - discount),
+                    food_src: row.food_src
+                });
+            }
+        });
+
+        result(null, Array.from(orderMap.values()));
+    });
+};

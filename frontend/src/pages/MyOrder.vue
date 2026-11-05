@@ -66,14 +66,18 @@
         </div>
 
 
+        <!-- Full Order History Section for Logged-In Users -->
+        <OrderHistory v-if="user && user.user_id" :user-id="user.user_id" />
+
+        <!-- Not Logged In Fallback -->
         <div v-else class="box-content row no-food">
             <div class="content">
-                <h2 style="color: #057835fa;">You do not have any orders yet</h2>
+                <h2 style="color: #057835fa;">Please log in to view your orders</h2>
             </div>
             <div>
                 <img src="../assets/images/no-orders.png" alt="" />
             </div>
-            <router-link class="btn" to="/menu">Order now!</router-link>
+            <router-link class="btn" to="/login">Log in now</router-link>
         </div>
 
         <OrderDetails v-if="showOrderDetails" :bill="sendId">
@@ -86,10 +90,15 @@
 
 <script>
 import OrderDetails from "@/components/OrderDetails.vue";
+import OrderHistory from "@/components/OrderHistory.vue";
 import axios from "axios";
 import { mapState } from "vuex";
 export default {
     name: 'MyOrder',
+    components: {
+        OrderDetails,
+        OrderHistory
+    },
 
     data() {
         return {
@@ -147,8 +156,7 @@ export default {
                 this.getAllBills();
             }.bind(this), 1000);
         }
-    },
-    components: { OrderDetails }
+    }
 }
 </script>
 

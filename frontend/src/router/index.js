@@ -78,6 +78,14 @@ const routes = [
     component: MyOrder,
   },
   {
+    path: "/orders",
+    redirect: "/myorder",
+  },
+  {
+    path: "/order-history",
+    redirect: "/profile",
+  },
+  {
     path: "/profile",
     name: "Profile",
     component: Profile,
